@@ -9,7 +9,7 @@ const NAV_LINKS = [
   { href: "/destinations", label: "Destinations" },
   { href: "/services", label: "Services" },
   { href: "/processus", label: "Processus" },
-  { href: "/#apropos", label: "À propos" },
+  { href: "/a-propos", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ];
 
