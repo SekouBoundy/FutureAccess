@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-display: var(--font-fraunces);
+  --font-head: var(--font-jakarta);
+  --font-body: var(--font-inter);
+
+  --color-navy-900: #061427;
+  --color-navy-800: #0a2540;
+  --color-navy-700: #0e3158;
+  --color-navy-600: #13407a;
+
+  --color-blue-600: #1e5fbf;
+  --color-blue-500: #2e74e6;
+  --color-blue-100: #e5eefb;
+
+  --color-gold-600: #b6892f;
+  --color-gold-500: #c9a227;
+  --color-gold-400: #d8b23e;
+  --color-gold-300: #e7cb6a;
+  --color-gold-100: #f6eccb;
+
+  --color-cream: #fbf8f1;
+  --color-paper: #f7f9fc;
+  --color-slate-50: #f4f7fb;
+  --color-slate-100: #eaf0f7;
+  --color-slate-200: #d8e1ec;
+  --color-slate-400: #8fa0b5;
+  --color-slate-500: #647488;
+  --color-slate-600: #46566b;
+  --color-ink: #0f1e33;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  letter-spacing: -0.02em;
+}
+
+.font-display-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+}
