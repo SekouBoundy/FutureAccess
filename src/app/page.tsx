@@ -1,23 +1,57 @@
 import Photo from "@/components/Photo";
+import NewsletterForm from "@/components/NewsletterForm";
+
+// Icônes SVG (style trait, jeu Lucide) — remplacent les emojis
+const ICONS: Record<string, React.ReactNode> = {
+  users: (
+    <>
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+      <circle cx="9" cy="7" r="4" />
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+    </>
+  ),
+  shield: (
+    <>
+      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+      <path d="m9 12 2 2 4-4" />
+    </>
+  ),
+  sparkles: (
+    <>
+      <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+      <path d="M20 3v4" />
+      <path d="M22 5h-4" />
+      <path d="M4 17v2" />
+      <path d="M5 18H3" />
+    </>
+  ),
+  card: (
+    <>
+      <rect width="20" height="14" x="2" y="5" rx="2" />
+      <line x1="2" x2="22" y1="10" y2="10" />
+    </>
+  ),
+};
 
 const ADVANTAGES = [
   {
-    icon: "🎯",
+    icon: "users",
     title: "Accompagnement personnalisé",
     text: "Chaque étudiant bénéficie d'un suivi adapté à son profil et à ses objectifs.",
   },
   {
-    icon: "🔒",
+    icon: "shield",
     title: "Transparence & Pro",
     text: "Des informations claires et des conseils fiables à chaque étape de votre dossier.",
   },
   {
-    icon: "✈️",
+    icon: "sparkles",
     title: "Assistance complète",
     text: "De la constitution du dossier jusqu'à votre installation finale à l'étranger.",
   },
   {
-    icon: "💳",
+    icon: "card",
     title: "Tarification juste",
     text: "Un accompagnement de haute qualité, avec des tarifs transparents et sans frais cachés.",
   },
@@ -99,41 +133,52 @@ export default function Home() {
       {/* ===== HERO ===== */}
       <section
         id="accueil"
-        className="relative overflow-hidden rounded-b-[34px] bg-[linear-gradient(165deg,#061427_5%,#0e3158_60%,#0a2540_100%)] pb-16 pt-32 text-white lg:pb-24 lg:pt-40"
+        className="relative overflow-hidden rounded-b-[34px] bg-[linear-gradient(165deg,#061427_5%,#0e3158_60%,#0a2540_100%)] pb-16 pt-36 text-white lg:pb-24 lg:pt-44"
       >
+        {/* Image de fond texturée (déposer /images/hero-bg.jpg) */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 [background:radial-gradient(120%_80%_at_80%_-10%,rgba(46,116,230,.45),transparent_55%),radial-gradient(90%_60%_at_0%_10%,rgba(201,162,39,.18),transparent_50%)]"
+          className="pointer-events-none absolute inset-0 bg-cover bg-center opacity-60"
+          style={{ backgroundImage: "url(/images/hero-bg.jpg)" }}
         />
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
+        {/* Voile assombrissant pour la lisibilité du texte */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy-900/95 via-navy-900/75 to-navy-900/25"
+        />
+        {/* Halos d'accent */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 [background:radial-gradient(120%_80%_at_80%_-10%,rgba(46,116,230,.35),transparent_55%),radial-gradient(90%_60%_at_0%_10%,rgba(201,162,39,.15),transparent_50%)]"
+        />
+
+        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
           <div>
-            <span className="mb-4 inline-flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-300">
-              <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
-              Études à l&apos;international
-            </span>
-            <h1 className="mb-5 text-4xl font-extrabold leading-[1.1] tracking-tight lg:text-5xl">
-              Construisez votre <em className="font-display-italic text-gold-300">avenir</em>{" "}
-              académique
+            <h1 className="mb-6 text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+              Construisez votre{" "}
+              <em className="font-display-italic font-normal">avenir</em> académique
             </h1>
-            <p className="mb-8 max-w-[42ch] text-white/85">
+            <p className="mb-8 max-w-[46ch] text-lg text-white/85">
               Accompagnement fiable et professionnel pour vos projets d&apos;études à
               l&apos;international. De l&apos;orientation au visa, nous sommes votre partenaire
               réussite.
             </p>
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-7 py-4 font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-8 py-4 font-head text-lg font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
             >
               Commencer mon projet
             </a>
           </div>
 
+          {/* Photo étudiante — PNG transparent (découpe + halo doré déjà intégrés) */}
           <Photo
-            src="/images/hero-student.jpg"
+            src="/images/hero-student.png"
             alt="Étudiante prête pour ses études à l'international"
             icon="🎓"
             label="Photo héro — étudiante"
-            className="h-72 w-full rounded-[28px] shadow-[0_24px_60px_rgba(10,37,64,.35)] sm:h-96 lg:h-[28rem]"
+            fit="contain"
+            className="h-80 w-full sm:h-96 lg:h-[32rem]"
           />
         </div>
       </section>
@@ -158,8 +203,19 @@ export default function Home() {
                 key={a.title}
                 className="rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_2px_8px_rgba(10,37,64,.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(10,37,64,.10)]"
               >
-                <div className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-navy-800 text-xl text-white">
-                  {a.icon}
+                <div className="mb-4 grid h-12 w-12 place-items-center rounded-full bg-navy-800 text-white">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="h-5 w-5"
+                    aria-hidden
+                  >
+                    {ICONS[a.icon]}
+                  </svg>
                 </div>
                 <h3 className="mb-2 font-head text-base font-bold text-navy-800">{a.title}</h3>
                 <p className="text-sm text-slate-600">{a.text}</p>
@@ -307,23 +363,7 @@ export default function Home() {
           <p className="mb-8 text-white/75">
             Rejoignez plus de 500 étudiants qui ont réalisé leur rêve avec FutureAccess.
           </p>
-          <form
-            className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              type="email"
-              required
-              placeholder="Votre email"
-              className="w-full flex-1 rounded-full border border-white/20 bg-white/10 px-5 py-3.5 text-sm text-white placeholder:text-white/50 focus:border-gold-400 focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-6 py-3.5 font-head text-sm font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)]"
-            >
-              S&apos;inscrire
-            </button>
-          </form>
+          <NewsletterForm />
         </div>
       </section>
 

@@ -8,9 +8,17 @@ type PhotoProps = {
   label: string;
   icon: string;
   className?: string;
+  fit?: "cover" | "contain";
 };
 
-export default function Photo({ src, alt, label, icon, className = "" }: PhotoProps) {
+export default function Photo({
+  src,
+  alt,
+  label,
+  icon,
+  className = "",
+  fit = "cover",
+}: PhotoProps) {
   const [failed, setFailed] = useState(false);
 
   if (failed) {
@@ -24,13 +32,13 @@ export default function Photo({ src, alt, label, icon, className = "" }: PhotoPr
     );
   }
 
-  // eslint-disable-next-line @next/next/no-img-element
   return (
+    // eslint-disable-next-line @next/next/no-img-element
     <img
       src={src}
       alt={alt}
       onError={() => setFailed(true)}
-      className={`object-cover ${className}`}
+      className={`${fit === "contain" ? "object-contain" : "object-cover"} ${className}`}
     />
   );
 }

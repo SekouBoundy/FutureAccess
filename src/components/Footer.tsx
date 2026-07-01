@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const NAV_LINKS = [
   { href: "/#accueil", label: "Accueil" },
   { href: "/#destinations", label: "Destinations" },
@@ -31,9 +33,10 @@ export default function Footer() {
     <footer className="rounded-t-[34px] bg-navy-900 pb-10 pt-16 text-[#cdd8e6]">
       <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
-          <a href="/#accueil" className="flex items-center gap-2 font-head text-lg font-extrabold text-white">
-            Future<span className="text-gold-400">Access</span>
-          </a>
+          <Link href="/#accueil" className="flex items-center gap-2 font-head text-lg font-extrabold">
+            <span className="text-blue-500">Future</span>
+            <span className="text-gold-400">Access</span>
+          </Link>
           <p className="mt-4 max-w-[32ch] text-sm text-[#cdd8e6]/80">
             Votre partenaire de confiance pour vos études à l&apos;international. Nous vous
             accompagnons de A à Z dans votre projet académique.
@@ -61,9 +64,9 @@ export default function Footer() {
           <ul className="space-y-2.5">
             {NAV_LINKS.map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="text-sm text-[#cdd8e6] transition-colors hover:text-white">
+                <Link href={l.href} className="text-sm text-[#cdd8e6] transition-colors hover:text-white">
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -81,7 +84,7 @@ export default function Footer() {
               <span className="text-gold-300">📍</span> Bamako, Mali
             </p>
             <p className="flex items-start gap-2">
-              <span className="text-gold-300">📞</span> +223 92 24 65 42
+              <span className="text-gold-300">📞</span> +223 92 24 63 42
             </p>
           </div>
         </div>
@@ -91,7 +94,7 @@ export default function Footer() {
             WhatsApp
           </h4>
           <a
-            href="https://wa.me/22392246542"
+            href="https://wa.me/22392246342"
             className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 font-head text-sm font-bold text-[#063e1c]"
           >
             💬 Discuter sur WhatsApp
