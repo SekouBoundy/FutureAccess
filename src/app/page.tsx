@@ -1,5 +1,6 @@
 import Photo from "@/components/Photo";
 import NewsletterForm from "@/components/NewsletterForm";
+import { DESTINATIONS } from "@/data/destinations";
 
 // Icônes SVG (style trait, jeu Lucide) — remplacent les emojis
 const ICONS: Record<string, React.ReactNode> = {
@@ -54,33 +55,6 @@ const ADVANTAGES = [
     icon: "card",
     title: "Tarification juste",
     text: "Un accompagnement de haute qualité, avec des tarifs transparents et sans frais cachés.",
-  },
-];
-
-const DESTINATIONS = [
-  {
-    slug: "malaisie",
-    flag: "🇲🇾",
-    country: "Malaisie",
-    region: "Asie",
-    text: "Universités reconnues, enseignement en anglais, frais abordables et environnement multiculturel.",
-    image: "/images/destinations/malaysia.jpg",
-  },
-  {
-    slug: "turquie",
-    flag: "🇹🇷",
-    country: "Turquie",
-    region: "Asie / Europe",
-    text: "Universités de qualité, coût de vie accessible et de nombreuses opportunités académiques.",
-    image: "/images/destinations/turkey.jpg",
-  },
-  {
-    slug: "chine",
-    flag: "🇨🇳",
-    country: "Chine",
-    region: "Asie",
-    text: "Établissements réputés, programmes variés et possibilités de bourses selon les universités.",
-    image: "/images/destinations/china.jpg",
   },
 ];
 
@@ -239,7 +213,7 @@ export default function Home() {
               </h2>
             </div>
             <a
-              href="#destinations"
+              href="/destinations"
               className="font-head text-sm font-semibold text-blue-600 hover:text-blue-500"
             >
               Voir toutes les destinations →

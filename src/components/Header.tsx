@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { href: "/#accueil", label: "Accueil" },
-  { href: "/#destinations", label: "Destinations" },
+  { href: "/destinations", label: "Destinations" },
   { href: "/services", label: "Services" },
   { href: "/#processus", label: "Processus" },
   { href: "/#apropos", label: "À propos" },
@@ -27,6 +28,11 @@ function Brand({ className = "" }: { className?: string }) {
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Accueil est actif sur la page d'accueil ; sinon on compare la route exacte.
+  const isActive = (href: string) =>
+    pathname === "/" ? href === "/#accueil" : href === pathname;
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -41,12 +47,13 @@ export default function Header() {
           </Link>
 
           <nav className="hidden items-center gap-1 lg:flex">
-            {NAV_LINKS.map((link, i) => (
+            {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={isActive(link.href) ? "page" : undefined}
                 className={`rounded-full px-4 py-2 font-head text-sm font-semibold transition-colors ${
-                  i === 0
+                  isActive(link.href)
                     ? "bg-white/10 text-white"
                     : "text-white/70 hover:bg-white/10 hover:text-white"
                 }`}
