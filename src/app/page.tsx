@@ -241,7 +241,7 @@ export default function Home() {
                   <p className="mb-3 text-xs uppercase tracking-wide text-white/60">{d.region}</p>
                   <p className="mb-4 text-sm text-white/80">{d.text}</p>
                   <a
-                    href="/contact"
+                    href={d.detailed ? `/destinations/${d.slug}` : "/contact"}
                     className="inline-flex items-center gap-1 rounded-full border border-white/25 px-4 py-2 font-head text-xs font-bold uppercase tracking-wide text-white transition-colors hover:bg-white/10"
                   >
                     Découvrir

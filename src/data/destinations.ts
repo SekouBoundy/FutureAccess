@@ -7,6 +7,8 @@ export type Destination = {
   image: string;
   /** Pastille optionnelle affichée sur la carte (page Destinations) */
   badge?: { label: string; tone: "blue" | "gold" };
+  /** true si une page détaillée /destinations/[slug] existe */
+  detailed?: boolean;
 };
 
 export const DESTINATIONS: Destination[] = [
@@ -18,6 +20,7 @@ export const DESTINATIONS: Destination[] = [
     text: "Universités reconnues, enseignement en anglais, frais abordables et environnement multiculturel.",
     image: "/images/destinations/malaysia.jpg",
     badge: { label: "Populaire", tone: "blue" },
+    detailed: true,
   },
   {
     slug: "turquie",

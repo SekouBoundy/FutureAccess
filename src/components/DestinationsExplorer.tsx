@@ -79,7 +79,7 @@ export default function DestinationsExplorer() {
                   )}
                 </div>
                 <a
-                  href="/contact"
+                  href={d.detailed ? `/destinations/${d.slug}` : "/contact"}
                   className="inline-flex items-center gap-1 rounded-full border border-white/30 bg-white/5 px-4 py-2 font-head text-xs font-bold uppercase tracking-wide text-white backdrop-blur-sm transition-colors hover:bg-white/15"
                 >
                   En savoir plus
