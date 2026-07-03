@@ -208,8 +208,9 @@ export default async function DestinationDetailPage({
         </div>
       </section>
 
-      {/* ===== TOP UNIVERSITÉS ===== */}
-      <section className="bg-white py-16 lg:py-20">
+      {/* ===== TOP UNIVERSITÉS (optionnel) ===== */}
+      {d.universities && (
+        <section className="bg-white py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">
           <h2 className="mb-8 text-2xl font-extrabold text-navy-800 lg:text-3xl">
             Top Universités en {d.country}
@@ -266,10 +267,12 @@ export default async function DestinationDetailPage({
             ))}
           </div>
         </div>
-      </section>
+        </section>
+      )}
 
-      {/* ===== ACCOMPAGNEMENT (résumé) ===== */}
-      <section className="bg-slate-50 py-16 lg:py-20">
+      {/* ===== ACCOMPAGNEMENT (résumé, optionnel) ===== */}
+      {d.summarySteps && (
+        <section className="bg-slate-50 py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto mb-12 max-w-2xl text-center">
             <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
@@ -298,7 +301,8 @@ export default async function DestinationDetailPage({
             ))}
           </div>
         </div>
-      </section>
+        </section>
+      )}
 
       {/* ===== FORFAIT ===== */}
       <section className="bg-paper py-16 lg:py-24">
@@ -361,6 +365,33 @@ export default async function DestinationDetailPage({
         </div>
       </section>
 
+      {/* ===== DOCUMENTS À PRÉPARER (optionnel) ===== */}
+      {d.documents && (
+        <section className="bg-slate-50 py-16 lg:py-20">
+          <div className="mx-auto max-w-4xl px-6">
+            <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">
+              Documents à préparer
+            </h2>
+            <p className="mt-2 text-slate-600">
+              Réunissez ces pièces pour constituer votre dossier de candidature.
+            </p>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              {d.documents.map((doc) => (
+                <li
+                  key={doc}
+                  className="flex items-start gap-3 rounded-2xl border border-slate-100 bg-white p-4 text-sm text-slate-700 shadow-[0_2px_10px_rgba(10,37,64,.05)]"
+                >
+                  <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center rounded-full bg-blue-500 text-white">
+                    <Check className="h-3.5 w-3.5" />
+                  </span>
+                  {doc}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
       {/* ===== POURQUOI ÉTUDIER (optionnel) ===== */}
       {d.whyStudy && (
         <section className="bg-slate-50 py-16 lg:py-20">
@@ -382,7 +413,44 @@ export default async function DestinationDetailPage({
           <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">Coût des études</h2>
           <p className="mt-2 text-slate-600">{d.studyCosts.subtitle}</p>
 
-          {d.studyCosts.layout === "stack" ? (
+          {d.studyCosts.layout === "table" ? (
+            <div className="mt-8 overflow-x-auto rounded-3xl border border-slate-100 bg-white shadow-[0_2px_10px_rgba(10,37,64,.06)]">
+              <table className="w-full min-w-[520px] text-left">
+                <thead>
+                  <tr className="border-b border-slate-100 text-xs font-bold uppercase tracking-wide text-slate-400">
+                    {d.studyCosts.columns?.map((c, i) => (
+                      <th key={c} className={`px-6 py-4 font-head ${i === 0 ? "" : "text-right"}`}>
+                        {c}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {d.studyCosts.rows.map((r) => (
+                    <tr
+                      key={r.label}
+                      className={
+                        r.highlight ? "bg-gold-100" : "border-b border-slate-100 last:border-0"
+                      }
+                    >
+                      <td className="px-6 py-4 font-head text-sm font-bold text-navy-800">
+                        {r.icon && <span className="mr-2">{r.icon}</span>}
+                        {r.label}
+                      </td>
+                      <td className="px-6 py-4 text-right text-sm text-slate-600">{r.value}</td>
+                      <td
+                        className={`px-6 py-4 text-right text-sm ${
+                          r.highlight ? "font-head font-bold text-navy-800" : "text-slate-600"
+                        }`}
+                      >
+                        {r.value2}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : d.studyCosts.layout === "stack" ? (
             <div className="mt-8 space-y-2 rounded-3xl border border-slate-100 bg-white p-3 shadow-[0_2px_10px_rgba(10,37,64,.06)]">
               {d.studyCosts.rows.map((r, i) => (
                 <div
@@ -468,6 +536,22 @@ export default async function DestinationDetailPage({
               </div>
             ))}
           </div>
+
+          {d.procedureCosts.notes && (
+            <div className="mt-6 rounded-3xl border border-gold-300/60 bg-gold-100/50 p-6">
+              <h3 className="mb-3 font-head text-sm font-bold text-navy-800">Important</h3>
+              <ul className="space-y-2.5">
+                {d.procedureCosts.notes.map((n) => (
+                  <li key={n} className="flex items-start gap-2.5 text-sm text-slate-600">
+                    <span className="mt-0.5 flex-none text-gold-600">
+                      <Info className="h-4 w-4" />
+                    </span>
+                    {n}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
 
@@ -518,7 +602,9 @@ export default async function DestinationDetailPage({
                     <h3 className="font-head text-base font-bold leading-snug text-navy-800">
                       {s.title}
                     </h3>
-                    <p className="mt-1 text-sm leading-relaxed text-slate-600">{s.text}</p>
+                    {s.text && (
+                      <p className="mt-1 text-sm leading-relaxed text-slate-600">{s.text}</p>
+                    )}
                   </div>
                 </div>
               ))}
@@ -560,7 +646,9 @@ export default async function DestinationDetailPage({
                     </span>
                     <div>
                       <h3 className="font-head text-base font-bold text-navy-800">{s.title}</h3>
-                      <p className="mt-0.5 text-sm leading-relaxed text-slate-600">{s.text}</p>
+                      {s.text && (
+                        <p className="mt-0.5 text-sm leading-relaxed text-slate-600">{s.text}</p>
+                      )}
                     </div>
                   </li>
                 ))}

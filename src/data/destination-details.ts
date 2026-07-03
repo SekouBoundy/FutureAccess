@@ -1,4 +1,4 @@
-export type ProcessStep = { title: string; text: string };
+export type ProcessStep = { title: string; text?: string };
 
 export type University = {
   abbr: string;
@@ -10,7 +10,13 @@ export type University = {
   abbrTone?: "slate" | "blue"; // défaut : slate
 };
 
-export type CostRow = { icon: string; label: string; value: string; highlight?: boolean };
+export type CostRow = {
+  icon?: string;
+  label: string;
+  value: string;
+  value2?: string;
+  highlight?: boolean;
+};
 
 export type ProcedureItem = { icon?: string; text: string };
 export type ProcedureCard = {
@@ -42,8 +48,10 @@ export type DestinationDetail = {
   opportunitiesImage: string;
   /** Bloc d'intro optionnel « Pourquoi étudier en … ? » */
   whyStudy?: { title: string; text: string };
-  universities: University[];
-  summarySteps: ProcessStep[];
+  /** Section optionnelle « Documents à préparer » */
+  documents?: string[];
+  universities?: University[];
+  summarySteps?: ProcessStep[];
   forfait: {
     label: string;
     badge: string;
@@ -54,8 +62,14 @@ export type DestinationDetail = {
     priceApprox?: string; // ex. « (≈ 1 200 €) / dossier » (ligne)
     features: string[];
   };
-  studyCosts: { subtitle: string; layout?: "row" | "stack"; rows: CostRow[]; note?: string };
-  procedureCosts: { subtitle: string; cards: ProcedureCard[] };
+  studyCosts: {
+    subtitle: string;
+    layout?: "row" | "stack" | "table";
+    columns?: string[];
+    rows: CostRow[];
+    note?: string;
+  };
+  procedureCosts: { subtitle: string; cards: ProcedureCard[]; notes?: string[] };
   applicationDuration: string;
   applicationLayout?: "collapsible" | "grid"; // défaut : grid
   applicationSteps: ProcessStep[];
@@ -510,7 +524,255 @@ const turquie: DestinationDetail = {
   importantIcon: "info",
 };
 
+const chine: DestinationDetail = {
+  slug: "chine",
+  country: "Chine",
+  countryArticle: "la Chine",
+  accent: "blue",
+  heroImage: "/images/destinations/china.jpg",
+  intro:
+    "Les universités chinoises figurent parmi les meilleures d'Asie et accueillent chaque année des milliers d'étudiants internationaux. Programmes en anglais ou en chinois, large choix de filières et coût de la vie accessible : la Chine est une destination de choix pour vos études.",
+  stats: [
+    { icon: "🗣️", value: "Anglais / Chinois", label: "Langues d'enseignement" },
+    { icon: "💰", value: "700 000 FCFA", label: "Frais d'agence" },
+    { icon: "🗓️", value: "8–12 sem.", label: "Délai de procédure" },
+    { icon: "🎓", value: "Bachelor & Master", label: "Niveaux disponibles" },
+  ],
+  opportunities: [
+    "Meilleures universités chinoises",
+    "Programmes en anglais ou en chinois",
+    "Coût de la vie accessible",
+    "Large choix de filières",
+  ],
+  opportunitiesImage: "/images/destinations/china-campus.jpg",
+  documents: [
+    "Passeport valide (au moins 6 mois de validité)",
+    "Photo d'identité récente",
+    "Certificat médical international",
+    "Acte de naissance",
+    "Diplôme du Baccalauréat (ou diplôme requis selon le niveau d'études)",
+    "Relevés de notes",
+    "Casier judiciaire (moins de 6 mois)",
+    "Relevé bancaire du garant (si demandé)",
+  ],
+  forfait: {
+    label: "Forfait Chine",
+    badge: "Tout inclus",
+    badgePosition: "top",
+    goldBorder: true,
+    price: "700 000 FCFA",
+    priceApprox: "(≈ 1 067 €) / dossier",
+    features: [
+      "Vérification des documents",
+      "Accompagnement dans le choix de l'université et du programme",
+      "Constitution et vérification du dossier de candidature",
+      "Soumission de la candidature auprès de l'université",
+      "Suivi du dossier jusqu'à l'obtention de l'admission",
+      "Assistance pour la demande de visa",
+      "Conseils et préparation au départ pour la Chine",
+    ],
+  },
+  studyCosts: {
+    subtitle: "Estimation des frais annuels pour étudier en Chine (hors frais d'agence).",
+    layout: "table",
+    columns: ["Frais", "Coût (RMB)", "Coût (FCFA)"],
+    rows: [
+      { label: "Frais de scolarité", value: "6 000 à 10 000 RMB/an", value2: "500 000 à 850 000 FCFA" },
+      { label: "Hébergement", value: "4 000 à 8 000 RMB/an", value2: "340 000 à 680 000 FCFA" },
+      { label: "Dépenses de subsistance", value: "1 500 RMB/mois", value2: "≈ 150 000 FCFA/mois" },
+      {
+        label: "Budget annuel estimatif",
+        value: "≈ 31 200 à 38 800 RMB",
+        value2: "≈ 2 650 000 à 3 300 000 FCFA",
+        highlight: true,
+      },
+    ],
+  },
+  procedureCosts: {
+    subtitle: "Détail des frais liés à la candidature, à l'admission et au visa étudiant.",
+    cards: [
+      {
+        icon: "📄",
+        title: "Frais d'agence FutureAccess",
+        amount: "700 000 FCFA",
+        itemsLabel: "Versements",
+        items: [
+          { icon: "→", text: "1er versement : 400 000 FCFA" },
+          { icon: "→", text: "2ᵉ versement : 300 000 FCFA" },
+        ],
+      },
+      {
+        icon: "🏛️",
+        title: "Admission & visa",
+        items: [
+          { icon: "→", text: "Frais d'admission (université) : à partir de 250 000 FCFA" },
+          { icon: "→", text: "Frais de visa étudiant : 40 000 FCFA" },
+        ],
+      },
+    ],
+    notes: [
+      "Les frais d'agence sont payables en deux tranches : 400 000 FCFA à l'ouverture du dossier et 300 000 FCFA après l'obtention de l'admission.",
+      "Les frais d'admission sont versés à l'université et peuvent varier selon l'établissement.",
+      "Les frais de visa sont payés au moment de la demande de visa.",
+      "Les frais de scolarité, d'hébergement, d'assurance, de billet d'avion et de subsistance ne sont pas inclus dans les frais d'agence.",
+    ],
+  },
+  applicationDuration: "8 à 12 semaines (admission et obtention du visa)",
+  applicationLayout: "grid",
+  applicationSteps: [
+    {
+      title:
+        "Dépôt des documents et paiement du premier versement des frais d'agence (400 000 FCFA) ainsi que des frais d'admission.",
+    },
+    { title: "Soumission de la candidature auprès de l'université." },
+    { title: "Obtention de la lettre d'admission et des documents nécessaires à la demande de visa." },
+    { title: "Dépôt de la demande de visa auprès de l'ambassade et paiement des frais de visa." },
+    {
+      title:
+        "Obtention du visa et paiement du second versement des frais d'agence (300 000 FCFA).",
+    },
+    { title: "Achat du billet d'avion et préparation du départ pour la Chine." },
+  ],
+  importantInfo: [
+    "FutureAccess accompagne les étudiants dans leurs démarches d'admission auprès des meilleures universités chinoises.",
+    "Les programmes sont proposés en anglais ou en chinois. Une formation linguistique peut être exigée avant le début des études selon le programme choisi.",
+    "Les étudiants de première ou de deuxième année de licence ne peuvent généralement pas transférer leurs crédits.",
+    "Pour le programme de Génie pharmaceutique, une moyenne minimale de 12/20 au baccalauréat est requise.",
+    "Les étudiants doivent respecter le règlement de l'université et maintenir de bons résultats académiques.",
+    "Le garant financier peut être amené à présenter un relevé bancaire justifiant d'un solde minimum de 2 000 000 FCFA, selon les exigences de l'université ou des autorités consulaires.",
+  ],
+  importantIcon: "check",
+  programs: [
+    {
+      level: "Licence (Bachelor)",
+      groups: [
+        {
+          icon: "💻",
+          title: "Informatique et Technologies",
+          items: [
+            "Computer Science and Technology (en anglais)",
+            "Software Engineering (en anglais)",
+            "Artificial Intelligence (en anglais)",
+            "Data Science and Big Data Technology",
+            "Cyberspace Security",
+            "Internet of Things Engineering",
+            "Intelligent Science and Technology",
+            "Digital Media Technology",
+          ],
+        },
+        {
+          icon: "💼",
+          title: "Commerce et Gestion",
+          items: [
+            "Business Administration",
+            "Accounting",
+            "Finance",
+            "Financial Management",
+            "Economics",
+            "International Business",
+            "Human Resource Management",
+            "Logistics Management",
+            "Tourism Management",
+            "Public Administration",
+          ],
+        },
+        {
+          icon: "⚖️",
+          title: "Droit et Sciences sociales",
+          items: ["Law", "Sociology", "Social Work", "Ethnology", "Philosophy"],
+        },
+        {
+          icon: "🏗️",
+          title: "Ingénierie",
+          items: [
+            "Civil Engineering",
+            "Chemical Engineering",
+            "Materials Science and Engineering",
+            "Communication Engineering",
+            "Electronic and Information Engineering",
+            "Environmental Science and Engineering",
+            "New Energy Science and Engineering",
+          ],
+        },
+        {
+          icon: "🔬",
+          title: "Sciences",
+          items: [
+            "Mathematics",
+            "Applied Mathematics",
+            "Statistics",
+            "Physics",
+            "Chemistry",
+            "Biological Science",
+            "Biotechnology",
+            "Ecology",
+          ],
+        },
+        {
+          icon: "🏛️",
+          title: "Architecture et Design",
+          items: [
+            "Architecture",
+            "Urban and Rural Planning",
+            "Environmental Design",
+            "Visual Communication Design",
+          ],
+        },
+        { icon: "🎨", title: "Arts", items: ["Fine Arts", "Painting", "Musicology"] },
+        {
+          icon: "📰",
+          title: "Communication",
+          items: ["Journalism", "Radio and Television", "Communication"],
+        },
+      ],
+    },
+    {
+      level: "Master (spécialités les plus demandées)",
+      groups: [
+        {
+          icon: "💻",
+          title: "Informatique",
+          items: [
+            "Artificial Intelligence",
+            "Computer Technology",
+            "Software Engineering",
+            "Cybersecurity",
+            "Data Science",
+            "AI and Machine Learning",
+          ],
+        },
+        {
+          icon: "💼",
+          title: "Business",
+          items: ["MBA", "Accounting", "Finance", "International Business", "Enterprise Management"],
+        },
+        {
+          icon: "⚖️",
+          title: "Droit",
+          items: ["International Law", "Civil Law", "Criminal Law"],
+        },
+        {
+          icon: "🏗️",
+          title: "Ingénierie",
+          items: [
+            "Civil Engineering",
+            "Biomedical Engineering",
+            "Chemical Engineering",
+            "Materials Engineering",
+          ],
+        },
+        {
+          icon: "🔬",
+          title: "Sciences",
+          items: ["Biotechnology", "Pharmacy", "Pharmacology", "Biology", "Mathematics", "Statistics"],
+        },
+      ],
+    },
+  ],
+};
+
 export const DESTINATION_DETAILS: Record<string, DestinationDetail> = {
   malaisie,
   turquie,
+  chine,
 };

@@ -39,5 +39,6 @@ export const DESTINATIONS: Destination[] = [
     text: "Établissements réputés, programmes variés et possibilités de bourses selon les universités.",
     image: "/images/destinations/china.jpg",
     badge: { label: "Nouveau", tone: "gold" },
+    detailed: true,
   },
 ];
