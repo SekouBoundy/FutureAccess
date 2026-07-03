@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Photo from "@/components/Photo";
 import StatsBand from "@/components/StatsBand";
+import CtaCard from "@/components/CtaCard";
 
 export const metadata: Metadata = {
   title: "À propos — FutureAccess",
@@ -181,26 +182,11 @@ export default function AProposPage() {
       </section>
 
       {/* ===== CTA ===== */}
-      <section className="relative overflow-hidden bg-navy-900 py-20 text-center text-white lg:py-24">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 [background:radial-gradient(120%_90%_at_50%_-10%,rgba(46,116,230,.28),transparent_60%)]"
-        />
-        <div data-reveal className="relative mx-auto max-w-2xl px-6">
-          <h2 className="mb-4 text-3xl font-extrabold lg:text-4xl">
-            Prêt à écrire votre réussite&nbsp;?
-          </h2>
-          <p className="mb-9 text-white/75">
-            Discutons de votre projet d&apos;études lors d&apos;un premier entretien gratuit.
-          </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-9 py-4 font-head text-sm font-bold uppercase tracking-wide text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
-          >
-            Prendre rendez-vous
-          </a>
-        </div>
-      </section>
+      <CtaCard
+        title={"Prêt à écrire votre réussite ?"}
+        subtitle="Discutons de votre projet d'études lors d'un premier entretien gratuit."
+        ctaLabel="Prendre rendez-vous"
+      />
     </main>
   );
 }

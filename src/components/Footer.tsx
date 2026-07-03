@@ -5,8 +5,8 @@ const NAV_LINKS = [
   { href: "/#accueil", label: "Accueil" },
   { href: "/destinations", label: "Destinations" },
   { href: "/services", label: "Services" },
-  { href: "/a-propos", label: "À propos" },
   { href: "/processus", label: "Processus" },
+  { href: "/a-propos", label: "À propos" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -31,14 +31,16 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer className="rounded-t-[34px] bg-navy-900 pb-10 pt-16 text-[#cdd8e6]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div>
-          <Link href="/#accueil" className="flex items-center gap-2 font-head text-lg font-extrabold">
+    <footer className="rounded-t-[34px] bg-navy-900 pb-8 pt-14 text-[#cdd8e6] lg:pt-16">
+      {/* Grille : marque | (Navigation + Contact côte à côte, même sur mobile) */}
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-6 md:grid-cols-[1.5fr_1fr_1.2fr] md:gap-x-10">
+        {/* Marque + réseaux + WhatsApp — pleine largeur sur mobile */}
+        <div className="col-span-2 md:col-span-1">
+          <Link href="/#accueil" className="font-head text-lg font-extrabold tracking-tight">
             <span className="text-blue-500">Future</span>
             <span className="text-gold-400">Access</span>
           </Link>
-          <p className="mt-4 max-w-[32ch] text-sm text-[#cdd8e6]/80">
+          <p className="mt-4 max-w-[34ch] text-sm leading-relaxed text-[#cdd8e6]/80">
             Votre partenaire de confiance pour vos études à l&apos;international. Nous vous
             accompagnons de A à Z dans votre projet académique.
           </p>
@@ -48,7 +50,7 @@ export default function Footer() {
                 key={s.label}
                 href="#"
                 aria-label={s.label}
-                className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/5 transition-colors hover:bg-white/15"
+                className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/5 transition-all hover:-translate-y-0.5 hover:border-gold-400/40 hover:bg-white/10"
               >
                 <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
                   <path d={s.path} />
@@ -56,8 +58,16 @@ export default function Footer() {
               </a>
             ))}
           </div>
+          <a
+            href="https://wa.me/22392246342"
+            className="mt-6 inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-5 py-3 font-head text-sm font-bold text-[#063e1c] transition-transform hover:-translate-y-0.5"
+          >
+            <Whatsapp className="h-4 w-4" />
+            Discuter sur WhatsApp
+          </a>
         </div>
 
+        {/* Navigation */}
         <div>
           <h4 className="mb-4 font-head text-xs font-bold uppercase tracking-[0.12em] text-gold-300">
             Navigation
@@ -65,7 +75,10 @@ export default function Footer() {
           <ul className="space-y-2.5">
             {NAV_LINKS.map((l) => (
               <li key={l.href}>
-                <Link href={l.href} className="text-sm text-[#cdd8e6] transition-colors hover:text-white">
+                <Link
+                  href={l.href}
+                  className="text-sm text-[#cdd8e6] transition-colors hover:text-gold-300"
+                >
                   {l.label}
                 </Link>
               </li>
@@ -73,51 +86,49 @@ export default function Footer() {
           </ul>
         </div>
 
-        <div>
+        {/* Contact */}
+        <div className="min-w-0">
           <h4 className="mb-4 font-head text-xs font-bold uppercase tracking-[0.12em] text-gold-300">
             Contact
           </h4>
           <div className="space-y-3 text-sm">
-            <p className="flex items-start gap-2.5">
-              <span className="mt-0.5 text-gold-300">
+            <a
+              href="mailto:contact@futureaccess.com"
+              className="flex items-start gap-2.5 transition-colors hover:text-gold-300"
+            >
+              <span className="mt-0.5 flex-none text-gold-300">
                 <Icon name="mail" className="h-4 w-4" />
               </span>
-              contact@futureaccess.com
-            </p>
+              <span className="break-all">contact@futureaccess.com</span>
+            </a>
             <p className="flex items-start gap-2.5">
-              <span className="mt-0.5 text-gold-300">
+              <span className="mt-0.5 flex-none text-gold-300">
                 <Icon name="map-pin" className="h-4 w-4" />
               </span>
               Bamako, Mali
             </p>
-            <p className="flex items-start gap-2.5">
-              <span className="mt-0.5 text-gold-300">
+            <a
+              href="tel:+22392246342"
+              className="flex items-start gap-2.5 transition-colors hover:text-gold-300"
+            >
+              <span className="mt-0.5 flex-none text-gold-300">
                 <Icon name="phone" className="h-4 w-4" />
               </span>
               +223 92 24 63 42
-            </p>
+            </a>
           </div>
-        </div>
-
-        <div>
-          <h4 className="mb-4 font-head text-xs font-bold uppercase tracking-[0.12em] text-gold-300">
-            WhatsApp
-          </h4>
-          <a
-            href="https://wa.me/22392246342"
-            className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 font-head text-sm font-bold text-[#063e1c]"
-          >
-            <Whatsapp className="h-4 w-4" />
-            Discuter sur WhatsApp
-          </a>
         </div>
       </div>
 
-      <div className="mx-auto mt-12 flex max-w-7xl flex-col gap-3 border-t border-white/10 px-6 pt-6 text-xs text-[#cdd8e6]/60 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto mt-10 flex max-w-7xl flex-col gap-3 border-t border-white/10 px-6 pt-6 text-xs text-[#cdd8e6]/60 md:mt-12 md:flex-row md:items-center md:justify-between">
         <span>© {new Date().getFullYear()} FutureAccess. Tous droits réservés.</span>
         <div className="flex gap-4">
-          <a href="#" className="hover:text-white">Conditions d&apos;utilisation</a>
-          <a href="#" className="hover:text-white">Politique de confidentialité</a>
+          <a href="#" className="transition-colors hover:text-gold-300">
+            Conditions d&apos;utilisation
+          </a>
+          <a href="#" className="transition-colors hover:text-gold-300">
+            Politique de confidentialité
+          </a>
         </div>
       </div>
     </footer>

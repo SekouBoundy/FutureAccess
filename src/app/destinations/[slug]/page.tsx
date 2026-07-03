@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Photo from "@/components/Photo";
+import CtaCard from "@/components/CtaCard";
 import { Icon, EmojiIcon } from "@/components/icons";
 import { DESTINATION_DETAILS } from "@/data/destination-details";
 
@@ -735,27 +736,11 @@ export default async function DestinationDetailPage({
       )}
 
       {/* ===== CTA ===== */}
-      <section className="relative overflow-hidden bg-navy-900 py-20 text-center text-white lg:py-24">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 [background:radial-gradient(120%_90%_at_50%_-10%,rgba(46,116,230,.28),transparent_60%)]"
-        />
-        <div className="relative mx-auto max-w-2xl px-6">
-          <h2 className="mb-4 text-3xl font-extrabold lg:text-4xl">
-            Prêt à étudier en {d.country}&nbsp;?
-          </h2>
-          <p className="mb-9 text-white/75">
-            Lancez votre dossier dès aujourd&apos;hui ou échangez avec un conseiller lors d&apos;un
-            premier entretien gratuit.
-          </p>
-          <a
-            href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-9 py-4 font-head text-sm font-bold uppercase tracking-wide text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
-          >
-            Commencer mon dossier
-          </a>
-        </div>
-      </section>
+      <CtaCard
+        title={<>Prêt à étudier en {d.country}&nbsp;?</>}
+        subtitle="Lancez votre dossier dès aujourd'hui ou échangez avec un conseiller lors d'un premier entretien gratuit."
+        ctaLabel="Commencer mon dossier"
+      />
     </main>
   );
 }

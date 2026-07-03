@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import DestinationsExplorer from "@/components/DestinationsExplorer";
+import CtaCard from "@/components/CtaCard";
 
 export const metadata: Metadata = {
   title: "Destinations — FutureAccess",
@@ -44,19 +45,11 @@ export default function DestinationsPage() {
       <DestinationsExplorer />
 
       {/* ===== CTA ===== */}
-      <section className="bg-navy-900 py-14 text-white lg:py-16">
-        <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 px-6 text-center md:flex-row md:text-left">
-          <h2 className="text-3xl font-extrabold lg:text-4xl">
-            Vous ne trouvez pas votre destination&nbsp;?
-          </h2>
-          <a
-            href="/contact"
-            className="inline-flex flex-none items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-8 py-4 font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
-          >
-            Contactez-nous
-          </a>
-        </div>
-      </section>
+      <CtaCard
+        title={"Vous ne trouvez pas votre destination ?"}
+        ctaLabel="Contactez-nous"
+        layout="split"
+      />
     </main>
   );
 }
