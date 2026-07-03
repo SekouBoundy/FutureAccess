@@ -29,6 +29,7 @@ export const DESTINATIONS: Destination[] = [
     region: "Asie / Europe",
     text: "Universités de qualité, coût de vie accessible et de nombreuses opportunités académiques.",
     image: "/images/destinations/turkey.jpg",
+    detailed: true,
   },
   {
     slug: "chine",

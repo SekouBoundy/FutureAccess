@@ -38,6 +38,24 @@ function Check({ className = "h-4 w-4" }: { className?: string }) {
     </svg>
   );
 }
+function Info({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden
+    >
+      <circle cx="12" cy="12" r="10" />
+      <path d="M12 16v-4" />
+      <path d="M12 8h.01" />
+    </svg>
+  );
+}
 function Clock({ className = "h-4 w-4" }: { className?: string }) {
   return (
     <svg
@@ -72,6 +90,8 @@ export default async function DestinationDetailPage({
   const d = DESTINATION_DETAILS[slug];
   if (!d) notFound();
 
+  const accentBg = d.accent === "gold" ? "bg-gold-500" : "bg-blue-500";
+
   return (
     <main className="flex-1">
       {/* ===== HERO ===== */}
@@ -94,17 +114,22 @@ export default async function DestinationDetailPage({
             <span className="text-white/40">&gt;</span> {d.country}
           </p>
 
-          <div className="mb-6 flex flex-wrap items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-sm font-semibold backdrop-blur-sm">
-              <Star className="h-4 w-4 text-gold-400" />
-              {d.rating} <span className="text-white/60">· {d.reviews}</span>
-            </span>
-            {d.badge && (
-              <span className="rounded-full bg-[#22c55e] px-3.5 py-1.5 font-head text-sm font-bold text-[#052e16]">
-                {d.badge}
-              </span>
-            )}
-          </div>
+          {(d.rating || d.badge) && (
+            <div className="mb-6 flex flex-wrap items-center gap-3">
+              {d.rating && (
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-sm font-semibold backdrop-blur-sm">
+                  <Star className="h-4 w-4 text-gold-400" />
+                  {d.rating}
+                  {d.reviews && <span className="text-white/60">· {d.reviews}</span>}
+                </span>
+              )}
+              {d.badge && (
+                <span className="rounded-full bg-[#22c55e] px-3.5 py-1.5 font-head text-sm font-bold text-[#052e16]">
+                  {d.badge}
+                </span>
+              )}
+            </div>
+          )}
 
           <h1 className="mb-6 max-w-[16ch] text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
             Étudier en <em className="font-display-italic font-normal">{d.country}</em>
@@ -125,11 +150,9 @@ export default async function DestinationDetailPage({
                 {d.spotsLeft}
               </span>
             )}
-          </div>
-          <div className="mt-3">
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 font-head text-sm font-bold text-white transition-colors hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-4 font-head text-sm font-bold text-white transition-colors hover:bg-white/10"
             >
               Parler à un conseiller
             </a>
@@ -139,11 +162,14 @@ export default async function DestinationDetailPage({
 
       {/* ===== STATS ===== */}
       <section className="border-b border-slate-100 bg-paper">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-y-8 px-6 py-8 lg:grid-cols-4 lg:divide-x lg:divide-slate-200">
+        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 py-8 lg:grid-cols-4 lg:divide-x lg:divide-slate-200">
           {d.stats.map((s) => (
-            <div key={s.label} className="lg:px-8">
-              <div className="font-head text-2xl font-extrabold text-navy-800">{s.value}</div>
-              <div className="mt-1 text-sm text-slate-500">{s.label}</div>
+            <div key={s.label} className="flex items-center gap-3 lg:px-8">
+              {s.icon && <span className="text-2xl">{s.icon}</span>}
+              <div>
+                <div className="font-head text-2xl font-extrabold text-navy-800">{s.value}</div>
+                <div className="mt-0.5 text-sm text-slate-500">{s.label}</div>
+              </div>
             </div>
           ))}
         </div>
@@ -162,7 +188,9 @@ export default async function DestinationDetailPage({
             <ul className="space-y-4">
               {d.opportunities.map((o) => (
                 <li key={o} className="flex items-center gap-3 font-head font-bold text-navy-800">
-                  <span className="grid h-7 w-7 flex-none place-items-center rounded-full bg-blue-500 text-white">
+                  <span
+                    className={`grid h-7 w-7 flex-none place-items-center rounded-full text-white ${accentBg}`}
+                  >
                     <Check className="h-4 w-4" />
                   </span>
                   {o}
@@ -189,23 +217,43 @@ export default async function DestinationDetailPage({
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {d.universities.map((u) => (
               <div
-                key={u.abbr}
+                key={u.abbr + u.name}
                 className="overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-[0_2px_10px_rgba(10,37,64,.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,37,64,.10)]"
               >
-                <div className="h-1 bg-gradient-to-r from-gold-500 to-gold-300" />
+                {(u.rankTone ?? "gold") === "gold" && (
+                  <div className="h-1 bg-gradient-to-r from-gold-500 to-gold-300" />
+                )}
                 <div className="p-6">
                   <div className="mb-4 flex items-start justify-between gap-3">
-                    <span className="grid h-12 w-12 place-items-center rounded-2xl bg-slate-50 font-head text-sm font-extrabold text-navy-800">
+                    <span
+                      className={`inline-flex h-12 min-w-12 items-center justify-center rounded-2xl px-3 font-head text-sm font-extrabold ${
+                        u.abbrTone === "blue" ? "bg-blue-500 text-white" : "bg-slate-50 text-navy-800"
+                      }`}
+                    >
                       {u.abbr}
                     </span>
-                    <span className="rounded-full bg-gold-100 px-2.5 py-1 font-head text-[10px] font-bold uppercase tracking-wide text-gold-600">
+                    <span
+                      className={`rounded-full px-2.5 py-1 font-head text-[10px] font-bold uppercase tracking-wide ${
+                        (u.rankTone ?? "gold") === "slate"
+                          ? "bg-slate-100 text-slate-500"
+                          : "bg-gold-100 text-gold-600"
+                      }`}
+                    >
                       {u.rank}
                     </span>
                   </div>
-                  <h3 className="font-head text-lg font-bold leading-snug text-navy-800">{u.name}</h3>
-                  <p className="mt-0.5 text-xs font-semibold text-slate-400">{u.abbr}</p>
-                  <p className="mt-3 text-sm text-slate-500">
-                    {u.location} <span className="mx-1 text-slate-300">·</span> {u.programs}
+                  <h3 className="font-head text-lg font-bold leading-snug text-navy-800">
+                    {u.name}
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-500">
+                    <span className="mr-1">📍</span>
+                    {u.location}
+                    {u.programs && (
+                      <>
+                        <span className="mx-1 text-slate-300">·</span>
+                        {u.programs}
+                      </>
+                    )}
                   </p>
                   <a
                     href="/contact"
@@ -221,7 +269,7 @@ export default async function DestinationDetailPage({
       </section>
 
       {/* ===== ACCOMPAGNEMENT (résumé) ===== */}
-      <section className="bg-paper py-16 lg:py-20">
+      <section className="bg-slate-50 py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto mb-12 max-w-2xl text-center">
             <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
@@ -237,7 +285,9 @@ export default async function DestinationDetailPage({
                 key={s.title}
                 className="flex gap-4 rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_rgba(10,37,64,.06)]"
               >
-                <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-blue-500 font-head text-sm font-extrabold text-white">
+                <span
+                  className={`grid h-9 w-9 flex-none place-items-center rounded-full font-head text-sm font-extrabold text-white ${accentBg}`}
+                >
                   {i + 1}
                 </span>
                 <div>
@@ -251,155 +301,178 @@ export default async function DestinationDetailPage({
       </section>
 
       {/* ===== FORFAIT ===== */}
-      <section className="bg-paper pb-16 lg:pb-24">
+      <section className="bg-paper py-16 lg:py-24">
         <div className="mx-auto max-w-xl px-6">
-          <div className="rounded-[28px] bg-gradient-to-br from-gold-400 to-gold-600 p-[3px] shadow-[0_24px_60px_rgba(10,37,64,.22)]">
-            <div className="rounded-[26px] bg-navy-800 p-8 text-center text-white lg:p-10">
-              <span className="inline-block rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-4 py-1 font-head text-[11px] font-bold uppercase tracking-wide text-[#3a2c08]">
-                Tout inclus
-              </span>
-              <p className="mt-6 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-400">
-                {d.forfait.label}
-              </p>
-              <div className="mt-3 font-head text-5xl font-extrabold lg:text-6xl">
-                {d.forfait.price}
+          {(() => {
+            const f = d.forfait;
+            const inner = (
+              <div className="relative rounded-[26px] bg-navy-800 p-8 text-center text-white shadow-[0_24px_60px_rgba(10,37,64,.22)] lg:p-10">
+                {f.badgePosition === "corner" ? (
+                  <span className="absolute right-6 top-6 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-3.5 py-1 font-head text-[11px] font-bold uppercase tracking-wide text-[#3a2c08]">
+                    {f.badge}
+                  </span>
+                ) : (
+                  <span className="inline-block rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-4 py-1 font-head text-[11px] font-bold uppercase tracking-wide text-[#3a2c08]">
+                    {f.badge}
+                  </span>
+                )}
+                <p
+                  className={`font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-400 ${
+                    f.badgePosition === "corner" ? "" : "mt-6"
+                  }`}
+                >
+                  {f.label}
+                </p>
+                <div className="mt-3 font-head text-5xl font-extrabold lg:text-6xl">
+                  {f.price}
+                  {f.priceUnit && (
+                    <span className="text-2xl font-bold text-white/60"> {f.priceUnit}</span>
+                  )}
+                </div>
+                {f.priceApprox && (
+                  <p className="mt-2 font-head font-bold text-white/60">{f.priceApprox}</p>
+                )}
+                <ul className="mx-auto mt-8 max-w-sm space-y-3 text-left">
+                  {f.features.map((feat) => (
+                    <li key={feat} className="flex items-start gap-3 text-sm text-white/90">
+                      <span className="mt-0.5 flex-none text-gold-400">
+                        <Check className="h-4 w-4" />
+                      </span>
+                      {feat}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href="/contact"
+                  className="mt-8 block rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-4 font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
+                >
+                  Commencer maintenant
+                </a>
               </div>
-              <p className="mt-2 font-head font-bold text-white/60">{d.forfait.priceApprox}</p>
-
-              <ul className="mx-auto mt-8 max-w-sm space-y-3 text-left">
-                {d.forfait.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-sm text-white/90">
-                    <span className="mt-0.5 flex-none text-gold-400">
-                      <Check className="h-4 w-4" />
-                    </span>
-                    {f}
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href="/contact"
-                className="mt-8 block rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-4 font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
-              >
-                Commencer maintenant
-              </a>
-            </div>
-          </div>
+            );
+            return f.goldBorder ? (
+              <div className="rounded-[28px] bg-gradient-to-br from-gold-400 to-gold-600 p-[3px]">
+                {inner}
+              </div>
+            ) : (
+              inner
+            );
+          })()}
         </div>
       </section>
 
+      {/* ===== POURQUOI ÉTUDIER (optionnel) ===== */}
+      {d.whyStudy && (
+        <section className="bg-slate-50 py-16 lg:py-20">
+          <div className="mx-auto max-w-7xl px-6">
+            <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+              {d.whyStudy.title}
+            </span>
+            <h2 className="mb-5 max-w-[20ch] text-3xl font-extrabold text-navy-800 lg:text-4xl">
+              {d.whyStudy.title}
+            </h2>
+            <p className="max-w-3xl text-lg text-slate-600">{d.whyStudy.text}</p>
+          </div>
+        </section>
+      )}
+
       {/* ===== COÛT DES ÉTUDES ===== */}
-      <section className="bg-cream py-16 lg:py-20">
+      <section className="bg-white py-16 lg:py-20">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">Coût des études</h2>
           <p className="mt-2 text-slate-600">{d.studyCosts.subtitle}</p>
 
-          <div className="mt-8 overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-[0_2px_10px_rgba(10,37,64,.06)]">
-            {d.studyCosts.rows.map((r) => (
-              <div
-                key={r.label}
-                className={`flex items-center justify-between gap-4 px-6 py-5 ${
-                  r.highlight ? "bg-gold-100" : "border-b border-slate-100 last:border-0"
-                }`}
-              >
-                <span className="flex items-center gap-3">
-                  <span className="text-xl">{r.icon}</span>
-                  <span className="font-head text-sm font-bold text-navy-800">{r.label}</span>
-                </span>
-                <span
-                  className={`font-head font-bold text-navy-800 ${r.highlight ? "text-lg" : "text-base"}`}
+          {d.studyCosts.layout === "stack" ? (
+            <div className="mt-8 space-y-2 rounded-3xl border border-slate-100 bg-white p-3 shadow-[0_2px_10px_rgba(10,37,64,.06)]">
+              {d.studyCosts.rows.map((r, i) => (
+                <div
+                  key={r.label}
+                  className={`flex items-start gap-3 rounded-2xl px-5 py-4 ${
+                    r.highlight ? "bg-gold-100" : i % 2 === 0 ? "bg-slate-50" : "bg-white"
+                  }`}
                 >
-                  {r.value}
-                </span>
-              </div>
-            ))}
-          </div>
-          <p className="mt-4 text-xs text-slate-400">{d.studyCosts.note}</p>
+                  <span className="text-lg">{r.icon}</span>
+                  <div>
+                    <div className="font-head text-sm font-bold text-navy-800">{r.label}</div>
+                    <div
+                      className={`mt-0.5 text-sm ${r.highlight ? "font-head font-bold text-navy-800" : "text-slate-500"}`}
+                    >
+                      {r.value}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="mt-8 overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-[0_2px_10px_rgba(10,37,64,.06)]">
+              {d.studyCosts.rows.map((r) => (
+                <div
+                  key={r.label}
+                  className={`flex items-center justify-between gap-4 px-6 py-5 ${
+                    r.highlight ? "bg-gold-100" : "border-b border-slate-100 last:border-0"
+                  }`}
+                >
+                  <span className="flex items-center gap-3">
+                    <span className="text-xl">{r.icon}</span>
+                    <span className="font-head text-sm font-bold text-navy-800">{r.label}</span>
+                  </span>
+                  <span
+                    className={`font-head font-bold text-navy-800 ${r.highlight ? "text-lg" : "text-base"}`}
+                  >
+                    {r.value}
+                  </span>
+                </div>
+              ))}
+            </div>
+          )}
+          {d.studyCosts.note && <p className="mt-4 text-xs text-slate-400">{d.studyCosts.note}</p>}
         </div>
       </section>
 
       {/* ===== COÛT DE LA PROCÉDURE ===== */}
-      <section className="bg-paper py-16 lg:py-20">
+      <section className="bg-cream py-16 lg:py-20">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">Coût de la procédure</h2>
           <p className="mt-2 text-slate-600">{d.procedureCosts.subtitle}</p>
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <div className="rounded-3xl border border-slate-100 bg-white p-7 shadow-[0_2px_10px_rgba(10,37,64,.06)]">
-              <h3 className="flex items-center gap-2 font-head text-base font-bold text-navy-800">
-                <span className="text-lg">📄</span> {d.procedureCosts.agency.title}
-              </h3>
-              <div className="mt-3 font-head text-2xl font-extrabold text-navy-800">
-                {d.procedureCosts.agency.amount}
-              </div>
-              <ul className="mt-4 space-y-2 text-sm text-slate-600">
-                {d.procedureCosts.agency.details.map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="rounded-3xl border border-slate-100 bg-white p-7 shadow-[0_2px_10px_rgba(10,37,64,.06)]">
-              <h3 className="flex items-center gap-2 font-head text-base font-bold text-navy-800">
-                <span className="text-lg">🏛️</span> {d.procedureCosts.visa.title}
-              </h3>
-              <div className="mt-3 font-head text-2xl font-extrabold text-navy-800">
-                {d.procedureCosts.visa.amount}
-              </div>
-              <p className="mt-4 text-sm leading-relaxed text-slate-600">
-                {d.procedureCosts.visa.text}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== PROCESSUS DE CANDIDATURE (détail) ===== */}
-      <section className="bg-cream py-16 lg:py-20">
-        <div className="mx-auto max-w-4xl px-6">
-          <div className="mb-8 text-center">
-            <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">
-              Processus de candidature
-            </h2>
-            <p className="mt-2 text-slate-600">
-              Suivez les étapes clés pour préparer votre dossier et votre départ vers{" "}
-              {d.countryArticle}.
-            </p>
-          </div>
-
-          <details open className="group">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl border border-slate-100 bg-white px-5 py-4 font-head text-sm font-bold text-navy-800 shadow-[0_2px_10px_rgba(10,37,64,.05)]">
-              <span className="flex items-center gap-2">
-                <span className="transition-transform group-open:rotate-180">▾</span>
-                Voir le détail des {d.applicationSteps.length} étapes
-              </span>
-              <span className="text-xs font-semibold text-slate-400">
-                Durée estimée : {d.applicationDuration}
-              </span>
-            </summary>
-
-            <ol className="mt-4 space-y-3">
-              {d.applicationSteps.map((s, i) => (
-                <li
-                  key={s.title}
-                  className="flex gap-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-[0_2px_10px_rgba(10,37,64,.05)]"
-                >
-                  <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-blue-500 font-head text-sm font-extrabold text-white">
-                    {i + 1}
+            {d.procedureCosts.cards.map((card) => (
+              <div
+                key={card.title}
+                className="rounded-3xl border border-slate-100 bg-white p-7 shadow-[0_2px_10px_rgba(10,37,64,.06)]"
+              >
+                <h3 className="flex items-center gap-3 font-head text-base font-bold text-navy-800">
+                  <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-gold-100 text-lg">
+                    {card.icon}
                   </span>
-                  <div>
-                    <h3 className="font-head text-base font-bold text-navy-800">{s.title}</h3>
-                    <p className="mt-0.5 text-sm leading-relaxed text-slate-600">{s.text}</p>
+                  {card.title}
+                </h3>
+                {card.amount && (
+                  <div className="mt-4 font-head text-2xl font-extrabold text-navy-800">
+                    {card.amount}
                   </div>
-                </li>
-              ))}
-            </ol>
-          </details>
+                )}
+                {card.itemsLabel && (
+                  <p className="mt-4 font-head text-xs font-bold uppercase tracking-wide text-slate-400">
+                    {card.itemsLabel}
+                  </p>
+                )}
+                <ul className="mt-3 space-y-2 text-sm text-slate-600">
+                  {card.items.map((it, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      {it.icon && <span className="flex-none font-bold text-gold-500">{it.icon}</span>}
+                      <span>{it.text}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* ===== INFORMATIONS IMPORTANTES ===== */}
-      <section className="bg-paper py-16 lg:py-20">
+      <section className="bg-slate-50 py-16 lg:py-20">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">
             Informations importantes
@@ -411,7 +484,7 @@ export default async function DestinationDetailPage({
             {d.importantInfo.map((info) => (
               <li key={info} className="flex items-start gap-3 text-sm text-slate-600">
                 <span className="mt-0.5 flex-none text-gold-500">
-                  <Check className="h-4 w-4" />
+                  {d.importantIcon === "info" ? <Info className="h-4 w-4" /> : <Check className="h-4 w-4" />}
                 </span>
                 {info}
               </li>
@@ -420,48 +493,127 @@ export default async function DestinationDetailPage({
         </div>
       </section>
 
-      {/* ===== PROGRAMMES ===== */}
-      <section className="bg-white py-16 lg:py-24">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
-            Programmes d&apos;études disponibles
-          </h2>
-          <p className="mt-2 text-slate-600">
-            Découvrez les parcours proposés par nos universités partenaires en {d.country}.
-          </p>
+      {/* ===== PROCESSUS DE CANDIDATURE ===== */}
+      {d.applicationLayout === "grid" ? (
+        <section className="bg-white py-16 lg:py-20">
+          <div className="mx-auto max-w-7xl px-6">
+            <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+              Processus de candidature
+            </span>
+            <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
+              Processus de candidature
+            </h2>
+            <p className="mt-2 text-slate-500">Durée estimée : {d.applicationDuration}.</p>
 
-          <div className="mt-10 space-y-12">
-            {d.programs.map((level) => (
-              <div key={level.level}>
-                <h3 className="mb-5 font-head text-xl font-bold text-navy-800">{level.level}</h3>
-                <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                  {level.groups.map((g) => (
-                    <div
-                      key={g.title}
-                      className="rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_rgba(10,37,64,.05)]"
-                    >
-                      <h4 className="mb-4 text-center font-head text-base font-bold text-navy-800">
-                        {g.icon && <span className="mr-1.5">{g.icon}</span>}
-                        {g.title}
-                      </h4>
-                      <div className="flex flex-wrap gap-2">
-                        {g.items.map((item) => (
-                          <span
-                            key={item}
-                            className="rounded-full bg-slate-50 px-3 py-1.5 text-xs text-slate-600"
-                          >
-                            {item}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+            <div className="mt-10 grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {d.applicationSteps.map((s, i) => (
+                <div
+                  key={s.title}
+                  className="flex gap-4 rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_rgba(10,37,64,.06)]"
+                >
+                  <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-blue-500 font-head text-sm font-extrabold text-white">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <h3 className="font-head text-base font-bold leading-snug text-navy-800">
+                      {s.title}
+                    </h3>
+                    <p className="mt-1 text-sm leading-relaxed text-slate-600">{s.text}</p>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section className="bg-white py-16 lg:py-20">
+          <div className="mx-auto max-w-4xl px-6">
+            <div className="mb-8 text-center">
+              <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">
+                Processus de candidature
+              </h2>
+              <p className="mt-2 text-slate-600">
+                Suivez les étapes clés pour préparer votre dossier et votre départ vers{" "}
+                {d.countryArticle}.
+              </p>
+            </div>
+
+            <details open className="group">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl border border-slate-100 bg-white px-5 py-4 font-head text-sm font-bold text-navy-800 shadow-[0_2px_10px_rgba(10,37,64,.05)]">
+                <span className="flex items-center gap-2">
+                  <span className="transition-transform group-open:rotate-180">▾</span>
+                  Voir le détail des {d.applicationSteps.length} étapes
+                </span>
+                <span className="text-xs font-semibold text-slate-400">
+                  Durée estimée : {d.applicationDuration}
+                </span>
+              </summary>
+
+              <ol className="mt-4 space-y-3">
+                {d.applicationSteps.map((s, i) => (
+                  <li
+                    key={s.title}
+                    className="flex gap-4 rounded-2xl border border-slate-100 bg-white p-5 shadow-[0_2px_10px_rgba(10,37,64,.05)]"
+                  >
+                    <span className="grid h-9 w-9 flex-none place-items-center rounded-full bg-blue-500 font-head text-sm font-extrabold text-white">
+                      {i + 1}
+                    </span>
+                    <div>
+                      <h3 className="font-head text-base font-bold text-navy-800">{s.title}</h3>
+                      <p className="mt-0.5 text-sm leading-relaxed text-slate-600">{s.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+            </details>
+          </div>
+        </section>
+      )}
+
+      {/* ===== PROGRAMMES (optionnel) ===== */}
+      {d.programs && (
+        <section className="bg-cream py-16 lg:py-24">
+          <div className="mx-auto max-w-7xl px-6">
+            <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
+              Programmes d&apos;études disponibles
+            </h2>
+            <p className="mt-2 text-slate-600">
+              Découvrez les parcours proposés par nos universités partenaires en {d.country}.
+            </p>
+
+            <div className="mt-10 space-y-12">
+              {d.programs.map((level) => (
+                <div key={level.level}>
+                  <h3 className="mb-5 font-head text-xl font-bold text-navy-800">{level.level}</h3>
+                  <div className="grid items-start gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    {level.groups.map((g) => (
+                      <div
+                        key={g.title}
+                        className="rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_rgba(10,37,64,.05)]"
+                      >
+                        <h4 className="mb-4 text-center font-head text-base font-bold text-navy-800">
+                          {g.icon && <span className="mr-1.5">{g.icon}</span>}
+                          {g.title}
+                        </h4>
+                        <div className="flex flex-wrap gap-2">
+                          {g.items.map((item) => (
+                            <span
+                              key={item}
+                              className="rounded-full bg-slate-50 px-3 py-1.5 text-xs text-slate-600"
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ===== CTA ===== */}
       <section className="relative overflow-hidden bg-navy-900 py-20 text-center text-white lg:py-24">

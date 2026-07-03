@@ -1,12 +1,26 @@
 export type ProcessStep = { title: string; text: string };
+
 export type University = {
   abbr: string;
   name: string;
   location: string;
-  programs: string;
+  programs?: string;
   rank: string;
+  rankTone?: "gold" | "slate"; // défaut : gold
+  abbrTone?: "slate" | "blue"; // défaut : slate
 };
+
 export type CostRow = { icon: string; label: string; value: string; highlight?: boolean };
+
+export type ProcedureItem = { icon?: string; text: string };
+export type ProcedureCard = {
+  icon: string;
+  title: string;
+  amount?: string;
+  itemsLabel?: string;
+  items: ProcedureItem[];
+};
+
 export type ProgramGroup = { icon?: string; title: string; items: string[] };
 export type ProgramLevel = { level: string; groups: ProgramGroup[] };
 
@@ -15,39 +29,46 @@ export type DestinationDetail = {
   country: string;
   /** Forme avec article, ex. « la Malaisie » */
   countryArticle: string;
-  rating: string;
-  reviews: string;
+  /** Couleur d'accent : puces « opportunités » + numéros « accompagnement ». Défaut : blue */
+  accent?: "blue" | "gold";
+  rating?: string;
+  reviews?: string;
   badge?: string;
   spotsLeft?: string;
   heroImage: string;
   intro: string;
-  stats: { value: string; label: string }[];
+  stats: { value: string; label: string; icon?: string }[];
   opportunities: string[];
   opportunitiesImage: string;
+  /** Bloc d'intro optionnel « Pourquoi étudier en … ? » */
+  whyStudy?: { title: string; text: string };
   universities: University[];
   summarySteps: ProcessStep[];
   forfait: {
     label: string;
+    badge: string;
+    badgePosition?: "top" | "corner"; // défaut : top
+    goldBorder?: boolean;
     price: string;
-    priceApprox: string;
+    priceUnit?: string; // ex. « / dossier » (inline)
+    priceApprox?: string; // ex. « (≈ 1 200 €) / dossier » (ligne)
     features: string[];
   };
-  studyCosts: { subtitle: string; rows: CostRow[]; note: string };
-  procedureCosts: {
-    subtitle: string;
-    agency: { title: string; amount: string; details: string[] };
-    visa: { title: string; amount: string; text: string };
-  };
+  studyCosts: { subtitle: string; layout?: "row" | "stack"; rows: CostRow[]; note?: string };
+  procedureCosts: { subtitle: string; cards: ProcedureCard[] };
   applicationDuration: string;
+  applicationLayout?: "collapsible" | "grid"; // défaut : grid
   applicationSteps: ProcessStep[];
   importantInfo: string[];
-  programs: ProgramLevel[];
+  importantIcon?: "check" | "info"; // défaut : check
+  programs?: ProgramLevel[];
 };
 
 const malaisie: DestinationDetail = {
   slug: "malaisie",
   country: "Malaisie",
   countryArticle: "la Malaisie",
+  accent: "blue",
   rating: "4.8/5",
   reviews: "243 avis",
   badge: "Meilleure vente",
@@ -107,6 +128,9 @@ const malaisie: DestinationDetail = {
   ],
   forfait: {
     label: "Forfait Malaisie",
+    badge: "Tout inclus",
+    badgePosition: "top",
+    goldBorder: true,
     price: "800 000 FCFA",
     priceApprox: "(≈ 1 200 €) / dossier",
     features: [
@@ -119,6 +143,7 @@ const malaisie: DestinationDetail = {
   },
   studyCosts: {
     subtitle: "Estimation des dépenses mensuelles et annuelles pour étudier en Malaisie.",
+    layout: "row",
     rows: [
       { icon: "🎓", label: "Frais de scolarité (par an)", value: "4 500 000 FCFA" },
       { icon: "🏠", label: "Hébergement", value: "150 000 FCFA / mois" },
@@ -129,21 +154,30 @@ const malaisie: DestinationDetail = {
   },
   procedureCosts: {
     subtitle: "Détail des frais liés à la candidature et au visa étudiant.",
-    agency: {
-      title: "Frais d'agence",
-      amount: "500 000 FCFA (≈ 760 €)",
-      details: [
-        "Premier versement : 300 000 FCFA (≈ 457 €)",
-        "Deuxième versement : 200 000 FCFA (≈ 304 €)",
-      ],
-    },
-    visa: {
-      title: "Frais de visa",
-      amount: "550 000 FCFA (≈ 838 €)",
-      text: "Les frais de visa comprennent les frais de traitement de la demande de visa étudiant ainsi que les frais administratifs exigés par les autorités malaisiennes.",
-    },
+    cards: [
+      {
+        icon: "📄",
+        title: "Frais d'agence",
+        amount: "500 000 FCFA (≈ 760 €)",
+        items: [
+          { text: "Premier versement : 300 000 FCFA (≈ 457 €)" },
+          { text: "Deuxième versement : 200 000 FCFA (≈ 304 €)" },
+        ],
+      },
+      {
+        icon: "🏛️",
+        title: "Frais de visa",
+        amount: "550 000 FCFA (≈ 838 €)",
+        items: [
+          {
+            text: "Les frais de visa comprennent les frais de traitement de la demande de visa étudiant ainsi que les frais administratifs exigés par les autorités malaisiennes.",
+          },
+        ],
+      },
+    ],
   },
   applicationDuration: "6 à 8 semaines",
+  applicationLayout: "collapsible",
   applicationSteps: [
     {
       title: "Dépôt du dossier de candidature",
@@ -195,6 +229,7 @@ const malaisie: DestinationDetail = {
     "Les conditions d'admission, les documents requis et les possibilités de transfert de crédits dépendent de l'université et du programme choisis.",
     "FutureAccess accompagne également les étudiants dans les démarches administratives, la demande de visa et la préparation de leur départ.",
   ],
+  importantIcon: "check",
   programs: [
     {
       level: "Licence (3 ans)",
@@ -231,11 +266,7 @@ const malaisie: DestinationDetail = {
             "Sciences actuarielles",
           ],
         },
-        {
-          icon: "🏛️",
-          title: "Architecture",
-          items: ["Architecture"],
-        },
+        { icon: "🏛️", title: "Architecture", items: ["Architecture"] },
         {
           title: "Design & Médias",
           items: [
@@ -246,10 +277,7 @@ const malaisie: DestinationDetail = {
             "Études des médias et de la communication",
           ],
         },
-        {
-          title: "Sciences sociales",
-          items: ["Relations internationales", "Psychologie"],
-        },
+        { title: "Sciences sociales", items: ["Relations internationales", "Psychologie"] },
         {
           icon: "✈️",
           title: "Tourisme & Hôtellerie",
@@ -301,24 +329,188 @@ const malaisie: DestinationDetail = {
           title: "Marketing & Communication",
           items: ["Marketing digital", "Communication numérique"],
         },
-        {
-          title: "Design",
-          items: ["Management de l'innovation en design"],
-        },
+        { title: "Design", items: ["Management de l'innovation en design"] },
         {
           icon: "🎓",
           title: "Éducation",
           items: ["Conception pédagogique et technologies de l'éducation"],
         },
-        {
-          title: "Psychologie",
-          items: ["Psychologie appliquée (Cyberpsychologie)"],
-        },
+        { title: "Psychologie", items: ["Psychologie appliquée (Cyberpsychologie)"] },
       ],
     },
   ],
 };
 
+const turquie: DestinationDetail = {
+  slug: "turquie",
+  country: "Turquie",
+  countryArticle: "la Turquie",
+  accent: "gold",
+  heroImage: "/images/destinations/turkey.jpg",
+  intro:
+    "Au carrefour de l'Europe et de l'Asie, la Turquie offre une éducation de qualité à des prix accessibles.",
+  stats: [
+    { icon: "🏛️", value: "15+", label: "Universités partenaires" },
+    { icon: "💰", value: "950€", label: "Frais de dossier" },
+    { icon: "✈️", value: "Vol direct", label: "Depuis Paris & Maghreb" },
+    { icon: "🗣️", value: "Langues", label: "Turc & Anglais" },
+  ],
+  opportunities: [
+    "Bourses gouvernementales disponibles",
+    "Architecture et histoire exceptionnelles",
+    "Vie étudiante animée à Istanbul",
+    "Coût de la vie modéré",
+  ],
+  opportunitiesImage: "/images/destinations/turkey-campus.jpg",
+  whyStudy: {
+    title: "Pourquoi étudier en Turquie ?",
+    text: "La Turquie offre un enseignement de qualité, des frais abordables et des diplômes reconnus dans un environnement multiculturel.",
+  },
+  universities: [
+    {
+      abbr: "IU",
+      name: "Istanbul University",
+      location: "Istanbul",
+      rank: "Classic",
+      rankTone: "slate",
+      abbrTone: "blue",
+    },
+    {
+      abbr: "AU",
+      name: "Ankara University",
+      location: "Ankara",
+      rank: "Prestige",
+      rankTone: "slate",
+      abbrTone: "blue",
+    },
+    {
+      abbr: "METU",
+      name: "Middle East Technical (METU)",
+      location: "Ankara",
+      rank: "Top Tech",
+      rankTone: "slate",
+      abbrTone: "blue",
+    },
+  ],
+  summarySteps: [
+    {
+      title: "Soumettez votre dossier",
+      text: "Téléversez vos relevés de notes et votre passeport pour étude immédiate.",
+    },
+    {
+      title: "Obtenez votre admission",
+      text: "Réception de votre lettre d'acceptation sous 10 jours ouvrés.",
+    },
+    {
+      title: "Préparez votre départ",
+      text: "Finalisation du visa turc et réservation de votre résidence étudiante.",
+    },
+  ],
+  forfait: {
+    label: "Forfait Turquie",
+    badge: "Populaire",
+    badgePosition: "corner",
+    price: "950€",
+    priceUnit: "/ dossier",
+    features: [
+      "Conseil stratégique",
+      "Admission garantie 100%",
+      "Accompagnement Visa",
+      "Assurance santé turque",
+      "Recherche logement Istanbul",
+    ],
+  },
+  studyCosts: {
+    subtitle: "Estimation des dépenses mensuelles et annuelles pour étudier en Turquie.",
+    layout: "stack",
+    rows: [
+      {
+        icon: "🎓",
+        label: "Frais de scolarité (par an)",
+        value: "2 000 000 à 2 500 000 FCFA (≈ 3 050 € – 3 810 €)",
+      },
+      {
+        icon: "🏠",
+        label: "Hébergement",
+        value: "100 000 à 200 000 FCFA / mois (≈ 152 € – 305 €)",
+      },
+      {
+        icon: "🛒",
+        label: "Frais de subsistance",
+        value: "150 000 à 200 000 FCFA / mois (≈ 229 € – 305 €)",
+      },
+      {
+        icon: "💳",
+        label: "Budget annuel estimé",
+        value: "5 000 000 à 7 500 000 FCFA (≈ 7 620 € – 11 430 €)",
+        highlight: true,
+      },
+    ],
+  },
+  procedureCosts: {
+    subtitle: "Détail des frais liés à la candidature et au visa étudiant.",
+    cards: [
+      {
+        icon: "📄",
+        title: "Frais d'agence FutureAccess",
+        amount: "500 000 FCFA (≈ 762 €)",
+        itemsLabel: "Versements",
+        items: [
+          { icon: "→", text: "1er : 300 000 FCFA" },
+          { icon: "→", text: "2ème : 200 000 FCFA" },
+        ],
+      },
+      {
+        icon: "🛡️",
+        title: "Visa et assurance + Frais de réception",
+        items: [
+          { icon: "→", text: "Visa & assurance : 160 000 FCFA (≈ 244 €)" },
+          { icon: "✈️", text: "Accueil à l'arrivée : 90 000 FCFA (≈ 137 €)" },
+        ],
+      },
+    ],
+  },
+  applicationDuration: "4 à 6 semaines",
+  applicationLayout: "grid",
+  applicationSteps: [
+    {
+      title: "Premier versement des frais d'agence (300 000 FCFA)",
+      text: "Initialisation du dossier.",
+    },
+    {
+      title: "Constitution et soumission du dossier de candidature.",
+      text: "Vérification des documents.",
+    },
+    {
+      title: "Obtention de la lettre d'admission et paiement de l'acompte 1 000 $ si exigé.",
+      text: "Validation universitaire.",
+    },
+    {
+      title: "Obtention de la lettre d'admission officielle et des documents nécessaires à la demande de visa.",
+      text: "Préparation du dossier administratif.",
+    },
+    { title: "Dépôt de la demande de visa étudiant.", text: "Soumission auprès des autorités." },
+    { title: "Attente de l'approbation du visa (2 à 4 semaines).", text: "Phase administrative." },
+    {
+      title: "Paiement du solde des frais d'agence (200 000 FCFA) et des frais de scolarité restants.",
+      text: "Finalisation financière.",
+    },
+    {
+      title: "Achat du billet d'avion et préparation du départ pour la Turquie.",
+      text: "Derniers préparatifs.",
+    },
+  ],
+  importantInfo: [
+    "FutureAccess accompagne les étudiants dans leur admission au sein d'universités privées, principalement à Istanbul et Antalya.",
+    "Les programmes sont principalement dispensés en anglais. Test de niveau à l'arrivée, préparation linguistique possible.",
+    "Les possibilités de travail pendant les études sont soumises à la réglementation turque en vigueur.",
+    "Les possibilités de transfert de crédits dépendent de l'université et du programme choisi.",
+    "La Turquie offre un enseignement supérieur de qualité, un environnement multiculturel et un coût de la vie généralement plus abordable.",
+  ],
+  importantIcon: "info",
+};
+
 export const DESTINATION_DETAILS: Record<string, DestinationDetail> = {
   malaisie,
+  turquie,
 };
