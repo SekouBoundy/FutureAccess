@@ -87,7 +87,7 @@ export default function AProposPage() {
     <main className="flex-1">
       {/* ===== EN-TÊTE ===== */}
       <section className="bg-paper pt-36 lg:pt-44">
-        <div className="mx-auto max-w-2xl px-6 text-center">
+        <div data-reveal className="mx-auto max-w-2xl px-6 text-center">
           <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
             À propos
           </span>
@@ -104,7 +104,7 @@ export default function AProposPage() {
       {/* ===== MISSION ===== */}
       <section className="bg-paper py-14 lg:py-20">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
-          <div>
+          <div data-reveal>
             <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
               Notre mission
             </span>
@@ -129,12 +129,14 @@ export default function AProposPage() {
             </a>
           </div>
 
-          <Photo
-            src="/images/about-team.jpg"
-            alt="Étudiants diplômés célébrant leur réussite"
-            label="Photo — étudiants diplômés"
-            className="h-72 w-full rounded-[28px] shadow-[0_10px_30px_rgba(10,37,64,.14)] sm:h-96"
-          />
+          <div data-reveal="1">
+            <Photo
+              src="/images/about-team.jpg"
+              alt="Étudiants diplômés célébrant leur réussite"
+              label="Photo — étudiants diplômés"
+              className="h-72 w-full rounded-[28px] shadow-[0_10px_30px_rgba(10,37,64,.14)] sm:h-96"
+            />
+          </div>
         </div>
       </section>
 
@@ -151,7 +153,7 @@ export default function AProposPage() {
       {/* ===== VALEURS ===== */}
       <section className="bg-cream py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
+          <div data-reveal className="mx-auto mb-12 max-w-2xl text-center">
             <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
               Nos valeurs
             </span>
@@ -161,9 +163,10 @@ export default function AProposPage() {
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {VALUES.map((v) => (
+            {VALUES.map((v, i) => (
               <div
                 key={v.title}
+                data-reveal={i}
                 className="rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_rgba(10,37,64,.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,37,64,.10)]"
               >
                 <div className="mb-4 grid h-12 w-12 place-items-center rounded-2xl bg-navy-800 text-white">
@@ -183,7 +186,7 @@ export default function AProposPage() {
           aria-hidden
           className="pointer-events-none absolute inset-0 [background:radial-gradient(120%_90%_at_50%_-10%,rgba(46,116,230,.28),transparent_60%)]"
         />
-        <div className="relative mx-auto max-w-2xl px-6">
+        <div data-reveal className="relative mx-auto max-w-2xl px-6">
           <h2 className="mb-4 text-3xl font-extrabold lg:text-4xl">
             Prêt à écrire votre réussite&nbsp;?
           </h2>

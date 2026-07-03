@@ -3,6 +3,7 @@ import { Fraunces, Plus_Jakarta_Sans, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsappFab from "@/components/WhatsappFab";
+import ScrollReveal from "@/components/ScrollReveal";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -39,12 +40,19 @@ export default function RootLayout({
     <html
       lang="fr"
       className={`${fraunces.variable} ${jakarta.variable} ${inter.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col">
+        {/* Active les révélations au scroll avant le premier paint (pas de flash,
+            et sans JS le contenu reste visible) */}
+        <script
+          dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add("js")` }}
+        />
         <Header />
         {children}
         <Footer />
         <WhatsappFab />
+        <ScrollReveal />
       </body>
     </html>
   );

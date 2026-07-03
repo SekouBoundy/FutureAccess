@@ -24,7 +24,7 @@ export default function DestinationsPage() {
           className="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy-900/95 via-navy-900/70 to-navy-900/25"
         />
 
-        <div className="relative mx-auto max-w-7xl px-6">
+        <div data-reveal className="relative mx-auto max-w-7xl px-6">
           <h1 className="mb-5 max-w-[14ch] text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
             Explorez nos destinations
           </h1>

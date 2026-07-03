@@ -107,7 +107,7 @@ export default async function DestinationDetailPage({
           className="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy-900/97 via-navy-900/80 to-navy-900/30"
         />
 
-        <div className="relative mx-auto max-w-7xl px-6">
+        <div data-reveal className="relative mx-auto max-w-7xl px-6">
           <p className="mb-5 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-400">
             <a href="/destinations" className="transition-colors hover:text-gold-300">
               Destinations
@@ -183,7 +183,7 @@ export default async function DestinationDetailPage({
       {/* ===== OPPORTUNITÉS ===== */}
       <section className="bg-cream py-16 lg:py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
-          <div>
+          <div data-reveal>
             <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
               Opportunités
             </span>
@@ -203,12 +203,14 @@ export default async function DestinationDetailPage({
               ))}
             </ul>
           </div>
-          <Photo
-            src={d.opportunitiesImage}
-            alt={`Étudier en ${d.country}`}
-            label={`Photo — ${d.country}`}
-            className="h-72 w-full rounded-[28px] shadow-[0_10px_30px_rgba(10,37,64,.14)] sm:h-96"
-          />
+          <div data-reveal="1">
+            <Photo
+              src={d.opportunitiesImage}
+              alt={`Étudier en ${d.country}`}
+              label={`Photo — ${d.country}`}
+              className="h-72 w-full rounded-[28px] shadow-[0_10px_30px_rgba(10,37,64,.14)] sm:h-96"
+            />
+          </div>
         </div>
       </section>
 

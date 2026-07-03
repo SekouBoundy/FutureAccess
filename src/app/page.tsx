@@ -136,7 +136,7 @@ export default function Home() {
         />
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
-          <div>
+          <div data-reveal>
             <h1 className="mb-6 text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
               Construisez votre{" "}
               <em className="font-display-italic font-normal">avenir</em> académique
@@ -155,17 +155,19 @@ export default function Home() {
           </div>
 
           {/* Photo étudiante — PNG transparent (découpe + halo doré déjà intégrés) */}
-          <Photo
-            src="/images/hero-student.png"
-            alt="Étudiante prête pour ses études à l'international"
-            label="Photo héro — étudiante"
-            fit="contain"
-            className="h-80 w-full sm:h-96 lg:h-[32rem]"
-          />
+          <div data-reveal="1">
+            <Photo
+              src="/images/hero-student.png"
+              alt="Étudiante prête pour ses études à l'international"
+              label="Photo héro — étudiante"
+              fit="contain"
+              className="h-80 w-full sm:h-96 lg:h-[32rem]"
+            />
+          </div>
         </div>
 
         {/* Chiffres clés — compteurs animés */}
-        <div className="relative mx-auto mt-12 max-w-7xl px-6 lg:mt-14">
+        <div data-reveal="2" className="relative mx-auto mt-12 max-w-7xl px-6 lg:mt-14">
           <StatsBand
             stats={STATS}
             compact
@@ -177,7 +179,7 @@ export default function Home() {
       {/* ===== AVANTAGES ===== */}
       <section className="bg-paper py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
+          <div data-reveal className="mx-auto mb-12 max-w-2xl text-center">
             <span className="mb-3 inline-flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
               Nos avantages
@@ -190,9 +192,10 @@ export default function Home() {
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {ADVANTAGES.map((a) => (
+            {ADVANTAGES.map((a, i) => (
               <div
                 key={a.title}
+                data-reveal={i}
                 className="rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_2px_8px_rgba(10,37,64,.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(10,37,64,.10)]"
               >
                 <div className="mb-4 grid h-12 w-12 place-items-center rounded-full bg-navy-800 text-white">
@@ -220,7 +223,7 @@ export default function Home() {
       {/* ===== DESTINATIONS ===== */}
       <section id="destinations" className="bg-cream py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-10 flex flex-wrap items-end justify-between gap-4">
+          <div data-reveal className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
               <span className="mb-3 inline-flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
                 <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
@@ -243,9 +246,10 @@ export default function Home() {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {DESTINATIONS.map((d) => (
+            {DESTINATIONS.map((d, i) => (
               <div
                 key={d.slug}
+                data-reveal={i}
                 className="group relative overflow-hidden rounded-3xl bg-navy-800 shadow-[0_10px_30px_rgba(10,37,64,.10)]"
               >
                 <Photo
@@ -277,7 +281,7 @@ export default function Home() {
       {/* ===== PROCESSUS ===== */}
       <section id="processus" className="bg-paper py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
+          <div data-reveal className="mx-auto mb-12 max-w-2xl text-center">
             <span className="mb-3 inline-flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
               Comment ça marche&nbsp;?
@@ -296,7 +300,7 @@ export default function Home() {
               className="absolute left-[16.66%] right-[16.66%] top-7 hidden h-0.5 bg-gradient-to-r from-gold-400 via-slate-200 to-blue-500 sm:block"
             />
             {PROCESS_STEPS.map((s, i) => (
-              <div key={s.title} className="relative text-center">
+              <div key={s.title} data-reveal={i} className="relative text-center">
                 <div className="relative z-10 mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-gold-600 font-head text-xl font-extrabold text-[#3a2c08] shadow-[0_10px_24px_rgba(201,162,39,.35)] ring-8 ring-paper">
                   {i + 1}
                 </div>
@@ -315,7 +319,7 @@ export default function Home() {
           className="pointer-events-none absolute inset-0 [background:radial-gradient(110%_80%_at_50%_-10%,rgba(46,116,230,.25),transparent_60%),radial-gradient(70%_50%_at_100%_100%,rgba(201,162,39,.12),transparent_55%)]"
         />
         <div className="relative mx-auto max-w-7xl px-6">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
+          <div data-reveal className="mx-auto mb-12 max-w-2xl text-center">
             <span className="mb-3 inline-flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-400">
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
               Ce que disent nos étudiants
@@ -328,9 +332,10 @@ export default function Home() {
           </div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {TESTIMONIALS.map((t) => (
+            {TESTIMONIALS.map((t, i) => (
               <div
                 key={t.name}
+                data-reveal={i}
                 className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
               >
                 <div className="mb-3 flex items-center justify-between">
@@ -363,7 +368,10 @@ export default function Home() {
       {/* ===== NEWSLETTER CTA ===== */}
       <section className="bg-cream py-16 lg:py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <div className="relative overflow-hidden rounded-[34px] bg-navy-800 px-6 py-14 text-center text-white lg:px-16 lg:py-16">
+          <div
+            data-reveal
+            className="relative overflow-hidden rounded-[34px] bg-navy-800 px-6 py-14 text-center text-white lg:px-16 lg:py-16"
+          >
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 [background:radial-gradient(110%_90%_at_80%_-10%,rgba(46,116,230,.35),transparent_55%),radial-gradient(80%_60%_at_0%_110%,rgba(201,162,39,.18),transparent_50%)]"
@@ -385,7 +393,7 @@ export default function Home() {
       {/* ===== RÉUSSITE ===== */}
       <section id="apropos" className="bg-paper py-16 lg:py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
-          <div>
+          <div data-reveal>
             <h2 className="mb-4 text-3xl font-extrabold text-navy-800 lg:text-4xl">
               Votre <em className="font-display-italic font-normal">réussite</em> académique est
               notre priorité
@@ -413,7 +421,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="relative mb-6 lg:mb-0">
+          <div data-reveal="1" className="relative mb-6 lg:mb-0">
             {/* Cadre décoratif décalé */}
             <div
               aria-hidden

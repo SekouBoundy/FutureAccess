@@ -136,7 +136,7 @@ export default function ProcessusPage() {
     <main className="flex-1">
       {/* ===== EN-TÊTE ===== */}
       <section className="bg-paper pt-36 lg:pt-44">
-        <div className="mx-auto max-w-2xl px-6 text-center">
+        <div data-reveal className="mx-auto max-w-2xl px-6 text-center">
           <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
             Comment ça marche&nbsp;?
           </span>
@@ -163,7 +163,7 @@ export default function ProcessusPage() {
               {STEPS.map((step, i) => {
                 const right = i % 2 === 1;
                 return (
-                  <li key={step.title} className="relative pl-16 lg:pl-0">
+                  <li key={step.title} data-reveal className="relative pl-16 lg:pl-0">
                     {/* Pastille numérotée sur la ligne */}
                     <span className="absolute left-6 top-7 z-10 grid h-10 w-10 -translate-x-1/2 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-gold-600 font-head text-sm font-extrabold text-[#3a2c08] shadow-[0_8px_20px_rgba(201,162,39,.35)] ring-4 ring-paper lg:left-1/2">
                       {i + 1}
@@ -192,7 +192,7 @@ export default function ProcessusPage() {
       {/* ===== ENGAGEMENTS ===== */}
       <section className="bg-slate-50 py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
+          <div data-reveal className="mx-auto mb-12 max-w-2xl text-center">
             <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
               Nos engagements
             </span>
@@ -202,9 +202,10 @@ export default function ProcessusPage() {
           </div>
 
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {ENGAGEMENTS.map((e) => (
+            {ENGAGEMENTS.map((e, i) => (
               <div
                 key={e.title}
+                data-reveal={i}
                 className="flex items-start gap-4 rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_rgba(10,37,64,.06)]"
               >
                 <div className="grid h-11 w-11 flex-none place-items-center rounded-xl bg-gold-100 text-gold-600">
@@ -226,7 +227,7 @@ export default function ProcessusPage() {
           aria-hidden
           className="pointer-events-none absolute inset-0 [background:radial-gradient(120%_90%_at_50%_-10%,rgba(46,116,230,.28),transparent_60%)]"
         />
-        <div className="relative mx-auto max-w-2xl px-6">
+        <div data-reveal className="relative mx-auto max-w-2xl px-6">
           <h2 className="mb-4 text-3xl font-extrabold lg:text-4xl">
             Prêt à commencer votre aventure&nbsp;?
           </h2>

@@ -140,7 +140,7 @@ export default function ServicesPage() {
     <main className="flex-1 bg-paper">
       {/* ===== EN-TÊTE ===== */}
       <section className="pt-36 lg:pt-44">
-        <div className="mx-auto max-w-3xl px-6 text-center">
+        <div data-reveal className="mx-auto max-w-3xl px-6 text-center">
           <h1 className="text-5xl font-extrabold tracking-tight text-navy-800 lg:text-6xl">
             Nos Services
           </h1>
@@ -153,9 +153,10 @@ export default function ServicesPage() {
       {/* ===== GRILLE DE SERVICES ===== */}
       <section className="py-14 lg:py-20">
         <div className="mx-auto grid max-w-7xl gap-6 px-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((s) => (
+          {SERVICES.map((s, i) => (
             <div
               key={s.title}
+              data-reveal={i % 3}
               className="group rounded-3xl bg-white p-7 shadow-[0_2px_10px_rgba(10,37,64,.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,37,64,.10)]"
             >
               <div className="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-[0_10px_24px_rgba(46,116,230,.35)]">
@@ -200,7 +201,7 @@ export default function ServicesPage() {
       {/* ===== TARIFS ===== */}
       <section className="py-14 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mx-auto mb-14 max-w-2xl text-center">
+          <div data-reveal className="mx-auto mb-14 max-w-2xl text-center">
             <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
               Tarifs &amp; Forfaits
             </span>
@@ -210,9 +211,10 @@ export default function ServicesPage() {
           </div>
 
           <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {PLANS.map((plan) => (
+            {PLANS.map((plan, i) => (
               <div
                 key={plan.country}
+                data-reveal={i}
                 className={`relative flex flex-col rounded-3xl bg-white p-7 lg:p-8 ${
                   plan.popular
                     ? "z-10 ring-1 ring-blue-500/30 shadow-[0_28px_64px_rgba(46,116,230,.20)] lg:-my-4 lg:py-12"

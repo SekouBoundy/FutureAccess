@@ -48,3 +48,50 @@ h1, h2, h3, h4 {
   font-style: italic;
   font-weight: 500;
 }
+
+/* ===== Mouvement =====
+   Révélations au scroll : les éléments [data-reveal] démarrent invisibles
+   UNIQUEMENT si JS est présent (classe .js posée sur <html> avant le paint),
+   puis ScrollReveal ajoute .is-visible quand ils entrent à l'écran.
+   data-reveal="1|2|3" ajoute un délai en cascade. */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.3s ease;
+}
+html.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+html.js [data-reveal="1"] { transition-delay: 0.1s; }
+html.js [data-reveal="2"] { transition-delay: 0.2s; }
+html.js [data-reveal="3"] { transition-delay: 0.3s; }
+
+/* Transition d'entrée de page (rejouée à chaque navigation via template.tsx) */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.page-enter {
+  animation: page-enter 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .page-enter {
+    animation: none;
+  }
+}

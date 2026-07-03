@@ -67,7 +67,7 @@ export default function ContactPage() {
     <main className="flex-1 bg-paper">
       {/* ===== EN-TÊTE ===== */}
       <section className="pt-36 lg:pt-44">
-        <div className="mx-auto max-w-2xl px-6 text-center">
+        <div data-reveal className="mx-auto max-w-2xl px-6 text-center">
           <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
             Nous contacter
           </span>
@@ -84,7 +84,7 @@ export default function ContactPage() {
       <section className="py-14 lg:py-20">
         <div className="mx-auto grid max-w-7xl items-start gap-8 px-6 lg:grid-cols-[0.85fr_1.15fr] lg:gap-12">
           {/* Colonne infos */}
-          <div>
+          <div data-reveal>
             <h2 className="mb-2 font-head text-2xl font-bold text-navy-800">Coordonnées</h2>
             <p className="mb-8 text-sm text-slate-600">
               Contactez-nous directement ou remplissez le formulaire, nous revenons vers vous
