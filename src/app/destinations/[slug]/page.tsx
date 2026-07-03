@@ -96,7 +96,7 @@ export default async function DestinationDetailPage({
   return (
     <main className="flex-1">
       {/* ===== HERO ===== */}
-      <section className="relative overflow-hidden bg-navy-900 pb-14 pt-36 text-white lg:pt-44">
+      <section className="relative overflow-hidden bg-navy-900 pb-12 pt-28 text-white sm:pt-36 lg:pt-44">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-cover bg-center"
@@ -132,7 +132,7 @@ export default async function DestinationDetailPage({
             </div>
           )}
 
-          <h1 className="mb-6 max-w-[16ch] text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="mb-6 max-w-[16ch] text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.05]">
             Étudier en <em className="font-display-italic font-normal">{d.country}</em>
           </h1>
 
@@ -167,12 +167,14 @@ export default async function DestinationDetailPage({
           {d.stats.map((s) => (
             <div key={s.label} className="flex items-center gap-3 lg:px-8">
               {s.icon && (
-                <span className="grid h-11 w-11 flex-none place-items-center rounded-xl bg-gold-100 text-gold-600">
+                <span className="grid h-10 w-10 flex-none place-items-center rounded-xl bg-gold-100 text-gold-600 sm:h-11 sm:w-11">
                   <EmojiIcon emoji={s.icon} className="h-5 w-5" />
                 </span>
               )}
               <div>
-                <div className="font-head text-2xl font-extrabold text-navy-800">{s.value}</div>
+                <div className="font-head text-xl font-extrabold text-navy-800 sm:text-2xl">
+                  {s.value}
+                </div>
                 <div className="mt-0.5 text-sm text-slate-500">{s.label}</div>
               </div>
             </div>

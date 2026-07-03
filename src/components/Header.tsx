@@ -16,6 +16,7 @@ const NAV_LINKS = [
 
 const PHONE_DISPLAY = "+223 92 24 63 42";
 const PHONE_TEL = "+22392246342";
+const EMAIL = "contact@futureaccess.com";
 const WHATSAPP = "https://wa.me/22392246342";
 
 function Brand({ className = "" }: { className?: string }) {
@@ -37,6 +38,12 @@ export default function Header() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [menuOpen]);
 
   return (
@@ -74,48 +81,105 @@ export default function Header() {
             {PHONE_DISPLAY}
           </a>
 
-          <button
-            aria-label="Ouvrir le menu"
-            onClick={() => setMenuOpen(true)}
-            className="grid h-10 w-10 place-items-center rounded-2xl border border-white/25 bg-white/10 text-white lg:hidden"
-          >
-            <span className="relative block h-0.5 w-5 rounded bg-current before:absolute before:-top-1.5 before:h-0.5 before:w-5 before:rounded before:bg-current after:absolute after:top-1.5 after:h-0.5 after:w-5 after:rounded after:bg-current" />
-          </button>
+          <div className="flex items-center gap-2 lg:hidden">
+            <a
+              href={`tel:${PHONE_TEL}`}
+              aria-label={`Appeler FutureAccess au ${PHONE_DISPLAY}`}
+              className="grid h-10 w-10 place-items-center rounded-2xl bg-[#25D366]/20 text-[#25D366]"
+            >
+              <Icon name="phone" className="h-4 w-4" />
+            </a>
+            <button
+              aria-label="Ouvrir le menu"
+              aria-controls="menu-mobile"
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen(true)}
+              className="grid h-10 w-10 place-items-center rounded-2xl border border-white/25 bg-white/10 text-white"
+            >
+              <span className="relative block h-0.5 w-5 rounded bg-current before:absolute before:-top-1.5 before:h-0.5 before:w-5 before:rounded before:bg-current after:absolute after:top-1.5 after:h-0.5 after:w-5 after:rounded after:bg-current" />
+            </button>
+          </div>
         </div>
       </header>
 
-      {/* Mobile menu overlay */}
+      {/* ===== Menu mobile — panneau déroulant (variante A) ===== */}
+      {/* Voile : assombrit la page derrière, ferme au clic */}
       <div
-        className={`fixed inset-0 z-[60] flex flex-col bg-gradient-to-br from-navy-900 to-navy-700 px-6 py-7 transition-transform duration-500 ease-out lg:hidden ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
+        aria-hidden
+        onClick={() => setMenuOpen(false)}
+        className={`fixed inset-0 z-[55] bg-navy-900/70 backdrop-blur-sm transition-opacity duration-300 lg:hidden ${
+          menuOpen ? "opacity-100" : "pointer-events-none opacity-0"
+        }`}
+      />
+
+      {/* Panneau : descend du header, dimensionné au contenu */}
+      <div
+        id="menu-mobile"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Menu de navigation"
+        className={`fixed inset-x-3 top-3 z-[60] flex max-h-[calc(100dvh-1.5rem)] flex-col overflow-y-auto rounded-[28px] border border-white/10 bg-gradient-to-br from-navy-900 to-navy-700 px-5 pb-6 pt-3 shadow-[0_30px_70px_rgba(0,0,0,.5)] transition-all duration-300 ease-out sm:inset-x-5 sm:top-5 sm:px-7 lg:hidden ${
+          menuOpen
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-4 opacity-0"
         }`}
       >
-        <div className="mb-10 flex items-center justify-between">
+        {/* En-tête du panneau : reprend la pilule du header */}
+        <div className="flex items-center justify-between py-1">
           <Brand />
           <button
             aria-label="Fermer le menu"
             onClick={() => setMenuOpen(false)}
-            className="grid h-11 w-11 place-items-center rounded-2xl bg-white/10 text-2xl text-white"
+            className="grid h-10 w-10 place-items-center rounded-2xl border border-white/15 bg-white/10 text-white transition-colors hover:bg-white/20"
           >
-            &times;
+            <Icon name="close" className="h-5 w-5" />
           </button>
         </div>
 
-        <nav className="flex flex-col">
-          {NAV_LINKS.map((link, i) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-between border-b border-white/10 py-4 font-head text-xl font-bold text-white transition-colors hover:text-gold-300"
-            >
-              {link.label}
-              <span className="text-base text-gold-400">{String(i + 1).padStart(2, "0")}</span>
-            </Link>
-          ))}
+        {/* Liens — état actif en doré */}
+        <nav className="mt-3 flex flex-col">
+          {NAV_LINKS.map((link) => {
+            const active = isActive(link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                aria-current={active ? "page" : undefined}
+                className={`border-b border-white/10 py-3.5 font-head text-lg font-bold transition-colors ${
+                  active ? "text-gold-400" : "text-white hover:text-gold-300"
+                }`}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
         </nav>
 
-        <div className="mt-auto grid gap-3 pt-8">
+        {/* Bloc contact */}
+        <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+          <a
+            href={`tel:${PHONE_TEL}`}
+            className="flex items-center gap-3 font-head text-sm font-semibold text-white"
+          >
+            <span className="grid h-9 w-9 flex-none place-items-center rounded-xl bg-[#25D366]/20 text-[#25D366]">
+              <Icon name="phone" className="h-4 w-4" />
+            </span>
+            {PHONE_DISPLAY}
+          </a>
+          <a
+            href={`mailto:${EMAIL}`}
+            className="flex items-center gap-3 font-head text-sm font-semibold text-white"
+          >
+            <span className="grid h-9 w-9 flex-none place-items-center rounded-xl bg-gold-500/20 text-gold-300">
+              <Icon name="mail" className="h-4 w-4" />
+            </span>
+            {EMAIL}
+          </a>
+        </div>
+
+        {/* Appels à l'action */}
+        <div className="mt-4 grid gap-3">
           <Link
             href="/contact"
             onClick={() => setMenuOpen(false)}

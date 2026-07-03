@@ -116,7 +116,7 @@ export default function Home() {
       {/* ===== HERO ===== */}
       <section
         id="accueil"
-        className="relative overflow-hidden rounded-b-[34px] bg-[linear-gradient(165deg,#061427_5%,#0e3158_60%,#0a2540_100%)] pb-16 pt-36 text-white lg:pb-24 lg:pt-44"
+        className="relative overflow-hidden rounded-b-[34px] bg-[linear-gradient(165deg,#061427_5%,#0e3158_60%,#0a2540_100%)] pb-14 pt-28 text-white sm:pt-36 lg:pb-24 lg:pt-44"
       >
         {/* Image de fond texturée (déposer /images/hero-bg.jpg) */}
         <div
@@ -137,7 +137,7 @@ export default function Home() {
 
         <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
           <div data-reveal>
-            <h1 className="mb-6 text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+            <h1 className="mb-6 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.05]">
               Construisez votre{" "}
               <em className="font-display-italic font-normal">avenir</em> académique
             </h1>

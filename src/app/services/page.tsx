@@ -139,9 +139,9 @@ export default function ServicesPage() {
   return (
     <main className="flex-1 bg-paper">
       {/* ===== EN-TÊTE ===== */}
-      <section className="pt-36 lg:pt-44">
+      <section className="pt-28 sm:pt-36 lg:pt-44">
         <div data-reveal className="mx-auto max-w-3xl px-6 text-center">
-          <h1 className="text-5xl font-extrabold tracking-tight text-navy-800 lg:text-6xl">
+          <h1 className="text-4xl font-extrabold tracking-tight text-navy-800 sm:text-5xl lg:text-6xl">
             Nos Services
           </h1>
           <p className="mt-5 text-lg text-slate-600">

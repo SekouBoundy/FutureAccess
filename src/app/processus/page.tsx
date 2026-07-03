@@ -135,7 +135,7 @@ export default function ProcessusPage() {
   return (
     <main className="flex-1">
       {/* ===== EN-TÊTE ===== */}
-      <section className="bg-paper pt-36 lg:pt-44">
+      <section className="bg-paper pt-28 sm:pt-36 lg:pt-44">
         <div data-reveal className="mx-auto max-w-2xl px-6 text-center">
           <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
             Comment ça marche&nbsp;?
@@ -169,9 +169,9 @@ export default function ProcessusPage() {
                       {i + 1}
                     </span>
                     <div className={`lg:w-[calc(50%-3.5rem)] ${right ? "lg:ml-auto" : ""}`}>
-                      <div className="flex items-start gap-4 rounded-3xl bg-white p-6 shadow-[0_2px_10px_rgba(10,37,64,.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,37,64,.10)]">
-                        <div className="grid h-12 w-12 flex-none place-items-center rounded-2xl bg-navy-800 text-white">
-                          <Icon name={step.icon} className="h-5 w-5" />
+                      <div className="flex items-start gap-3.5 rounded-3xl bg-white p-5 shadow-[0_2px_10px_rgba(10,37,64,.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,37,64,.10)] sm:gap-4 sm:p-6">
+                        <div className="grid h-10 w-10 flex-none place-items-center rounded-xl bg-navy-800 text-white sm:h-12 sm:w-12 sm:rounded-2xl">
+                          <Icon name={step.icon} className="h-4 w-4 sm:h-5 sm:w-5" />
                         </div>
                         <div>
                           <h3 className="mb-1.5 font-head text-lg font-bold text-navy-800">

@@ -86,7 +86,7 @@ export default function AProposPage() {
   return (
     <main className="flex-1">
       {/* ===== EN-TÊTE ===== */}
-      <section className="bg-paper pt-36 lg:pt-44">
+      <section className="bg-paper pt-28 sm:pt-36 lg:pt-44">
         <div data-reveal className="mx-auto max-w-2xl px-6 text-center">
           <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
             À propos

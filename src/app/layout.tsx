@@ -42,7 +42,7 @@ export default function RootLayout({
       className={`${fraunces.variable} ${jakarta.variable} ${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col overflow-x-clip">
         {/* Active les révélations au scroll avant le premier paint (pas de flash,
             et sans JS le contenu reste visible) */}
         <script

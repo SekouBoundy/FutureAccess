@@ -11,7 +11,7 @@ export default function DestinationsPage() {
   return (
     <main className="flex-1">
       {/* ===== HERO ===== */}
-      <section className="relative overflow-hidden bg-navy-900 pb-16 pt-36 text-white lg:pb-24 lg:pt-44">
+      <section className="relative overflow-hidden bg-navy-900 pb-14 pt-28 text-white sm:pt-36 lg:pb-24 lg:pt-44">
         {/* Image de fond */}
         <div
           aria-hidden
@@ -25,7 +25,7 @@ export default function DestinationsPage() {
         />
 
         <div data-reveal className="relative mx-auto max-w-7xl px-6">
-          <h1 className="mb-5 max-w-[14ch] text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl">
+          <h1 className="mb-5 max-w-[14ch] text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.05]">
             Explorez nos destinations
           </h1>
           <p className="mb-8 max-w-[48ch] text-lg text-white/85">
