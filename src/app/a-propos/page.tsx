@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Photo from "@/components/Photo";
+import StatsBand from "@/components/StatsBand";
 
 export const metadata: Metadata = {
   title: "À propos — FutureAccess",
@@ -139,15 +140,11 @@ export default function AProposPage() {
 
       {/* ===== CHIFFRES ===== */}
       <section className="bg-navy-900 py-14 text-white lg:py-16">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-6 text-center lg:grid-cols-4">
-          {STATS.map((s) => (
-            <div key={s.label}>
-              <div className="font-head text-4xl font-extrabold text-gold-400 lg:text-5xl">
-                {s.value}
-              </div>
-              <div className="mt-2 text-sm text-white/70">{s.label}</div>
-            </div>
-          ))}
+        <div className="mx-auto max-w-6xl px-6">
+          <StatsBand
+            stats={STATS}
+            className="grid grid-cols-2 gap-8 text-center lg:grid-cols-4"
+          />
         </div>
       </section>
 

@@ -1,5 +1,6 @@
 import Photo from "@/components/Photo";
 import NewsletterForm from "@/components/NewsletterForm";
+import StatsBand from "@/components/StatsBand";
 import { Icon, Star, Flag } from "@/components/icons";
 import { DESTINATIONS } from "@/data/destinations";
 
@@ -57,6 +58,13 @@ const ADVANTAGES = [
     title: "Tarification juste",
     text: "Un accompagnement de haute qualité, avec des tarifs transparents et sans frais cachés.",
   },
+];
+
+const STATS = [
+  { value: "500+", label: "Étudiants accompagnés" },
+  { value: "98%", label: "Taux d'admission" },
+  { value: "15+", label: "Pays partenaires" },
+  { value: "10+", label: "Années d'expérience" },
 ];
 
 const PROCESS_STEPS = [
@@ -153,6 +161,15 @@ export default function Home() {
             label="Photo héro — étudiante"
             fit="contain"
             className="h-80 w-full sm:h-96 lg:h-[32rem]"
+          />
+        </div>
+
+        {/* Chiffres clés — compteurs animés */}
+        <div className="relative mx-auto mt-12 max-w-7xl px-6 lg:mt-14">
+          <StatsBand
+            stats={STATS}
+            compact
+            className="grid grid-cols-2 gap-x-6 gap-y-8 border-t border-white/10 pt-8 text-center sm:text-left lg:grid-cols-4"
           />
         </div>
       </section>
@@ -272,17 +289,19 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-3">
+          <div className="relative grid gap-12 sm:grid-cols-3 sm:gap-8">
+            {/* Ligne de connexion entre les étapes */}
+            <div
+              aria-hidden
+              className="absolute left-[16.66%] right-[16.66%] top-7 hidden h-0.5 bg-gradient-to-r from-gold-400 via-slate-200 to-blue-500 sm:block"
+            />
             {PROCESS_STEPS.map((s, i) => (
-              <div
-                key={s.title}
-                className="rounded-3xl border border-slate-100 bg-white p-6 text-center shadow-[0_2px_8px_rgba(10,37,64,.06)]"
-              >
-                <div className="mx-auto mb-4 grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-blue-500 to-blue-600 font-head text-lg font-extrabold text-white">
+              <div key={s.title} className="relative text-center">
+                <div className="relative z-10 mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-gold-600 font-head text-xl font-extrabold text-[#3a2c08] shadow-[0_10px_24px_rgba(201,162,39,.35)] ring-8 ring-paper">
                   {i + 1}
                 </div>
-                <h3 className="mb-2 font-head text-base font-bold text-navy-800">{s.title}</h3>
-                <p className="text-sm text-slate-600">{s.text}</p>
+                <h3 className="mb-2 font-head text-lg font-bold text-navy-800">{s.title}</h3>
+                <p className="mx-auto max-w-[32ch] text-sm text-slate-600">{s.text}</p>
               </div>
             ))}
           </div>
@@ -365,7 +384,7 @@ export default function Home() {
 
       {/* ===== RÉUSSITE ===== */}
       <section id="apropos" className="bg-paper py-16 lg:py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
+        <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-20">
           <div>
             <h2 className="mb-4 text-3xl font-extrabold text-navy-800 lg:text-4xl">
               Votre <em className="font-display-italic font-normal">réussite</em> académique est
@@ -394,12 +413,29 @@ export default function Home() {
             </a>
           </div>
 
-          <Photo
-            src="/images/success-team.jpg"
-            alt="Étudiants qui étudient ensemble en bibliothèque"
-            label="Photo — étudiants en bibliothèque"
-            className="h-72 w-full rounded-[28px] shadow-[0_10px_30px_rgba(10,37,64,.10)] sm:h-96"
-          />
+          <div className="relative mb-6 lg:mb-0">
+            {/* Cadre décoratif décalé */}
+            <div
+              aria-hidden
+              className="absolute -right-3 -top-3 h-full w-full rounded-[28px] border-2 border-gold-300/70 lg:-right-5 lg:-top-5"
+            />
+            <Photo
+              src="/images/success-team.jpg"
+              alt="Étudiants qui étudient ensemble en bibliothèque"
+              label="Photo — étudiants en bibliothèque"
+              className="relative h-72 w-full rounded-[28px] shadow-[0_10px_30px_rgba(10,37,64,.10)] sm:h-96"
+            />
+            {/* Badge flottant */}
+            <div className="absolute -bottom-6 -left-3 flex items-center gap-3 rounded-2xl bg-white p-4 pr-6 shadow-[0_18px_44px_rgba(10,37,64,.16)] lg:-left-8">
+              <span className="grid h-11 w-11 flex-none place-items-center rounded-xl bg-gold-100 text-gold-600">
+                <Icon name="award" className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="font-head text-lg font-extrabold leading-tight text-navy-800">98%</p>
+                <p className="text-xs text-slate-500">Taux d&apos;admission</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>

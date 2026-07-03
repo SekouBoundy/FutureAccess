@@ -9,7 +9,7 @@ Et ui-ux-pro-max dans tout ça ?
 Mon avis reste le même après avoir vu le code : tu n'en as pas besoin pour ce projet. Le skill sert à générer une direction quand il n'y en a pas — ici elle existe déjà (navy/or/Fraunces) et elle est bonne. L'installer risquerait surtout de pousser des recommandations génériques par-dessus. Ce qu'il faut, c'est de l'exécution : rythme, mouvement, preuve sociale. Si tu veux quand même le tester, garde-le pour un futur projet qui part de zéro.
 
 Ce que je propose comme plan d'upgrade
-Phase 1 — polish : remplacer tous les emojis par des SVG, uniformiser les icônes, corriger la hiérarchie typo, varier les fonds de section.
-Phase 2 — rythme : casser la grille répétitive (une section asymétrique image/texte, un bandeau de stats animé, un processus en timeline plutôt qu'en cartes).
+[x]Phase 1 — polish : remplacer tous les emojis par des SVG, uniformiser les icônes, corriger la hiérarchie typo, varier les fonds de section.
+[x]Phase 2 — rythme : casser la grille répétitive (une section asymétrique image/texte, un bandeau de stats animé, un processus en timeline plutôt qu'en cartes).
 Phase 3 — confiance : bloc logos universités, FAQ, refonte des témoignages (carrousel, notes variées, photos réelles à fournir par Idrissa).
-Phase 4 — mouvement : reveals au scroll, compteurs animés, transitions de page légères.
+[x]Phase 4 — mouvement : reveals au scroll, compteurs animés, transitions de page légères.

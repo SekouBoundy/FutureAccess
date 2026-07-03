@@ -150,26 +150,42 @@ export default function ProcessusPage() {
         </div>
       </section>
 
-      {/* ===== ÉTAPES ===== */}
+      {/* ===== ÉTAPES — TIMELINE ===== */}
       <section className="bg-paper py-14 lg:py-20">
-        <div className="mx-auto grid max-w-7xl gap-6 px-6 sm:grid-cols-2 lg:grid-cols-3">
-          {STEPS.map((step, i) => (
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="relative">
+            {/* Ligne centrale */}
             <div
-              key={step.title}
-              className="rounded-3xl bg-white p-7 shadow-[0_2px_10px_rgba(10,37,64,.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,37,64,.10)]"
-            >
-              <div className="relative mb-5 w-fit">
-                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-navy-800 text-white">
-                  <Icon name={step.icon} className="h-6 w-6" />
-                </div>
-                <span className="absolute -right-2 -top-2 grid h-6 w-6 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-gold-600 font-head text-xs font-bold text-[#3a2c08] shadow-[0_4px_10px_rgba(201,162,39,.4)]">
-                  {i + 1}
-                </span>
-              </div>
-              <h3 className="mb-2 font-head text-lg font-bold text-navy-800">{step.title}</h3>
-              <p className="text-sm leading-relaxed text-slate-600">{step.text}</p>
-            </div>
-          ))}
+              aria-hidden
+              className="absolute bottom-4 left-6 top-4 w-0.5 -translate-x-1/2 bg-gradient-to-b from-gold-400 via-slate-200 to-blue-500 lg:left-1/2"
+            />
+            <ol className="space-y-8 lg:space-y-12">
+              {STEPS.map((step, i) => {
+                const right = i % 2 === 1;
+                return (
+                  <li key={step.title} className="relative pl-16 lg:pl-0">
+                    {/* Pastille numérotée sur la ligne */}
+                    <span className="absolute left-6 top-7 z-10 grid h-10 w-10 -translate-x-1/2 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-gold-600 font-head text-sm font-extrabold text-[#3a2c08] shadow-[0_8px_20px_rgba(201,162,39,.35)] ring-4 ring-paper lg:left-1/2">
+                      {i + 1}
+                    </span>
+                    <div className={`lg:w-[calc(50%-3.5rem)] ${right ? "lg:ml-auto" : ""}`}>
+                      <div className="flex items-start gap-4 rounded-3xl bg-white p-6 shadow-[0_2px_10px_rgba(10,37,64,.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,37,64,.10)]">
+                        <div className="grid h-12 w-12 flex-none place-items-center rounded-2xl bg-navy-800 text-white">
+                          <Icon name={step.icon} className="h-5 w-5" />
+                        </div>
+                        <div>
+                          <h3 className="mb-1.5 font-head text-lg font-bold text-navy-800">
+                            {step.title}
+                          </h3>
+                          <p className="text-sm leading-relaxed text-slate-600">{step.text}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
         </div>
       </section>
 
