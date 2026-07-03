@@ -1,6 +1,8 @@
+import type { FlagCode } from "@/components/icons";
+
 export type Destination = {
   slug: string;
-  flag: string;
+  code: FlagCode;
   country: string;
   region: string;
   text: string;
@@ -14,7 +16,7 @@ export type Destination = {
 export const DESTINATIONS: Destination[] = [
   {
     slug: "malaisie",
-    flag: "🇲🇾",
+    code: "my",
     country: "Malaisie",
     region: "Asie",
     text: "Universités reconnues, enseignement en anglais, frais abordables et environnement multiculturel.",
@@ -24,7 +26,7 @@ export const DESTINATIONS: Destination[] = [
   },
   {
     slug: "turquie",
-    flag: "🇹🇷",
+    code: "tr",
     country: "Turquie",
     region: "Asie / Europe",
     text: "Universités de qualité, coût de vie accessible et de nombreuses opportunités académiques.",
@@ -33,7 +35,7 @@ export const DESTINATIONS: Destination[] = [
   },
   {
     slug: "chine",
-    flag: "🇨🇳",
+    code: "cn",
     country: "Chine",
     region: "Asie",
     text: "Établissements réputés, programmes variés et possibilités de bourses selon les universités.",

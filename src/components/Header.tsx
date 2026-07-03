@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Icon, Whatsapp } from "@/components/icons";
 
 const NAV_LINKS = [
   { href: "/#accueil", label: "Accueil" },
@@ -68,7 +69,7 @@ export default function Header() {
             className="hidden items-center gap-2 font-head text-sm font-bold text-white lg:flex"
           >
             <span className="grid h-8 w-8 place-items-center rounded-full bg-[#25D366]/20 text-[#25D366]">
-              📞
+              <Icon name="phone" className="h-4 w-4" />
             </span>
             {PHONE_DISPLAY}
           </a>
@@ -118,15 +119,17 @@ export default function Header() {
           <Link
             href="/contact"
             onClick={() => setMenuOpen(false)}
-            className="rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-4 text-center font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)]"
+            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-4 text-center font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)]"
           >
-            🎓 Commencer mon projet
+            <Icon name="graduation-cap" className="h-5 w-5" />
+            Commencer mon projet
           </Link>
           <a
             href={WHATSAPP}
-            className="rounded-full bg-[#25D366] py-4 text-center font-head font-bold text-[#063e1c]"
+            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#25D366] py-4 text-center font-head font-bold text-[#063e1c]"
           >
-            💬 Discuter sur WhatsApp
+            <Whatsapp className="h-5 w-5" />
+            Discuter sur WhatsApp
           </a>
         </div>
       </div>

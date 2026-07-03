@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Photo from "@/components/Photo";
+import { Icon, EmojiIcon } from "@/components/icons";
 import { DESTINATION_DETAILS } from "@/data/destination-details";
 
 export function generateStaticParams() {
@@ -165,7 +166,11 @@ export default async function DestinationDetailPage({
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 py-8 lg:grid-cols-4 lg:divide-x lg:divide-slate-200">
           {d.stats.map((s) => (
             <div key={s.label} className="flex items-center gap-3 lg:px-8">
-              {s.icon && <span className="text-2xl">{s.icon}</span>}
+              {s.icon && (
+                <span className="grid h-11 w-11 flex-none place-items-center rounded-xl bg-gold-100 text-gold-600">
+                  <EmojiIcon emoji={s.icon} className="h-5 w-5" />
+                </span>
+              )}
               <div>
                 <div className="font-head text-2xl font-extrabold text-navy-800">{s.value}</div>
                 <div className="mt-0.5 text-sm text-slate-500">{s.label}</div>
@@ -201,7 +206,6 @@ export default async function DestinationDetailPage({
           <Photo
             src={d.opportunitiesImage}
             alt={`Étudier en ${d.country}`}
-            icon="🎓"
             label={`Photo — ${d.country}`}
             className="h-72 w-full rounded-[28px] shadow-[0_10px_30px_rgba(10,37,64,.14)] sm:h-96"
           />
@@ -212,7 +216,7 @@ export default async function DestinationDetailPage({
       {d.universities && (
         <section className="bg-white py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">
-          <h2 className="mb-8 text-2xl font-extrabold text-navy-800 lg:text-3xl">
+          <h2 className="mb-8 text-3xl font-extrabold text-navy-800 lg:text-4xl">
             Top Universités en {d.country}
           </h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -246,8 +250,8 @@ export default async function DestinationDetailPage({
                   <h3 className="font-head text-lg font-bold leading-snug text-navy-800">
                     {u.name}
                   </h3>
-                  <p className="mt-2 text-sm text-slate-500">
-                    <span className="mr-1">📍</span>
+                  <p className="mt-2 flex items-center gap-1.5 text-sm text-slate-500">
+                    <Icon name="map-pin" className="h-3.5 w-3.5 flex-none" />
                     {u.location}
                     {u.programs && (
                       <>
@@ -260,7 +264,8 @@ export default async function DestinationDetailPage({
                     href="/contact"
                     className="mt-4 inline-flex items-center gap-1.5 font-head text-sm font-bold text-blue-600 transition-colors hover:text-blue-500"
                   >
-                    En savoir plus →
+                    En savoir plus
+                    <Icon name="arrow-right" className="h-4 w-4" />
                   </a>
                 </div>
               </div>
@@ -369,7 +374,7 @@ export default async function DestinationDetailPage({
       {d.documents && (
         <section className="bg-slate-50 py-16 lg:py-20">
           <div className="mx-auto max-w-4xl px-6">
-            <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">
+            <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
               Documents à préparer
             </h2>
             <p className="mt-2 text-slate-600">
@@ -410,7 +415,7 @@ export default async function DestinationDetailPage({
       {/* ===== COÛT DES ÉTUDES ===== */}
       <section className="bg-white py-16 lg:py-20">
         <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">Coût des études</h2>
+          <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">Coût des études</h2>
           <p className="mt-2 text-slate-600">{d.studyCosts.subtitle}</p>
 
           {d.studyCosts.layout === "table" ? (
@@ -434,8 +439,12 @@ export default async function DestinationDetailPage({
                       }
                     >
                       <td className="px-6 py-4 font-head text-sm font-bold text-navy-800">
-                        {r.icon && <span className="mr-2">{r.icon}</span>}
-                        {r.label}
+                        <span className="flex items-center gap-2.5">
+                          {r.icon && (
+                            <EmojiIcon emoji={r.icon} className="h-4 w-4 flex-none text-gold-600" />
+                          )}
+                          {r.label}
+                        </span>
                       </td>
                       <td className="px-6 py-4 text-right text-sm text-slate-600">{r.value}</td>
                       <td
@@ -459,7 +468,11 @@ export default async function DestinationDetailPage({
                     r.highlight ? "bg-gold-100" : i % 2 === 0 ? "bg-slate-50" : "bg-white"
                   }`}
                 >
-                  <span className="text-lg">{r.icon}</span>
+                  {r.icon && (
+                    <span className="grid h-9 w-9 flex-none place-items-center rounded-lg bg-gold-100 text-gold-600">
+                      <EmojiIcon emoji={r.icon} className="h-4 w-4" />
+                    </span>
+                  )}
                   <div>
                     <div className="font-head text-sm font-bold text-navy-800">{r.label}</div>
                     <div
@@ -481,7 +494,11 @@ export default async function DestinationDetailPage({
                   }`}
                 >
                   <span className="flex items-center gap-3">
-                    <span className="text-xl">{r.icon}</span>
+                    {r.icon && (
+                      <span className="grid h-9 w-9 flex-none place-items-center rounded-lg bg-gold-100 text-gold-600">
+                        <EmojiIcon emoji={r.icon} className="h-4 w-4" />
+                      </span>
+                    )}
                     <span className="font-head text-sm font-bold text-navy-800">{r.label}</span>
                   </span>
                   <span
@@ -500,7 +517,7 @@ export default async function DestinationDetailPage({
       {/* ===== COÛT DE LA PROCÉDURE ===== */}
       <section className="bg-cream py-16 lg:py-20">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">Coût de la procédure</h2>
+          <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">Coût de la procédure</h2>
           <p className="mt-2 text-slate-600">{d.procedureCosts.subtitle}</p>
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -510,8 +527,8 @@ export default async function DestinationDetailPage({
                 className="rounded-3xl border border-slate-100 bg-white p-7 shadow-[0_2px_10px_rgba(10,37,64,.06)]"
               >
                 <h3 className="flex items-center gap-3 font-head text-base font-bold text-navy-800">
-                  <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-gold-100 text-lg">
-                    {card.icon}
+                  <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-gold-100 text-gold-600">
+                    <EmojiIcon emoji={card.icon} className="h-5 w-5" />
                   </span>
                   {card.title}
                 </h3>
@@ -528,7 +545,12 @@ export default async function DestinationDetailPage({
                 <ul className="mt-3 space-y-2 text-sm text-slate-600">
                   {card.items.map((it, i) => (
                     <li key={i} className="flex items-start gap-2">
-                      {it.icon && <span className="flex-none font-bold text-gold-500">{it.icon}</span>}
+                      {it.icon && (
+                        <EmojiIcon
+                          emoji={it.icon}
+                          className="mt-0.5 h-4 w-4 flex-none text-gold-500"
+                        />
+                      )}
                       <span>{it.text}</span>
                     </li>
                   ))}
@@ -558,7 +580,7 @@ export default async function DestinationDetailPage({
       {/* ===== INFORMATIONS IMPORTANTES ===== */}
       <section className="bg-slate-50 py-16 lg:py-20">
         <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">
+          <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
             Informations importantes
           </h2>
           <p className="mt-2 text-slate-600">
@@ -615,7 +637,7 @@ export default async function DestinationDetailPage({
         <section className="bg-white py-16 lg:py-20">
           <div className="mx-auto max-w-4xl px-6">
             <div className="mb-8 text-center">
-              <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">
+              <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
                 Processus de candidature
               </h2>
               <p className="mt-2 text-slate-600">
@@ -627,7 +649,10 @@ export default async function DestinationDetailPage({
             <details open className="group">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 rounded-2xl border border-slate-100 bg-white px-5 py-4 font-head text-sm font-bold text-navy-800 shadow-[0_2px_10px_rgba(10,37,64,.05)]">
                 <span className="flex items-center gap-2">
-                  <span className="transition-transform group-open:rotate-180">▾</span>
+                  <Icon
+                    name="chevron-down"
+                    className="h-4 w-4 transition-transform group-open:rotate-180"
+                  />
                   Voir le détail des {d.applicationSteps.length} étapes
                 </span>
                 <span className="text-xs font-semibold text-slate-400">
@@ -679,8 +704,10 @@ export default async function DestinationDetailPage({
                         key={g.title}
                         className="rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_2px_10px_rgba(10,37,64,.05)]"
                       >
-                        <h4 className="mb-4 text-center font-head text-base font-bold text-navy-800">
-                          {g.icon && <span className="mr-1.5">{g.icon}</span>}
+                        <h4 className="mb-4 flex items-center justify-center gap-2 font-head text-base font-bold text-navy-800">
+                          {g.icon && (
+                            <EmojiIcon emoji={g.icon} className="h-4 w-4 flex-none text-gold-600" />
+                          )}
                           {g.title}
                         </h4>
                         <div className="flex flex-wrap gap-2">

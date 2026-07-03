@@ -131,7 +131,6 @@ export default function AProposPage() {
           <Photo
             src="/images/about-team.jpg"
             alt="Étudiants diplômés célébrant leur réussite"
-            icon="🎓"
             label="Photo — étudiants diplômés"
             className="h-72 w-full rounded-[28px] shadow-[0_10px_30px_rgba(10,37,64,.14)] sm:h-96"
           />

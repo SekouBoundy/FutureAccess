@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Icon, Flag, type FlagCode } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Services — FutureAccess",
@@ -82,10 +83,17 @@ const SERVICES = [
   },
 ];
 
-const PLANS = [
+const PLANS: {
+  country: string;
+  code: FlagCode;
+  price: string;
+  unit: string;
+  popular: boolean;
+  features: string[];
+}[] = [
   {
     country: "Chine",
-    flag: "🇨🇳",
+    code: "cn",
     price: "1 500€",
     unit: "/ dossier",
     popular: false,
@@ -99,7 +107,7 @@ const PLANS = [
   },
   {
     country: "Malaisie",
-    flag: "🇲🇾",
+    code: "my",
     price: "950€",
     unit: "/ dossier",
     popular: true,
@@ -113,7 +121,7 @@ const PLANS = [
   },
   {
     country: "Turquie",
-    flag: "🇹🇷",
+    code: "tr",
     price: "650€",
     unit: "/ dossier",
     popular: false,
@@ -216,7 +224,7 @@ export default function ServicesPage() {
                   <span className="font-head text-xs font-bold uppercase tracking-[0.12em] text-gold-600">
                     {plan.country}
                   </span>
-                  <span className="text-lg leading-none">{plan.flag}</span>
+                  <Flag code={plan.code} className="h-3.5 w-5" title={plan.country} />
                   {plan.popular && (
                     <span className="rounded-full bg-gold-500 px-2.5 py-0.5 font-head text-[10px] font-bold uppercase tracking-wide text-white">
                       Populaire
@@ -236,8 +244,8 @@ export default function ServicesPage() {
                 <ul className="mb-8 space-y-3.5">
                   {plan.features.map((f) => (
                     <li key={f} className="flex items-start gap-3 text-sm text-slate-600">
-                      <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-gold-100 text-[11px] font-bold text-gold-600">
-                        ✓
+                      <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-gold-100 text-gold-600">
+                        <Icon name="check" className="h-3 w-3" strokeWidth={3} />
                       </span>
                       {f}
                     </li>

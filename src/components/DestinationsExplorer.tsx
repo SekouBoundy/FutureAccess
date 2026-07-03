@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Photo from "@/components/Photo";
+import { Icon, Flag } from "@/components/icons";
 import { DESTINATIONS } from "@/data/destinations";
 
 const FILTERS = [
@@ -48,7 +49,6 @@ export default function DestinationsExplorer() {
               <Photo
                 src={d.image}
                 alt={d.country}
-                icon={d.flag}
                 label={d.country}
                 className="absolute inset-0 h-full w-full transition-transform duration-500 group-hover:scale-105"
               />
@@ -58,12 +58,14 @@ export default function DestinationsExplorer() {
                 className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"
               />
               {/* Drapeau */}
-              <span className="absolute bottom-6 right-5 text-2xl drop-shadow-lg">{d.flag}</span>
+              <span className="absolute bottom-6 right-5 drop-shadow-lg">
+                <Flag code={d.code} className="h-5 w-7" title={d.country} />
+              </span>
 
               {/* Contenu */}
               <div className="absolute inset-x-0 bottom-0 p-6">
-                <h3 className="flex items-center gap-1.5 font-head text-2xl font-extrabold text-white">
-                  <span className="text-lg">📍</span>
+                <h3 className="flex items-center gap-2 font-head text-2xl font-extrabold text-white">
+                  <Icon name="map-pin" className="h-5 w-5 text-gold-400" />
                   {d.country}
                 </h3>
                 <div className="mb-4 mt-1.5 flex items-center gap-2.5">

@@ -1,5 +1,6 @@
 import Photo from "@/components/Photo";
 import NewsletterForm from "@/components/NewsletterForm";
+import { Icon, Star, Flag } from "@/components/icons";
 import { DESTINATIONS } from "@/data/destinations";
 
 // Icônes SVG (style trait, jeu Lucide) — remplacent les emojis
@@ -149,7 +150,6 @@ export default function Home() {
           <Photo
             src="/images/hero-student.png"
             alt="Étudiante prête pour ses études à l'international"
-            icon="🎓"
             label="Photo héro — étudiante"
             fit="contain"
             className="h-80 w-full sm:h-96 lg:h-[32rem]"
@@ -166,8 +166,9 @@ export default function Home() {
               Nos avantages
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-300 to-gold-500" />
             </span>
-            <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">
-              Pourquoi choisir FutureAccess pour votre orientation&nbsp;?
+            <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
+              Pourquoi choisir <em className="font-display-italic font-normal">FutureAccess</em>{" "}
+              pour votre orientation&nbsp;?
             </h2>
           </div>
 
@@ -208,15 +209,19 @@ export default function Home() {
                 <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
                 Destinations populaires
               </span>
-              <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">
+              <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
                 Découvrez les pays les plus plébiscités par nos étudiants
               </h2>
             </div>
             <a
               href="/destinations"
-              className="font-head text-sm font-semibold text-blue-600 hover:text-blue-500"
+              className="group inline-flex items-center gap-1.5 font-head text-sm font-semibold text-blue-600 hover:text-blue-500"
             >
-              Voir toutes les destinations →
+              Voir toutes les destinations
+              <Icon
+                name="arrow-right"
+                className="h-4 w-4 transition-transform group-hover:translate-x-1"
+              />
             </a>
           </div>
 
@@ -229,12 +234,11 @@ export default function Home() {
                 <Photo
                   src={d.image}
                   alt={d.country}
-                  icon={d.flag}
                   label={d.country}
                   className="h-56 w-full transition-transform duration-500 group-hover:scale-105"
                 />
-                <span className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white/90 text-lg">
-                  {d.flag}
+                <span className="absolute right-4 top-4 grid h-9 w-9 place-items-center rounded-full bg-white/90">
+                  <Flag code={d.code} className="h-3.5 w-5" title={d.country} />
                 </span>
                 <div className="p-5">
                   <h3 className="font-head text-lg font-bold text-white">{d.country}</h3>
@@ -262,8 +266,9 @@ export default function Home() {
               Comment ça marche&nbsp;?
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-300 to-gold-500" />
             </span>
-            <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">
-              Un processus clair, étape par étape
+            <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
+              Un processus <em className="font-display-italic font-normal">clair</em>, étape par
+              étape
             </h2>
           </div>
 
@@ -285,16 +290,21 @@ export default function Home() {
       </section>
 
       {/* ===== TÉMOIGNAGES ===== */}
-      <section className="bg-cream py-16 lg:py-24">
-        <div className="mx-auto max-w-7xl px-6">
+      <section className="relative overflow-hidden bg-navy-900 py-16 text-white lg:py-24">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 [background:radial-gradient(110%_80%_at_50%_-10%,rgba(46,116,230,.25),transparent_60%),radial-gradient(70%_50%_at_100%_100%,rgba(201,162,39,.12),transparent_55%)]"
+        />
+        <div className="relative mx-auto max-w-7xl px-6">
           <div className="mx-auto mb-12 max-w-2xl text-center">
-            <span className="mb-3 inline-flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+            <span className="mb-3 inline-flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-400">
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
               Ce que disent nos étudiants
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-300 to-gold-500" />
             </span>
-            <h2 className="text-2xl font-extrabold text-navy-800 lg:text-3xl">
-              Des parcours réussis, partout dans le monde
+            <h2 className="text-3xl font-extrabold lg:text-4xl">
+              Des parcours <em className="font-display-italic font-normal">réussis</em>, partout
+              dans le monde
             </h2>
           </div>
 
@@ -302,24 +312,27 @@ export default function Home() {
             {TESTIMONIALS.map((t) => (
               <div
                 key={t.name}
-                className="rounded-3xl border border-slate-100 bg-white p-6 shadow-[0_2px_8px_rgba(10,37,64,.06)]"
+                className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
               >
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="text-gold-500">★★★★★</span>
-                  <span className="text-xs font-semibold text-slate-400">5/5</span>
+                  <span className="flex gap-0.5 text-gold-400">
+                    {Array.from({ length: 5 }, (_, i) => (
+                      <Star key={i} className="h-4 w-4" />
+                    ))}
+                  </span>
+                  <span className="text-xs font-semibold text-white/50">5/5</span>
                 </div>
-                <p className="mb-5 text-sm text-slate-600">&ldquo;{t.text}&rdquo;</p>
+                <p className="mb-5 text-sm text-white/80">&ldquo;{t.text}&rdquo;</p>
                 <div className="flex items-center gap-3">
                   <Photo
                     src={t.avatar}
                     alt={t.name}
-                    icon="🙂"
                     label=""
                     className="h-10 w-10 flex-none rounded-full"
                   />
                   <div>
-                    <p className="font-head text-sm font-bold text-navy-800">{t.name}</p>
-                    <p className="text-xs text-slate-500">{t.country}</p>
+                    <p className="font-head text-sm font-bold text-white">{t.name}</p>
+                    <p className="text-xs text-white/60">{t.country}</p>
                   </div>
                 </div>
               </div>
@@ -329,15 +342,24 @@ export default function Home() {
       </section>
 
       {/* ===== NEWSLETTER CTA ===== */}
-      <section className="bg-navy-900 py-16 text-center text-white lg:py-20">
-        <div className="mx-auto max-w-2xl px-6">
-          <h2 className="mb-3 text-2xl font-extrabold lg:text-3xl">
-            Prêt à commencer votre aventure académique&nbsp;?
-          </h2>
-          <p className="mb-8 text-white/75">
-            Rejoignez plus de 500 étudiants qui ont réalisé leur rêve avec FutureAccess.
-          </p>
-          <NewsletterForm />
+      <section className="bg-cream py-16 lg:py-20">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="relative overflow-hidden rounded-[34px] bg-navy-800 px-6 py-14 text-center text-white lg:px-16 lg:py-16">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 [background:radial-gradient(110%_90%_at_80%_-10%,rgba(46,116,230,.35),transparent_55%),radial-gradient(80%_60%_at_0%_110%,rgba(201,162,39,.18),transparent_50%)]"
+            />
+            <div className="relative mx-auto max-w-2xl">
+              <h2 className="mb-3 text-3xl font-extrabold lg:text-4xl">
+                Prêt à commencer votre{" "}
+                <em className="font-display-italic font-normal">aventure</em>&nbsp;?
+              </h2>
+              <p className="mb-8 text-white/75">
+                Rejoignez plus de 500 étudiants qui ont réalisé leur rêve avec FutureAccess.
+              </p>
+              <NewsletterForm />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -345,8 +367,9 @@ export default function Home() {
       <section id="apropos" className="bg-paper py-16 lg:py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
           <div>
-            <h2 className="mb-4 text-2xl font-extrabold text-navy-800 lg:text-3xl">
-              Votre réussite académique est notre priorité
+            <h2 className="mb-4 text-3xl font-extrabold text-navy-800 lg:text-4xl">
+              Votre <em className="font-display-italic font-normal">réussite</em> académique est
+              notre priorité
             </h2>
             <p className="mb-6 text-slate-600">
               Nous développons activement des collaborations avec des universités reconnues afin
@@ -356,8 +379,8 @@ export default function Home() {
             <ul className="mb-8 space-y-3">
               {SUCCESS_CHECKLIST.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-sm text-slate-600">
-                  <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center rounded-full bg-gold-100 text-xs font-bold text-gold-600">
-                    ✓
+                  <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center rounded-full bg-gold-100 text-gold-600">
+                    <Icon name="check" className="h-3.5 w-3.5" strokeWidth={3} />
                   </span>
                   {item}
                 </li>
@@ -374,7 +397,6 @@ export default function Home() {
           <Photo
             src="/images/success-team.jpg"
             alt="Étudiants qui étudient ensemble en bibliothèque"
-            icon="📚"
             label="Photo — étudiants en bibliothèque"
             className="h-72 w-full rounded-[28px] shadow-[0_10px_30px_rgba(10,37,64,.10)] sm:h-96"
           />

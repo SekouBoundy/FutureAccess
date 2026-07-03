@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Icon, Whatsapp } from "@/components/icons";
 
 const NAV_LINKS = [
   { href: "/#accueil", label: "Accueil" },
@@ -77,14 +78,23 @@ export default function Footer() {
             Contact
           </h4>
           <div className="space-y-3 text-sm">
-            <p className="flex items-start gap-2">
-              <span className="text-gold-300">📧</span> contact@futureaccess.com
+            <p className="flex items-start gap-2.5">
+              <span className="mt-0.5 text-gold-300">
+                <Icon name="mail" className="h-4 w-4" />
+              </span>
+              contact@futureaccess.com
             </p>
-            <p className="flex items-start gap-2">
-              <span className="text-gold-300">📍</span> Bamako, Mali
+            <p className="flex items-start gap-2.5">
+              <span className="mt-0.5 text-gold-300">
+                <Icon name="map-pin" className="h-4 w-4" />
+              </span>
+              Bamako, Mali
             </p>
-            <p className="flex items-start gap-2">
-              <span className="text-gold-300">📞</span> +223 92 24 63 42
+            <p className="flex items-start gap-2.5">
+              <span className="mt-0.5 text-gold-300">
+                <Icon name="phone" className="h-4 w-4" />
+              </span>
+              +223 92 24 63 42
             </p>
           </div>
         </div>
@@ -97,7 +107,8 @@ export default function Footer() {
             href="https://wa.me/22392246342"
             className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3 font-head text-sm font-bold text-[#063e1c]"
           >
-            💬 Discuter sur WhatsApp
+            <Whatsapp className="h-4 w-4" />
+            Discuter sur WhatsApp
           </a>
         </div>
       </div>
