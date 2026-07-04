@@ -129,7 +129,7 @@ export default function ContactPage() {
 
             <a
               href={WHATSAPP}
-              className="mt-6 inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-[#25D366] py-3.5 font-head font-bold text-[#063e1c] transition-transform hover:-translate-y-0.5"
+              className="mt-6 inline-flex w-full items-center justify-center gap-2.5 rounded-full bg-[#25D366] py-3.5 font-head font-bold text-white transition-transform hover:-translate-y-0.5"
             >
               <Whatsapp className="h-5 w-5" />
               Discuter sur WhatsApp

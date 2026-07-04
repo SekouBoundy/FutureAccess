@@ -21,7 +21,7 @@ export default function NewsletterForm() {
       />
       <button
         type="submit"
-        className="rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-6 py-3.5 font-head text-sm font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)]"
+        className="rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-6 py-3.5 font-head text-sm font-bold text-white shadow-[0_14px_34px_rgba(201,162,39,.34)]"
       >
         {sent ? "Merci !" : "S'inscrire"}
       </button>

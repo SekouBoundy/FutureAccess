@@ -82,6 +82,40 @@ function Star({ className = "h-4 w-4" }: { className?: string }) {
     </svg>
   );
 }
+function ArrowRight({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden
+    >
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
+    </svg>
+  );
+}
+function ShieldCheck({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden
+    >
+      <path d="M12 3l7 3v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z" />
+      <polyline points="9 12 11 14 15 10" />
+    </svg>
+  );
+}
 
 export default async function DestinationDetailPage({
   params,
@@ -320,56 +354,86 @@ export default async function DestinationDetailPage({
           {(() => {
             const f = d.forfait;
             const inner = (
-              <div className="relative rounded-[26px] bg-navy-800 p-8 text-center text-white shadow-[0_24px_60px_rgba(10,37,64,.22)] lg:p-10">
-                {f.badgePosition === "corner" ? (
-                  <span className="absolute right-6 top-6 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-3.5 py-1 font-head text-[11px] font-bold uppercase tracking-wide text-[#3a2c08]">
-                    {f.badge}
-                  </span>
-                ) : (
-                  <span className="inline-block rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-4 py-1 font-head text-[11px] font-bold uppercase tracking-wide text-[#3a2c08]">
-                    {f.badge}
-                  </span>
-                )}
-                <p
-                  className={`font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-400 ${
-                    f.badgePosition === "corner" ? "" : "mt-6"
-                  }`}
-                >
-                  {f.label}
-                </p>
-                <div className="mt-3 font-head text-5xl font-extrabold lg:text-6xl">
-                  {f.price}
-                  {f.priceUnit && (
-                    <span className="text-2xl font-bold text-white/60"> {f.priceUnit}</span>
+              <div className="relative overflow-hidden rounded-[26px] bg-gradient-to-b from-navy-700 to-navy-900 p-8 text-center text-white ring-1 ring-white/10 lg:p-10">
+                {/* halo doré derrière le prix */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute -top-16 left-1/2 h-52 w-52 -translate-x-1/2 rounded-full bg-gold-400/20 blur-[64px]"
+                />
+                {/* filet de lumière sur le bord supérieur */}
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
+                />
+                <div className="relative">
+                  {f.badgePosition === "corner" ? (
+                    <span className="absolute right-0 top-0 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-3.5 py-1 font-head text-[11px] font-bold uppercase tracking-wide text-[#3a2c08] shadow-[0_6px_16px_rgba(201,162,39,.4)]">
+                      <Star className="h-3 w-3" />
+                      {f.badge}
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-4 py-1.5 font-head text-[11px] font-bold uppercase tracking-wide text-[#3a2c08] shadow-[0_6px_16px_rgba(201,162,39,.4)]">
+                      <Star className="h-3 w-3" />
+                      {f.badge}
+                    </span>
                   )}
+                  <p
+                    className={`font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-300 ${
+                      f.badgePosition === "corner" ? "" : "mt-6"
+                    }`}
+                  >
+                    {f.label}
+                  </p>
+                  <div className="mt-3 font-head text-5xl font-extrabold tracking-tight lg:text-6xl">
+                    {f.price}
+                    {f.priceUnit && (
+                      <span className="text-2xl font-bold text-white/55"> {f.priceUnit}</span>
+                    )}
+                  </div>
+                  {f.priceApprox && (
+                    <p className="mt-2 font-head text-sm font-semibold text-white/55">
+                      {f.priceApprox}
+                    </p>
+                  )}
+
+                  <div className="mx-auto mt-8 h-px max-w-sm bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+
+                  <ul className="mx-auto mt-6 max-w-sm space-y-3.5 text-left">
+                    {f.features.map((feat) => (
+                      <li key={feat} className="flex items-start gap-3 text-sm text-white/90">
+                        <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-gold-400/15 text-gold-300 ring-1 ring-gold-400/25">
+                          <Check className="h-3 w-3" />
+                        </span>
+                        {feat}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href="/contact"
+                    className="group mt-8 flex items-center justify-center gap-2 rounded-full bg-gradient-to-b from-gold-300 via-gold-400 to-gold-600 py-4 font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] ring-1 ring-inset ring-white/25 transition-transform hover:-translate-y-0.5"
+                  >
+                    Commencer maintenant
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </a>
+                  <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-white/50">
+                    <ShieldCheck className="h-3.5 w-3.5 text-gold-300" />
+                    Sans engagement · Réponse sous 48&nbsp;h
+                  </p>
                 </div>
-                {f.priceApprox && (
-                  <p className="mt-2 font-head font-bold text-white/60">{f.priceApprox}</p>
-                )}
-                <ul className="mx-auto mt-8 max-w-sm space-y-3 text-left">
-                  {f.features.map((feat) => (
-                    <li key={feat} className="flex items-start gap-3 text-sm text-white/90">
-                      <span className="mt-0.5 flex-none text-gold-400">
-                        <Check className="h-4 w-4" />
-                      </span>
-                      {feat}
-                    </li>
-                  ))}
-                </ul>
-                <a
-                  href="/contact"
-                  className="mt-8 block rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-4 font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
-                >
-                  Commencer maintenant
-                </a>
               </div>
             );
-            return f.goldBorder ? (
+            const framed = f.goldBorder ? (
               <div className="rounded-[28px] bg-gradient-to-br from-gold-400 to-gold-600 p-[3px]">
                 {inner}
               </div>
             ) : (
               inner
+            );
+            return (
+              <div className="rounded-[28px] shadow-[0_24px_60px_rgba(10,37,64,.28)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_40px_90px_rgba(10,37,64,.45)]">
+                {framed}
+              </div>
             );
           })()}
         </div>

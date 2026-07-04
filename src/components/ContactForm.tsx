@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { DESTINATIONS } from "@/data/destinations";
+import { DESTINATION_DETAILS } from "@/data/destination-details";
 import { Icon } from "@/components/icons";
 
 const inputClass =
@@ -10,6 +11,11 @@ const labelClass = "mb-1.5 block font-head text-sm font-semibold text-navy-800";
 
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [destination, setDestination] = useState("");
+  const [program, setProgram] = useState("");
+
+  // Niveaux disponibles pour le pays choisi (vide si le pays n'a pas de programmes définis)
+  const levels = (destination && DESTINATION_DETAILS[destination]?.programs) || [];
 
   if (sent) {
     return (
@@ -23,7 +29,11 @@ export default function ContactForm() {
         </p>
         <button
           type="button"
-          onClick={() => setSent(false)}
+          onClick={() => {
+            setSent(false);
+            setDestination("");
+            setProgram("");
+          }}
           className="rounded-full border border-slate-200 px-6 py-2.5 font-head text-sm font-bold text-navy-800 transition-colors hover:border-navy-800/40"
         >
           Envoyer un autre message
@@ -76,7 +86,16 @@ export default function ContactForm() {
           <label htmlFor="destination" className={labelClass}>
             Destination souhaitée
           </label>
-          <select id="destination" name="destination" defaultValue="" className={inputClass}>
+          <select
+            id="destination"
+            name="destination"
+            value={destination}
+            onChange={(e) => {
+              setDestination(e.target.value);
+              setProgram(""); // on repart de zéro : les programmes dépendent du pays
+            }}
+            className={inputClass}
+          >
             <option value="" disabled>
               Choisir…
             </option>
@@ -90,6 +109,31 @@ export default function ContactForm() {
           </select>
         </div>
       </div>
+
+      {/* Champ dépendant : n'apparaît que si le pays choisi a des programmes définis */}
+      {levels.length > 0 && (
+        <div className="mt-5">
+          <label htmlFor="program" className={labelClass}>
+            Programme souhaité
+          </label>
+          <select
+            id="program"
+            name="program"
+            value={program}
+            onChange={(e) => setProgram(e.target.value)}
+            className={inputClass}
+          >
+            <option value="" disabled>
+              Choisir un niveau…
+            </option>
+            {levels.map((lvl) => (
+              <option key={lvl.level} value={lvl.level}>
+                {lvl.level}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
 
       <div className="mt-5">
         <label htmlFor="message" className={labelClass}>
@@ -107,7 +151,7 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="mt-6 w-full rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-3.5 font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
+        className="mt-6 w-full rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-3.5 font-head font-bold text-white  transition-transform hover:-translate-y-0.5"
       >
         Envoyer le message
       </button>

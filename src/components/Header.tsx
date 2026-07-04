@@ -21,9 +21,14 @@ const WHATSAPP = "https://wa.me/22392246342";
 
 function Brand({ className = "" }: { className?: string }) {
   return (
-    <span className={`font-head text-xl font-extrabold tracking-tight ${className}`}>
-      <span className="text-blue-500">Future</span>
-      <span className="text-gold-400">Access</span>
+    <span className={`inline-flex flex-col leading-none ${className}`}>
+      <span className="font-head text-xl font-extrabold tracking-tight">
+        <span className="text-blue-500">Future</span>
+        <span className="text-gold-400">Access</span>
+      </span>
+      <span className="mt-1 self-end font-head text-[10px] font-bold uppercase tracking-[0.3em] text-gold-300/80">
+        Mali
+      </span>
     </span>
   );
 }
@@ -48,8 +53,8 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-5">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-[28px] border border-white/10 bg-black/30 px-5 py-3 backdrop-blur-xl sm:px-7">
+      <header className="fixed inset-x-0 top-0 z-[70] px-3 pt-3 sm:px-5 sm:pt-5">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-[28px] border border-white/10 bg-navy-900/95 px-5 py-3 shadow-[0_12px_34px_rgba(6,20,39,.35)] backdrop-blur-xl sm:px-7">
           <Link href="/#accueil" aria-label="FutureAccess — accueil">
             <Brand />
           </Link>
@@ -90,13 +95,29 @@ export default function Header() {
               <Icon name="phone" className="h-4 w-4" />
             </a>
             <button
-              aria-label="Ouvrir le menu"
+              aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"}
               aria-controls="menu-mobile"
               aria-expanded={menuOpen}
-              onClick={() => setMenuOpen(true)}
-              className="grid h-10 w-10 place-items-center rounded-2xl border border-white/25 bg-white/10 text-white"
+              onClick={() => setMenuOpen((v) => !v)}
+              className="grid h-10 w-10 place-items-center rounded-2xl border border-white/25 bg-white/10 text-white transition-colors hover:bg-white/20"
             >
-              <span className="relative block h-0.5 w-5 rounded bg-current before:absolute before:-top-1.5 before:h-0.5 before:w-5 before:rounded before:bg-current after:absolute after:top-1.5 after:h-0.5 after:w-5 after:rounded after:bg-current" />
+              <span aria-hidden className="relative block h-4 w-5">
+                <span
+                  className={`absolute left-0 block h-0.5 w-5 rounded-full bg-current transition-all duration-300 ease-out ${
+                    menuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0.5"
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 top-1/2 block h-0.5 w-5 -translate-y-1/2 rounded-full bg-current transition-all duration-200 ease-out ${
+                    menuOpen ? "scale-x-0 opacity-0" : "opacity-100"
+                  }`}
+                />
+                <span
+                  className={`absolute left-0 block h-0.5 w-5 rounded-full bg-current transition-all duration-300 ease-out ${
+                    menuOpen ? "bottom-1/2 translate-y-1/2 -rotate-45" : "bottom-0.5"
+                  }`}
+                />
+              </span>
             </button>
           </div>
         </div>
@@ -112,32 +133,20 @@ export default function Header() {
         }`}
       />
 
-      {/* Panneau : descend du header, dimensionné au contenu */}
+      {/* Panneau : dropdown sous le header, dimensionné au contenu */}
       <div
         id="menu-mobile"
         role="dialog"
         aria-modal="true"
         aria-label="Menu de navigation"
-        className={`fixed inset-x-3 top-3 z-[60] flex max-h-[calc(100dvh-1.5rem)] flex-col overflow-y-auto rounded-[28px] border border-white/10 bg-gradient-to-br from-navy-900 to-navy-700 px-5 pb-6 pt-3 shadow-[0_30px_70px_rgba(0,0,0,.5)] transition-all duration-300 ease-out sm:inset-x-5 sm:top-5 sm:px-7 lg:hidden ${
+        className={`fixed inset-x-3 top-20 z-[60] flex max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto rounded-[28px] border border-white/10 bg-gradient-to-br from-navy-900 to-navy-700 px-5 pb-6 pt-5 shadow-[0_30px_70px_rgba(0,0,0,.5)] transition-all duration-300 ease-out sm:inset-x-5 sm:top-24 sm:px-7 lg:hidden ${
           menuOpen
             ? "translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-4 opacity-0"
         }`}
       >
-        {/* En-tête du panneau : reprend la pilule du header */}
-        <div className="flex items-center justify-between py-1">
-          <Brand />
-          <button
-            aria-label="Fermer le menu"
-            onClick={() => setMenuOpen(false)}
-            className="grid h-10 w-10 place-items-center rounded-2xl border border-white/15 bg-white/10 text-white transition-colors hover:bg-white/20"
-          >
-            <Icon name="close" className="h-5 w-5" />
-          </button>
-        </div>
-
         {/* Liens — état actif en doré */}
-        <nav className="mt-3 flex flex-col">
+        <nav className="flex flex-col">
           {NAV_LINKS.map((link) => {
             const active = isActive(link.href);
             return (

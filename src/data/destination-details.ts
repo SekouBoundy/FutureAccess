@@ -103,6 +103,10 @@ const malaisie: DestinationDetail = {
     "Visa étudiant facile à obtenir",
   ],
   opportunitiesImage: "/images/destinations/malaysia-campus.jpg",
+  whyStudy: {
+    title: "Pourquoi étudier en Malaisie ?",
+    text: "La Malaisie offre un enseignement de qualité, des universités reconnues à l'international, des programmes majoritairement dispensés en anglais et un coût de vie abordable. C'est une destination idéale pour obtenir un diplôme reconnu tout en évoluant dans un environnement multiculturel.",
+  },
   universities: [
     {
       abbr: "UM",
@@ -145,8 +149,8 @@ const malaisie: DestinationDetail = {
     badge: "Tout inclus",
     badgePosition: "top",
     goldBorder: true,
-    price: "800 000 FCFA",
-    priceApprox: "(≈ 1 200 €) / dossier",
+    price: "500 000 FCFA",
+    priceApprox: "(≈ 762.99 €) / dossier",
     features: [
       "Orientation personnalisée",
       "Accompagnement complet vers l'admission",
@@ -253,21 +257,11 @@ const malaisie: DestinationDetail = {
           items: [
             "Technologies de l'information (IT)",
             "Informatique",
+            "Cybersécurité",
             "Génie logiciel",
             "Intelligence artificielle (IA)",
-            "Cybersécurité",
             "Développement de jeux vidéo",
             "Médias interactifs et technologies immersives",
-          ],
-        },
-        {
-          title: "Commerce & Management",
-          items: [
-            "Gestion d'entreprise",
-            "Gestion du commerce international",
-            "Marketing",
-            "Marketing digital",
-            "Gestion des ressources humaines",
           ],
         },
         {
@@ -277,26 +271,36 @@ const malaisie: DestinationDetail = {
             "Comptabilité et finance",
             "Banque et finance",
             "Technologie financière (FinTech)",
-            "Sciences actuarielles",
           ],
         },
-        { icon: "🏛️", title: "Architecture", items: ["Architecture"] },
         {
-          title: "Design & Médias",
+          title: "Commerce & Management",
           items: [
-            "Design industriel",
-            "Animation",
-            "Effets visuels (VFX)",
-            "Publicité numérique",
-            "Études des médias et de la communication",
+            "Management",
+            "Commerce international",
+            "Gestion des ressources humaines",
+            "Marketing digital",
           ],
+        },
+        {
+          title: "Médias & Communication",
+          items: ["Médias et communication"],
         },
         { title: "Sciences sociales", items: ["Relations internationales", "Psychologie"] },
         {
           icon: "✈️",
-          title: "Tourisme & Hôtellerie",
-          items: ["Gestion du tourisme", "Hôtellerie et tourisme"],
+          title: "Hôtellerie & Tourisme",
+          items: ["Hôtellerie et tourisme"],
         },
+        {
+          title: "Ingénierie",
+          items: [
+            "Génie électrique et électronique",
+            "Génie mécatronique",
+            "Génie mécanique",
+          ],
+        },
+        { icon: "🏛️", title: "Architecture", items: ["Architecture"] },
       ],
     },
     {
@@ -305,17 +309,17 @@ const malaisie: DestinationDetail = {
         {
           title: "Ingénierie",
           items: [
-            "Génie électrique et électronique",
-            "Génie mécanique",
             "Génie mécatronique",
-            "Génie informatique",
+            "Génie mécanique",
             "Génie pétrolier",
+            "Génie informatique",
+            "Génie électrique et électronique",
           ],
         },
       ],
     },
     {
-      level: "Master (Mastère)",
+      level: "Master (2 ans)",
       groups: [
         {
           title: "Informatique & Technologies",
@@ -323,33 +327,32 @@ const malaisie: DestinationDetail = {
             "Génie logiciel",
             "Intelligence artificielle (IA)",
             "Cybersécurité",
-            "Science des données et analyse commerciale",
+            "Science des données et analytique des affaires",
             "Gestion des technologies de l'information",
-            "Gestion des technologies",
+            "Management de la technologie",
             "Transformation numérique",
-            "Informatique",
           ],
         },
         {
           title: "Commerce & Management",
-          items: ["Master en administration des affaires (MBA)", "Gestion de projets"],
+          items: [
+            "Administration des affaires (MBA)",
+            "MBA en Leadership numérique",
+            "MBA en Analytique des affaires",
+            "MBA en Hôtellerie et tourisme",
+            "Gestion de projets",
+          ],
         },
         {
           icon: "💰",
           title: "Comptabilité & Finance",
-          items: ["Comptabilité", "Finance", "Sciences actuarielles"],
+          items: ["Comptabilité", "Finance (FinTech)"],
         },
         {
           title: "Marketing & Communication",
-          items: ["Marketing digital", "Communication numérique"],
+          items: ["Marketing numérique", "Communication numérique"],
         },
         { title: "Design", items: ["Management de l'innovation en design"] },
-        {
-          icon: "🎓",
-          title: "Éducation",
-          items: ["Conception pédagogique et technologies de l'éducation"],
-        },
-        { title: "Psychologie", items: ["Psychologie appliquée (Cyberpsychologie)"] },
       ],
     },
   ],
@@ -420,12 +423,13 @@ const turquie: DestinationDetail = {
       text: "Finalisation du visa turc et réservation de votre résidence étudiante.",
     },
   ],
+  
   forfait: {
     label: "Forfait Turquie",
     badge: "Populaire",
     badgePosition: "corner",
-    price: "950€",
-    priceUnit: "/ dossier",
+    price: "500 000 FCFA",
+    priceApprox: "(≈ 762.99 €) / dossier",
     features: [
       "Conseil stratégique",
       "Admission garantie 100%",
@@ -461,29 +465,31 @@ const turquie: DestinationDetail = {
       },
     ],
   },
-  procedureCosts: {
+    procedureCosts: {
     subtitle: "Détail des frais liés à la candidature et au visa étudiant.",
     cards: [
       {
         icon: "📄",
-        title: "Frais d'agence FutureAccess",
-        amount: "500 000 FCFA (≈ 762 €)",
-        itemsLabel: "Versements",
+        title: "Frais d'agence",
+        amount: "500 000 FCFA (≈ 760 €)",
         items: [
-          { icon: "→", text: "1er : 300 000 FCFA" },
-          { icon: "→", text: "2ème : 200 000 FCFA" },
+          { text: "Premier versement : 300 000 FCFA (≈ 457 €)" },
+          { text: "Deuxième versement : 200 000 FCFA (≈ 304 €)" },
         ],
       },
       {
-        icon: "🛡️",
-        title: "Visa et assurance + Frais de réception",
+        icon: "🏛️",
+        title: "Frais de visa",
+        amount: "550 000 FCFA (≈ 838 €)",
         items: [
-          { icon: "→", text: "Visa & assurance : 160 000 FCFA (≈ 244 €)" },
-          { icon: "✈️", text: "Accueil à l'arrivée : 90 000 FCFA (≈ 137 €)" },
+          {
+            text: "Les frais de visa comprennent les frais de traitement de la demande de visa étudiant ainsi que les frais administratifs exigés par les autorités malaisiennes.",
+          },
         ],
       },
     ],
   },
+
   applicationDuration: "4 à 6 semaines",
   applicationLayout: "grid",
   applicationSteps: [

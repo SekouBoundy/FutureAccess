@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Photo from "@/components/Photo";
-import StatsBand from "@/components/StatsBand";
 import CtaCard from "@/components/CtaCard";
 
 export const metadata: Metadata = {
@@ -25,6 +24,12 @@ const ICONS: Record<string, React.ReactNode> = {
       <path d="m9 12 2 2 4-4" />
     </>
   ),
+  clock: (
+    <>
+      <circle cx="12" cy="12" r="10" />
+      <polyline points="12 6 12 12 16 14" />
+    </>
+  ),
   award: (
     <>
       <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526" />
@@ -36,11 +41,13 @@ const ICONS: Record<string, React.ReactNode> = {
   ),
 };
 
-const STATS = [
-  { value: "500+", label: "Étudiants accompagnés" },
-  { value: "98%", label: "Taux d'admission" },
-  { value: "15+", label: "Pays partenaires" },
-  { value: "10+", label: "Années d'expérience" },
+// Engagements vérifiables — pas de chiffres de volume (l'agence démarre).
+// Alignés sur la barre de confiance du hero d'accueil.
+const TRUST = [
+  { icon: "shield", label: "Sans frais cachés" },
+  { icon: "clock", label: "Réponse sous 24 h" },
+  { icon: "users", label: "Conseiller dédié" },
+  { icon: "award", label: "Accompagnement de A à Z" },
 ];
 
 const VALUES = [
@@ -113,7 +120,7 @@ export default function AProposPage() {
               Rendre les études à l&apos;étranger accessibles à tous
             </h2>
             <p className="mb-4 text-slate-600">
-              FutureAccess met son expertise au service des étudiants qui souhaitent poursuivre leurs
+              FutureAccess Mali met son expertise au service des étudiants qui souhaitent poursuivre leurs
               études à l&apos;international. De l&apos;orientation au visa, jusqu&apos;à votre
               installation, nous simplifions chaque étape de votre parcours.
             </p>
@@ -124,7 +131,7 @@ export default function AProposPage() {
             </p>
             <a
               href="/services"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-7 py-4 font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-7 py-4 font-head font-bold text-white  transition-transform hover:-translate-y-0.5"
             >
               Découvrir nos services
             </a>
@@ -141,13 +148,19 @@ export default function AProposPage() {
         </div>
       </section>
 
-      {/* ===== CHIFFRES ===== */}
+      {/* ===== ENGAGEMENTS (barre de confiance, identique au hero d'accueil) ===== */}
       <section className="bg-navy-900 py-14 text-white lg:py-16">
         <div className="mx-auto max-w-6xl px-6">
-          <StatsBand
-            stats={STATS}
-            className="grid grid-cols-2 gap-8 text-center lg:grid-cols-4"
-          />
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-6 lg:flex lg:flex-wrap lg:justify-between lg:gap-8">
+            {TRUST.map((t) => (
+              <li key={t.label} className="flex items-center gap-3">
+                <span className="grid h-10 w-10 flex-none place-items-center rounded-xl bg-white/5 text-gold-400 ring-1 ring-white/10">
+                  <Icon name={t.icon} className="h-5 w-5" />
+                </span>
+                <span className="font-head text-sm font-semibold text-white/90">{t.label}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

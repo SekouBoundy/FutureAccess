@@ -1,7 +1,7 @@
 import Photo from "@/components/Photo";
 import NewsletterForm from "@/components/NewsletterForm";
-import StatsBand from "@/components/StatsBand";
-import { Icon, Star, Flag } from "@/components/icons";
+import TestimonialsCarousel, { type Testimonial } from "@/components/TestimonialsCarousel";
+import { Icon, Flag } from "@/components/icons";
 import { DESTINATIONS } from "@/data/destinations";
 
 // Icônes SVG (style trait, jeu Lucide) — remplacent les emojis
@@ -60,11 +60,13 @@ const ADVANTAGES = [
   },
 ];
 
-const STATS = [
-  { value: "500+", label: "Étudiants accompagnés" },
-  { value: "98%", label: "Taux d'admission" },
-  { value: "15+", label: "Pays partenaires" },
-  { value: "10+", label: "Années d'expérience" },
+// Engagements vérifiables (pas de chiffres de volume : l'agence démarre).
+// Chaque promesse est déjà tenue ailleurs sur le site.
+const TRUST = [
+  { icon: "shield", label: "Sans frais cachés" },
+  { icon: "clock", label: "Réponse sous 24 h" },
+  { icon: "users", label: "Conseiller dédié" },
+  { icon: "award", label: "Assistance complète de A à Z" },
 ];
 
 const PROCESS_STEPS = [
@@ -82,24 +84,27 @@ const PROCESS_STEPS = [
   },
 ];
 
-const TESTIMONIALS = [
+// ⚠️ Témoignages à remplacer par de VRAIS avis dès vos premiers clients.
+// Volontairement modestes : centrés sur l'expérience du 1er rendez-vous,
+// la clarté et la transparence — crédibles pour une agence qui démarre.
+const TESTIMONIALS: Testimonial[] = [
   {
-    name: "Amira Benali",
-    country: "Canada",
+    name: "Amira B.",
+    country: "Dossier Malaisie",
     avatar: "/images/testimonials/amira.jpg",
-    text: "L'équipe m'a vraiment aidé à cibler la bonne destination et à préparer mon dossier. Le suivi a été très réactif.",
+    text: "Dès le premier rendez-vous, tout était clair. On m'a expliqué chaque étape sans jargon et répondu à mes questions le jour même.",
   },
   {
-    name: "Omar Khaled",
-    country: "France",
+    name: "Omar K.",
+    country: "Dossier Turquie",
     avatar: "/images/testimonials/omar.jpg",
-    text: "Le processus était très clair et l'accompagnement post-admission a vraiment fait la différence.",
+    text: "Ce qui m'a rassuré, c'est la transparence sur les coûts. Un devis détaillé dès le départ, aucune mauvaise surprise.",
   },
   {
-    name: "Sofia Martínez",
-    country: "Maroc",
+    name: "Sofia M.",
+    country: "Dossier Chine",
     avatar: "/images/testimonials/sofia.jpg",
-    text: "FutureAccess m'a donné confiance et a géré les démarches administratives avec transparence.",
+    text: "J'étais perdue face aux démarches de visa. Mon conseiller a tout structuré avec moi, étape par étape.",
   },
 ];
 
@@ -139,7 +144,7 @@ export default function Home() {
           <div data-reveal>
             <h1 className="mb-6 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.05]">
               Construisez votre{" "}
-              <em className="font-display-italic font-normal">avenir</em> académique
+              <em className="font-display-italic font-normal color-gold-400">avenir</em> académique
             </h1>
             <p className="mb-8 max-w-[46ch] text-lg text-white/85">
               Accompagnement fiable et professionnel pour vos projets d&apos;études à
@@ -148,7 +153,7 @@ export default function Home() {
             </p>
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-8 py-4 font-head text-lg font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-8 py-4 font-head text-lg font-bold text-white shadow-[0_4px_30px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
             >
               Commencer mon projet
             </a>
@@ -166,13 +171,18 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Chiffres clés — compteurs animés */}
+        {/* Engagements — signaux de confiance vérifiables */}
         <div data-reveal="2" className="relative mx-auto mt-12 max-w-7xl px-6 lg:mt-14">
-          <StatsBand
-            stats={STATS}
-            compact
-            className="grid grid-cols-2 gap-x-6 gap-y-8 border-t border-white/10 pt-8 text-center sm:text-left lg:grid-cols-4"
-          />
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-white/10 pt-8 lg:flex lg:flex-wrap lg:justify-between lg:gap-8">
+            {TRUST.map((t) => (
+              <li key={t.label} className="flex items-center gap-3">
+                <span className="grid h-10 w-10 flex-none place-items-center rounded-xl bg-white/5 text-gold-400 ring-1 ring-white/10">
+                  <Icon name={t.icon} className="h-5 w-5" />
+                </span>
+                <span className="font-head text-sm font-semibold text-white/90">{t.label}</span>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
@@ -301,7 +311,7 @@ export default function Home() {
             />
             {PROCESS_STEPS.map((s, i) => (
               <div key={s.title} data-reveal={i} className="relative text-center">
-                <div className="relative z-10 mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-gold-600 font-head text-xl font-extrabold text-[#3a2c08] shadow-[0_10px_24px_rgba(201,162,39,.35)] ring-8 ring-paper">
+                <div className="relative z-10 mx-auto mb-5 grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-gold-600 font-head text-xl font-extrabold text-white shadow-[0_10px_24px_rgba(201,162,39,.35)] ring-8 ring-paper">
                   {i + 1}
                 </div>
                 <h3 className="mb-2 font-head text-lg font-bold text-navy-800">{s.title}</h3>
@@ -318,50 +328,20 @@ export default function Home() {
           aria-hidden
           className="pointer-events-none absolute inset-0 [background:radial-gradient(110%_80%_at_50%_-10%,rgba(46,116,230,.25),transparent_60%),radial-gradient(70%_50%_at_100%_100%,rgba(201,162,39,.12),transparent_55%)]"
         />
-        <div className="relative mx-auto max-w-7xl px-6">
-          <div data-reveal className="mx-auto mb-12 max-w-2xl text-center">
+        <div className="relative">
+          <div data-reveal className="mx-auto mb-12 max-w-2xl px-6 text-center">
             <span className="mb-3 inline-flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-400">
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
-              Ce que disent nos étudiants
+              Premiers retours
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-300 to-gold-500" />
             </span>
             <h2 className="text-3xl font-extrabold lg:text-4xl">
-              Des parcours <em className="font-display-italic font-normal">réussis</em>, partout
-              dans le monde
+              Ce qu&apos;en disent{" "}
+              <em className="font-display-italic font-normal">nos étudiants</em>
             </h2>
           </div>
 
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {TESTIMONIALS.map((t, i) => (
-              <div
-                key={t.name}
-                data-reveal={i}
-                className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm"
-              >
-                <div className="mb-3 flex items-center justify-between">
-                  <span className="flex gap-0.5 text-gold-400">
-                    {Array.from({ length: 5 }, (_, i) => (
-                      <Star key={i} className="h-4 w-4" />
-                    ))}
-                  </span>
-                  <span className="text-xs font-semibold text-white/50">5/5</span>
-                </div>
-                <p className="mb-5 text-sm text-white/80">&ldquo;{t.text}&rdquo;</p>
-                <div className="flex items-center gap-3">
-                  <Photo
-                    src={t.avatar}
-                    alt={t.name}
-                    label=""
-                    className="h-10 w-10 flex-none rounded-full"
-                  />
-                  <div>
-                    <p className="font-head text-sm font-bold text-white">{t.name}</p>
-                    <p className="text-xs text-white/60">{t.country}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <TestimonialsCarousel items={TESTIMONIALS} />
         </div>
       </section>
 
@@ -415,7 +395,7 @@ export default function Home() {
             </ul>
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-7 py-4 font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)]"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-7 py-4 font-head font-bold text-white shadow-[0_14px_34px_rgba(201,162,39,.34)]"
             >
               Prendre rendez-vous gratuitement
             </a>

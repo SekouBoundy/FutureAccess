@@ -166,7 +166,7 @@ export default function ProcessusPage() {
                 return (
                   <li key={step.title} data-reveal className="relative pl-16 lg:pl-0">
                     {/* Pastille numérotée sur la ligne */}
-                    <span className="absolute left-6 top-7 z-10 grid h-10 w-10 -translate-x-1/2 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-gold-600 font-head text-sm font-extrabold text-[#3a2c08] shadow-[0_8px_20px_rgba(201,162,39,.35)] ring-4 ring-paper lg:left-1/2">
+                    <span className="absolute left-6 top-7 z-10 grid h-10 w-10 -translate-x-1/2 place-items-center rounded-full bg-gradient-to-br from-gold-400 to-gold-600 font-head text-sm font-extrabold text-white shadow-[0_8px_20px_rgba(201,162,39,.35)] ring-4 ring-paper lg:left-1/2 lg:h-14 lg:w-14 lg:text-lg">
                       {i + 1}
                     </span>
                     <div className={`lg:w-[calc(50%-3.5rem)] ${right ? "lg:ml-auto" : ""}`}>
