@@ -79,7 +79,7 @@ export default function Footer() {
           </h4>
           <div className="space-y-3 text-sm">
             <a
-              href="mailto:futureacessmali@gmail.com"
+              href="mailto:futureaccessmali@gmail.com"
               className="flex items-start gap-2.5 transition-colors hover:text-gold-300"
             >
               <span className="mt-0.5 flex-none text-gold-300">
