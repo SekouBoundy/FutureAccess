@@ -16,7 +16,7 @@ const NAV_LINKS = [
 
 const PHONE_DISPLAY = "+223 92 24 63 42";
 const PHONE_TEL = "+22392246342";
-const EMAIL = "contact@futureaccess.com";
+const EMAIL = "futureacessmali@gmail.com";
 const WHATSAPP = "https://wa.me/22392246342";
 
 function Brand({ className = "" }: { className?: string }) {
@@ -139,7 +139,7 @@ export default function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Menu de navigation"
-        className={`fixed inset-x-3 top-20 z-[60] flex max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto rounded-[28px] border border-white/10 bg-gradient-to-br from-navy-900 to-navy-700 px-5 pb-6 pt-5 shadow-[0_30px_70px_rgba(0,0,0,.5)] transition-all duration-300 ease-out sm:inset-x-5 sm:top-24 sm:px-7 lg:hidden ${
+        className={`fixed inset-x-3 top-20 z-[60] flex max-h-[calc(100dvh-6rem)] flex-col overflow-y-auto rounded-[28px] border border-white/10 bg-navy-900 px-5 pb-6 pt-5 shadow-[0_30px_70px_rgba(0,0,0,.5)] transition-all duration-300 ease-out sm:inset-x-5 sm:top-24 sm:px-7 lg:hidden ${
           menuOpen
             ? "translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-4 opacity-0"
@@ -192,7 +192,7 @@ export default function Header() {
           <Link
             href="/contact"
             onClick={() => setMenuOpen(false)}
-            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-4 text-center font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)]"
+            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-gold-500 py-4 text-center font-head font-bold text-white shadow-[0_14px_34px_rgba(201,162,39,.34)]"
           >
             <Icon name="graduation-cap" className="h-5 w-5" />
             Commencer mon projet

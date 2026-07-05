@@ -528,6 +528,117 @@ const turquie: DestinationDetail = {
     "La Turquie offre un enseignement supérieur de qualité, un environnement multiculturel et un coût de la vie généralement plus abordable.",
   ],
   importantIcon: "info",
+  programs: [
+    {
+      level: "Licence (Baccalauréat)",
+      groups: [
+        {
+          icon: "🏗️",
+          title: "Ingénierie",
+          items: [
+            "Génie informatique",
+            "Génie électrique et électronique",
+            "Génie industriel",
+            "Génie mécanique",
+            "Génie civil",
+          ],
+        },
+        {
+          icon: "🏛️",
+          title: "Architecture & Design",
+          items: [
+            "Architecture",
+            "Architecture d'intérieur et design environnemental",
+          ],
+        },
+        {
+          icon: "💼",
+          title: "Commerce, Économie & Gestion",
+          items: [
+            "Administration des affaires",
+            "Économie",
+            "Économie et finance",
+            "Gestion de la logistique",
+            "Gestion du tourisme",
+          ],
+        },
+        {
+          icon: "⚖️",
+          title: "Sciences sociales & Droit",
+          items: [
+            "Science politique et relations internationales",
+            "Psychologie",
+            "Droit",
+          ],
+        },
+        {
+          icon: "🔬",
+          title: "Santé & Médecine",
+          items: [
+            "Médecine",
+            "Dentisterie (14 000 $/an)",
+            "Pharmacie (13 500 $/an)",
+            "Soins infirmiers",
+            "Physiothérapie et réadaptation",
+            "Sage-femme (Turc)",
+            "Nutrition et diététique (Turc)",
+          ],
+        },
+        {
+          icon: "✈️",
+          title: "Aviation",
+          items: [
+            "Gestion de l'aviation",
+            "Pilotage (Turc · 8 300 $/an)",
+          ],
+        },
+      ],
+    },
+    {
+      level: "Master",
+      groups: [
+        {
+          icon: "💼",
+          title: "Commerce & Économie",
+          items: [
+            "MBA – Administration des affaires",
+            "Économie et finance",
+          ],
+        },
+        {
+          icon: "⚖️",
+          title: "Sciences politiques & Relations internationales",
+          items: [
+            "Politique mondiale et relations internationales",
+            "Science politique et administration publique",
+          ],
+        },
+        {
+          icon: "💻",
+          title: "Informatique & Cybersécurité",
+          items: [
+            "Cybersécurité",
+            "Génie informatique",
+          ],
+        },
+        {
+          icon: "🏗️",
+          title: "Ingénierie",
+          items: [
+            "Génie électrique et informatique",
+            "Génie électrique et électronique",
+            "Génie civil",
+            "Génie aéronautique",
+          ],
+        },
+        {
+          icon: "🏛️",
+          title: "Architecture",
+          items: ["Architecture"],
+        },
+      ],
+    },
+  ],
 };
 
 const chine: DestinationDetail = {

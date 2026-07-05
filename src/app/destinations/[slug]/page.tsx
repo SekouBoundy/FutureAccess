@@ -349,90 +349,66 @@ export default async function DestinationDetailPage({
       )}
 
       {/* ===== FORFAIT ===== */}
-      <section className="bg-paper py-16 lg:py-24">
-        <div className="mx-auto max-w-xl px-6">
+      <section className="bg-slate-50 py-16 lg:py-24">
+        <div className="mx-auto max-w-lg px-6">
           {(() => {
             const f = d.forfait;
-            const inner = (
-              <div className="relative overflow-hidden rounded-[26px] bg-gradient-to-b from-navy-700 to-navy-900 p-8 text-center text-white ring-1 ring-white/10 lg:p-10">
-                {/* halo doré derrière le prix */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -top-16 left-1/2 h-52 w-52 -translate-x-1/2 rounded-full bg-gold-400/20 blur-[64px]"
-                />
-                {/* filet de lumière sur le bord supérieur */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
-                />
-                <div className="relative">
-                  {f.badgePosition === "corner" ? (
-                    <span className="absolute right-0 top-0 inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-3.5 py-1 font-head text-[11px] font-bold uppercase tracking-wide text-[#3a2c08] shadow-[0_6px_16px_rgba(201,162,39,.4)]">
-                      <Star className="h-3 w-3" />
+            return (
+              <div className="relative flex flex-col rounded-[32px] bg-slate-100 p-5 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(10,37,64,.16)] lg:p-6">
+                {/* En-tête : carte blanche flottant sur le panneau gris */}
+                <div className="rounded-[24px] bg-white p-6 shadow-[0_20px_45px_rgba(10,37,64,.14)] lg:p-7">
+                  {/* Forfait + badge */}
+                  <div className="flex items-center gap-2.5">
+                    <h3 className="font-head text-xl font-extrabold text-navy-800">{f.label}</h3>
+                    <span className="ml-auto inline-flex items-center gap-1.5 rounded-full bg-gold-500 px-2.5 py-0.5 font-head text-[10px] font-bold uppercase tracking-wide text-white">
+                      <Star className="h-2.5 w-2.5" />
                       {f.badge}
                     </span>
-                  ) : (
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-4 py-1.5 font-head text-[11px] font-bold uppercase tracking-wide text-[#3a2c08] shadow-[0_6px_16px_rgba(201,162,39,.4)]">
-                      <Star className="h-3 w-3" />
-                      {f.badge}
+                  </div>
+
+                  {/* Prix */}
+                  <div className="mt-5 flex items-end gap-1.5">
+                    <span className="font-head text-4xl font-extrabold tracking-tight text-navy-800 lg:text-5xl">
+                      {f.price}
                     </span>
-                  )}
-                  <p
-                    className={`font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-300 ${
-                      f.badgePosition === "corner" ? "" : "mt-6"
-                    }`}
-                  >
-                    {f.label}
-                  </p>
-                  <div className="mt-3 font-head text-5xl font-extrabold tracking-tight lg:text-6xl">
-                    {f.price}
                     {f.priceUnit && (
-                      <span className="text-2xl font-bold text-white/55"> {f.priceUnit}</span>
+                      <span className="mb-1.5 text-sm text-slate-500">{f.priceUnit}</span>
                     )}
                   </div>
                   {f.priceApprox && (
-                    <p className="mt-2 font-head text-sm font-semibold text-white/55">
-                      {f.priceApprox}
-                    </p>
+                    <p className="mt-1.5 text-sm text-slate-500">{f.priceApprox}</p>
                   )}
 
-                  <div className="mx-auto mt-8 h-px max-w-sm bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+                  {/* Bouton */}
+                  <a
+                    href="/contact"
+                    className="group mt-6 flex items-center justify-center gap-2 rounded-full bg-navy-900 py-4 font-head font-bold text-white shadow-[0_16px_34px_rgba(6,20,39,.28)] transition-transform hover:-translate-y-0.5"
+                  >
+                    Commencer maintenant
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </a>
+                  <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-slate-400">
+                    <ShieldCheck className="h-3.5 w-3.5 text-navy-800" />
+                    Sans engagement · Réponse sous 48&nbsp;h
+                  </p>
+                </div>
 
-                  <ul className="mx-auto mt-6 max-w-sm space-y-3.5 text-left">
+                {/* Prestations — sous la carte, sur le panneau gris */}
+                <div className="px-6 pt-6 lg:px-7">
+                  <p className="mb-4 font-head text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                    Prestations incluses
+                  </p>
+                  <ul className="space-y-3.5">
                     {f.features.map((feat) => (
-                      <li key={feat} className="flex items-start gap-3 text-sm text-white/90">
-                        <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-gold-400/15 text-gold-300 ring-1 ring-gold-400/25">
+                      <li key={feat} className="flex items-start gap-3 text-sm text-navy-800/80">
+                        <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-navy-900 text-white">
                           <Check className="h-3 w-3" />
                         </span>
                         {feat}
                       </li>
                     ))}
                   </ul>
-
-                  <a
-                    href="/contact"
-                    className="group mt-8 flex items-center justify-center gap-2 rounded-full bg-gradient-to-b from-gold-300 via-gold-400 to-gold-600 py-4 font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] ring-1 ring-inset ring-white/25 transition-transform hover:-translate-y-0.5"
-                  >
-                    Commencer maintenant
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </a>
-                  <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-white/50">
-                    <ShieldCheck className="h-3.5 w-3.5 text-gold-300" />
-                    Sans engagement · Réponse sous 48&nbsp;h
-                  </p>
                 </div>
-              </div>
-            );
-            const framed = f.goldBorder ? (
-              <div className="rounded-[28px] bg-gradient-to-br from-gold-400 to-gold-600 p-[3px]">
-                {inner}
-              </div>
-            ) : (
-              inner
-            );
-            return (
-              <div className="rounded-[28px] shadow-[0_24px_60px_rgba(10,37,64,.28)] transition-[transform,box-shadow] duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_40px_90px_rgba(10,37,64,.45)]">
-                {framed}
               </div>
             );
           })()}

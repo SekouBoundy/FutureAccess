@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 const PHONE_DISPLAY = "+223 92 24 63 42";
 const PHONE_TEL = "+22392246342";
-const EMAIL = "contact@futureaccess.com";
+const EMAIL = "futureacessmali@gmail.com";
 const WHATSAPP = "https://wa.me/22392246342";
 
 // Icônes SVG (style trait, jeu Lucide)

@@ -86,6 +86,7 @@ const SERVICES = [
 const PLANS: {
   country: string;
   code: FlagCode;
+  tagline: string;
   price: string;
   unit: string;
   popular: boolean;
@@ -94,8 +95,9 @@ const PLANS: {
   {
     country: "Chine",
     code: "cn",
-    price: "1 500€",
-    unit: "/ dossier",
+    tagline: "L'essentiel pour concrétiser vos études en Chine, à petit prix.",
+    price: "700 000",
+    unit: "FCFA / dossier",
     popular: false,
     features: [
       "Bilan d'orientation",
@@ -108,8 +110,9 @@ const PLANS: {
   {
     country: "Malaisie",
     code: "my",
-    price: "950€",
-    unit: "/ dossier",
+    tagline: "Notre forfait le plus choisi : accompagnement complet et prioritaire.",
+    price: "500 000",
+    unit: "FCFA / dossier",
     popular: true,
     features: [
       "Tout le pack Malaisie",
@@ -122,8 +125,9 @@ const PLANS: {
   {
     country: "Turquie",
     code: "tr",
-    price: "650€",
-    unit: "/ dossier",
+    tagline: "L'expérience premium, du dossier d'admission à la bourse d'études.",
+    price: "500 000",
+    unit: "FCFA / dossier",
     popular: false,
     features: [
       "Tout le pack Turquie",
@@ -199,7 +203,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ===== TARIFS ===== */}
-      <section className="py-14 lg:py-20">
+      <section className="bg-slate-50 py-14 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div data-reveal className="mx-auto mb-14 max-w-2xl text-center">
             <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
@@ -210,56 +214,103 @@ export default function ServicesPage() {
             </h2>
           </div>
 
-          <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid items-start gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {PLANS.map((plan, i) => (
               <div
                 key={plan.country}
                 data-reveal={i}
-                className={`relative flex flex-col rounded-3xl bg-white p-7 lg:p-8 ${
-                  plan.popular
-                    ? "z-10 ring-1 ring-blue-500/30 shadow-[0_28px_64px_rgba(46,116,230,.20)] lg:-my-4 lg:py-12"
-                    : "border border-slate-100 shadow-[0_2px_10px_rgba(10,37,64,.06)]"
-                }`}
+                className="relative flex flex-col rounded-[32px] bg-slate-100 p-5 transition duration-300 ease-out hover:z-10 hover:-translate-y-1 hover:scale-[1.03] hover:shadow-[0_30px_70px_rgba(10,37,64,.16)] lg:p-6"
               >
-                {/* Pays + drapeau + pastille */}
-                <div className="mb-5 flex items-center gap-2.5">
-                  <span className="font-head text-xs font-bold uppercase tracking-[0.12em] text-gold-600">
-                    {plan.country}
-                  </span>
-                  <Flag code={plan.code} className="h-3.5 w-5" title={plan.country} />
-                  {plan.popular && (
-                    <span className="rounded-full bg-gold-500 px-2.5 py-0.5 font-head text-[10px] font-bold uppercase tracking-wide text-white">
-                      Populaire
-                    </span>
-                  )}
-                </div>
-
-                {/* Prix */}
-                <div className="mb-7 flex items-end gap-1.5">
-                  <span className="font-head text-4xl font-extrabold text-navy-800 lg:text-5xl">
-                    {plan.price}
-                  </span>
-                  <span className="mb-1.5 text-sm text-slate-500">{plan.unit}</span>
-                </div>
-
-                {/* Liste de prestations */}
-                <ul className="mb-8 space-y-3.5">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-sm text-slate-600">
-                      <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-gold-100 text-gold-600">
-                        <Icon name="check" className="h-3 w-3" strokeWidth={3} />
-                      </span>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href="/contact"
-                  className="mt-auto block rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-3.5 text-center font-head font-bold text-[#3a2c08] shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
+                {/* En-tête : carte blanche flottant sur le panneau gris */}
+                <div
+                  className={`rounded-[24px] bg-white p-6 lg:p-7 ${
+                    plan.popular
+                      ? "shadow-[0_20px_45px_rgba(10,37,64,.14)]"
+                      : "shadow-[0_8px_24px_rgba(10,37,64,.07)]"
+                  }`}
                 >
-                  Choisir ce plan
-                </a>
+                  {/* Pays + drapeau + badge */}
+                  <div className="flex items-center gap-2.5">
+                    <h3 className="font-head text-xl font-extrabold text-navy-800">{plan.country}</h3>
+                    <Flag code={plan.code} className="h-4 w-6" title={plan.country} />
+                    {plan.popular && (
+                      <span className="ml-auto rounded-full bg-gold-500 px-2.5 py-0.5 font-head text-[10px] font-bold uppercase tracking-wide text-white">
+                        Populaire
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Tagline (hauteur min. pour aligner les prix) */}
+                  <p className="mt-2 min-h-[2.75rem] text-sm leading-relaxed text-slate-500">
+                    {plan.tagline}
+                  </p>
+
+                  {/* Prix */}
+                  <div className="mt-5 flex items-end gap-1.5">
+                    <span className="font-head text-4xl font-extrabold tracking-tight text-navy-800 lg:text-4xl">
+                      {plan.price}
+                    </span>
+                    <span className="mb-1.5 text-sm text-slate-500">{plan.unit}</span>
+                  </div>
+
+                  {/* Bouton : foncé pour le populaire, clair + flèche pour les autres */}
+                  <a
+                    href="/contact"
+                    className={`mt-6 flex items-center justify-center gap-2 rounded-full py-3.5 text-center font-head font-bold transition ${
+                      plan.popular
+                        ?"bg-white text-navy-800 ring-1 ring-slate-200 hover:bg-slate-50"
+                        :"bg-white text-navy-800 ring-1 ring-slate-200 hover:bg-slate-50"
+                    }`}
+                  >
+                    Choisir ce plan
+                    {!plan.popular && (
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-4 w-4"
+                        aria-hidden
+                      >
+                        {ICONS.arrow}
+                      </svg>
+                    )}
+                     {plan.popular && (
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth={2.5}
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="h-4 w-4"
+                        aria-hidden
+                      >
+                        {ICONS.arrow}
+                      </svg>
+                    )}
+                    
+                  </a>
+                </div>
+
+                {/* Prestations — sous la carte, sur le panneau gris */}
+                <div className="px-6 pt-6 lg:px-7">
+                  <p className="mb-4 font-head text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                    Prestations incluses
+                  </p>
+                  <ul className="space-y-3.5">
+                    {plan.features.map((f) => (
+                      <li key={f} className="flex items-start gap-3 text-sm text-navy-800/80">
+                        <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-navy-900 text-white">
+                          <Icon name="check" className="h-3 w-3" strokeWidth={3} />
+                        </span>
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             ))}
           </div>

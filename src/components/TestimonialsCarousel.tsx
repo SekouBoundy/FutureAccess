@@ -12,7 +12,7 @@ export type Testimonial = {
 };
 
 const REVIEW_MAILTO =
-  "mailto:contact@futureaccess.com?subject=Mon%20avis%20sur%20FutureAccess";
+  "mailto:futureacessmali@gmail.com?subject=Mon%20avis%20sur%20FutureAccess";
 
 /**
  * Carrousel horizontal de témoignages.

@@ -140,14 +140,14 @@ export default function Home() {
           className="pointer-events-none absolute inset-0 [background:radial-gradient(120%_80%_at_80%_-10%,rgba(46,116,230,.35),transparent_55%),radial-gradient(90%_60%_at_0%_10%,rgba(201,162,39,.15),transparent_50%)]"
         />
 
-        <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+        <div className="relative mx-auto grid max-w-7xl items-center  px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
           <div data-reveal>
             <h1 className="mb-6 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.05]">
-              Construisez votre{" "}
-              <em className="font-display-italic font-normal color-gold-400">avenir</em> académique
+              Construisez votre{" "} <br />
+              <em className="font-display-italic font-normal text-gold-400">avenir </em> académique
             </h1>
             <p className="mb-8 max-w-[46ch] text-lg text-white/85">
-              Accompagnement fiable et professionnel pour vos projets d&apos;études à
+               Accompagnement fiable et professionnel pour vos projets d&apos;études à
               l&apos;international. De l&apos;orientation au visa, nous sommes votre partenaire
               réussite.
             </p>
@@ -395,7 +395,7 @@ export default function Home() {
             </ul>
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-7 py-4 font-head font-bold text-white shadow-[0_14px_34px_rgba(201,162,39,.34)]"
+              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-7 py-4 font-head font-bold text-white"
             >
               Prendre rendez-vous gratuitement
             </a>
