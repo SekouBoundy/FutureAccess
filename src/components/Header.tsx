@@ -155,7 +155,7 @@ export default function Header() {
                 href={link.href}
                 onClick={() => setMenuOpen(false)}
                 aria-current={active ? "page" : undefined}
-                className={`border-b border-white/10 py-3.5 font-head text-lg font-bold transition-colors ${
+                className={`border-b border-white/10 py-3.5 font-head text-[18px] font-bold transition-colors ${
                   active ? "text-gold-400" : "text-white hover:text-gold-300"
                 }`}
               >
@@ -166,7 +166,7 @@ export default function Header() {
         </nav>
 
         {/* Bloc contact */}
-        <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+        {/* <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
           <a
             href={`tel:${PHONE_TEL}`}
             className="flex items-center gap-3 font-head text-sm font-semibold text-white"
@@ -185,14 +185,14 @@ export default function Header() {
             </span>
             {EMAIL}
           </a>
-        </div>
+        </div> */}
 
         {/* Appels à l'action */}
         <div className="mt-4 grid gap-3">
           <Link
             href="/contact"
             onClick={() => setMenuOpen(false)}
-            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-gold-500 py-4 text-center font-head font-bold text-white shadow-[0_14px_34px_rgba(201,162,39,.34)]"
+            className="inline-flex items-center justify-center gap-2.5 rounded-full bg-gold-500 py-4 text-center font-head font-bold text--[#063e1c] shadow-[0_14px_34px_rgba(201,162,39,.34)]"
           >
             <Icon name="graduation-cap" className="h-5 w-5" />
             Commencer mon projet
