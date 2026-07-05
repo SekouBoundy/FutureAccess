@@ -26,7 +26,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "FutureAccess — Études à l'international",
+  title: "FutureAccess Mali — Études à l'international",
   description:
     "FutureAccess accompagne les étudiants dans toutes les étapes de leur projet d'études à l'international : orientation, admission, visa et installation.",
 };

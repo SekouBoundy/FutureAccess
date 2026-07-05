@@ -33,8 +33,8 @@ export default function Footer() {
   return (
     <footer className="rounded-t-[34px] bg-navy-900 pb-8 pt-14 text-[#cdd8e6] lg:pt-16">
       {/* Grille : marque | (Navigation + Contact côte à côte, même sur mobile) */}
-      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-x-6 gap-y-10 px-6 md:grid-cols-[1.5fr_1fr_1.2fr] md:gap-x-10">
-        {/* Marque + réseaux + WhatsApp — pleine largeur sur mobile */}
+      <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr] gap-x-6 gap-y-10 px-6 md:grid-cols-[1.5fr_1fr_1.2fr] md:gap-x-10">
+        {/* Marque + WhatsApp — pleine largeur sur mobile */}
         <div className="col-span-2 md:col-span-1">
           <Link href="/#accueil" className="font-head text-lg font-extrabold tracking-tight">
             <span className="text-blue-500">Future</span>
@@ -44,20 +44,6 @@ export default function Footer() {
             Votre partenaire de confiance pour vos études à l&apos;international. Nous vous
             accompagnons de A à Z dans votre projet académique.
           </p>
-          <div className="mt-6 flex gap-3">
-            {SOCIALS.map((s) => (
-              <a
-                key={s.label}
-                href="#"
-                aria-label={s.label}
-                className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/5 transition-all hover:-translate-y-0.5 hover:border-gold-400/40 hover:bg-white/10"
-              >
-                <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
-                  <path d={s.path} />
-                </svg>
-              </a>
-            ))}
-          </div>
           <a
             href="https://wa.me/22392246342"
             className="mt-6 inline-flex items-center gap-2.5 rounded-full bg-[#25D366] px-5 py-3 font-head text-sm font-bold text-[#063e1c] transition-transform hover:-translate-y-0.5"
@@ -99,7 +85,7 @@ export default function Footer() {
               <span className="mt-0.5 flex-none text-gold-300">
                 <Icon name="mail" className="h-4 w-4" />
               </span>
-              <span className="break-all">futureacessmali@gmail.com</span>
+              <span className="break-words">futureacessmali@<wbr />gmail.com</span>
             </a>
             <p className="flex items-start gap-2.5">
               <span className="mt-0.5 flex-none text-gold-300">
@@ -116,6 +102,22 @@ export default function Footer() {
               </span>
               +223 92 24 63 42
             </a>
+          </div>
+
+          {/* Réseaux sociaux */}
+          <div className="mt-6 flex gap-3">
+            {SOCIALS.map((s) => (
+              <a
+                key={s.label}
+                href="#"
+                aria-label={s.label}
+                className="grid h-11 w-11 place-items-center rounded-2xl border border-white/10 bg-white/5 transition-all hover:-translate-y-0.5 hover:border-gold-400/40 hover:bg-white/10"
+              >
+                <svg viewBox="0 0 24 24" className="h-5 w-5 fill-white">
+                  <path d={s.path} />
+                </svg>
+              </a>
+            ))}
           </div>
         </div>
       </div>

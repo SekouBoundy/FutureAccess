@@ -163,7 +163,7 @@ export default function ServicesPage() {
               data-reveal={i % 3}
               className="group rounded-3xl bg-white p-7 shadow-[0_2px_10px_rgba(10,37,64,.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,37,64,.10)]"
             >
-              <div className="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white shadow-[0_10px_24px_rgba(46,116,230,.35)]">
+              <div className="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white ">
                 <svg
                   viewBox="0 0 24 24"
                   fill="none"

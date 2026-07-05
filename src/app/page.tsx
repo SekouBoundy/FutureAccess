@@ -146,7 +146,7 @@ export default function Home() {
               Construisez votre{" "} <br />
               <em className="font-display-italic font-normal text-gold-400">avenir </em> académique
             </h1>
-            <p className="mb-8 max-w-[46ch] text-lg text-white/85">
+            <p className="mb-8 max-w-[46ch] text-sm text-white/85 sm:text-lg">
                Accompagnement fiable et professionnel pour vos projets d&apos;études à
               l&apos;international. De l&apos;orientation au visa, nous sommes votre partenaire
               réussite.
