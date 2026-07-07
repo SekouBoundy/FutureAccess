@@ -85,7 +85,7 @@ export default function Footer() {
               <span className="mt-0.5 flex-none text-gold-300">
                 <Icon name="mail" className="h-4 w-4" />
               </span>
-              <span className="break-words">futureacessmali@<wbr />gmail.com</span>
+              <span className="break-words">futureaccessmali@<wbr />gmail.com</span>
             </a>
             <p className="flex items-start gap-2.5">
               <span className="mt-0.5 flex-none text-gold-300">
