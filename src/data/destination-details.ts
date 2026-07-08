@@ -89,12 +89,12 @@ const malaisie: DestinationDetail = {
   spotsLeft: "Plus que 3 places",
   heroImage: "/images/destinations/malaysia.jpg",
   intro:
-    "La Malaisie est une destination de plus en plus prisée par les étudiants internationaux grâce à la qualité de son enseignement, à ses universités reconnues, à son coût de vie abordable et à son environnement multiculturel. Les diplômes délivrés sont reconnus à l'international et les programmes sont principalement dispensés en anglais.",
+    "La Malaisie est une destination de choix pour les étudiants internationaux grâce à la qualité de son enseignement, ses universités reconnues, ses programmes dispensés en anglais, son coût de la vie abordable, ses diplômes reconnus à l'international et son environnement multiculturel.",
   stats: [
-    { value: "20+", label: "Universités partenaires" },
-    { value: "1 200€", label: "Frais de dossier" },
-    { value: "Vol direct", label: "Disponible depuis Paris" },
-    { value: "Bilingue", label: "Anglais & Malais" },
+    { icon: "🏛️", value: "20+", label: "Universités partenaires" },
+    { icon: "💰", value: "500 000 FCFA", label: "Frais d'agence" },
+    { icon: "🗓️", value: "6–8 sem.", label: "Délai de procédure" },
+    { icon: "🗣️", value: "Anglais", label: "Langue d'enseignement" },
   ],
   opportunities: [
     "Coût de la vie très abordable",
@@ -145,12 +145,11 @@ const malaisie: DestinationDetail = {
     },
   ],
   forfait: {
-    label: "Forfait Malaisie",
+    label: "Frais d'agence – Malaisie",
     badge: "Tout inclus",
     badgePosition: "top",
     goldBorder: true,
     price: "500 000 FCFA",
-    priceApprox: "(≈ 762.99 €) / dossier",
     features: [
       "Orientation personnalisée",
       "Accompagnement complet vers l'admission",
@@ -161,34 +160,56 @@ const malaisie: DestinationDetail = {
   },
   studyCosts: {
     subtitle: "Estimation des dépenses mensuelles et annuelles pour étudier en Malaisie.",
-    layout: "row",
+    layout: "table",
+    columns: ["Frais", "Coût (USD)", "Coût (FCFA)"],
     rows: [
-      { icon: "🎓", label: "Frais de scolarité (par an)", value: "4 500 000 FCFA" },
-      { icon: "🏠", label: "Hébergement", value: "150 000 FCFA / mois" },
-      { icon: "🍽️", label: "Frais de subsistance", value: "250 000 FCFA / mois" },
-      { icon: "💳", label: "Budget annuel estimé", value: "8 000 000 FCFA", highlight: true },
+      {
+        icon: "🎓",
+        label: "Frais de scolarité",
+        value: "8 000 à 10 000 USD/an",
+        value2: "4 500 000 à 6 000 000 FCFA/an",
+      },
+      {
+        icon: "🏠",
+        label: "Hébergement",
+        value: "200 à 350 USD/mois",
+        value2: "100 000 à 200 000 FCFA/mois",
+      },
+      {
+        icon: "🍽️",
+        label: "Dépenses de subsistance",
+        value: "300 à 450 USD/mois",
+        value2: "200 000 à 250 000 FCFA/mois",
+      },
+      {
+        icon: "💳",
+        label: "Budget annuel estimé",
+        value: "14 000 à 19 000 USD/an",
+        value2: "8 000 000 à 11 000 000 FCFA/an",
+        highlight: true,
+      },
     ],
-    note: "NB : Les frais de scolarité varient selon l'université et le programme d'études choisis.",
   },
   procedureCosts: {
     subtitle: "Détail des frais liés à la candidature et au visa étudiant.",
     cards: [
       {
         icon: "📄",
-        title: "Frais d'agence",
-        amount: "500 000 FCFA (≈ 760 €)",
+        title: "Frais d'agence FutureAccess",
+        amount: "500 000 FCFA",
+        itemsLabel: "En deux versements",
         items: [
-          { text: "Premier versement : 300 000 FCFA (≈ 457 €)" },
-          { text: "Deuxième versement : 200 000 FCFA (≈ 304 €)" },
+          { icon: "→", text: "1er versement : 300 000 FCFA" },
+          { icon: "→", text: "2ème versement : 200 000 FCFA" },
         ],
       },
       {
         icon: "🏛️",
         title: "Frais de visa",
-        amount: "550 000 FCFA (≈ 838 €)",
+        amount: "550 000 FCFA",
         items: [
           {
-            text: "Les frais de visa comprennent les frais de traitement de la demande de visa étudiant ainsi que les frais administratifs exigés par les autorités malaisiennes.",
+            text: "Les frais de visa comprennent les frais de traitement de la demande de visa étudiant, les frais administratifs exigés par les autorités malaisiennes et l'accueil à l'arrivée.",
           },
         ],
       },
@@ -198,52 +219,24 @@ const malaisie: DestinationDetail = {
   applicationLayout: "collapsible",
   applicationSteps: [
     {
-      title: "Dépôt du dossier de candidature",
-      text: "Préparez vos documents académiques et remplissez notre formulaire sécurisé.",
+      title:
+        "Dépôt du dossier de candidature, premier versement des frais d'agence (300 000 FCFA) et soumission du dossier à l'université.",
     },
     {
-      title: "Premier versement des frais d'agence (300 000 FCFA)",
-      text: "Validation de votre dossier et lancement de la procédure d'admission.",
+      title:
+        "Réception de la lettre d'admission provisoire et paiement de l'acompte des frais de scolarité, selon les exigences de l'université.",
     },
     {
-      title: "Soumission du dossier à l'université",
-      text: "Nous négocions votre place parmi nos 20+ universités partenaires en Malaisie.",
+      title:
+        "Réception de la lettre d'admission officielle, paiement des frais de visa et deuxième versement des frais d'agence (200 000 FCFA).",
     },
-    {
-      title: "Réception de la lettre d'admission provisoire",
-      text: "Confirmation de votre admission par l'université partenaire.",
-    },
-    {
-      title: "Paiement de l'acompte des frais de scolarité",
-      text: "Formalisation de votre inscription à l'université.",
-    },
-    {
-      title: "Réception de la lettre d'admission officielle",
-      text: "Document final confirmant votre inscription définitive.",
-    },
-    {
-      title: "Deuxième versement des frais d'agence (200 000 FCFA)",
-      text: "Finalisation de votre dossier d'accompagnement.",
-    },
-    {
-      title: "Dépôt de la demande de visa et paiement des frais de visa",
-      text: "Préparation des documents requis pour le visa étudiant.",
-    },
-    {
-      title: "Attente de l'approbation du visa (environ 6 à 8 semaines)",
-      text: "Suivi administratif jusqu'à la réception du visa.",
-    },
-    {
-      title: "Achat du billet d'avion et préparation du départ",
-      text: "Assistance pour l'organisation logistique finale.",
-    },
+    { title: "Attente de l'approbation du visa (environ 6 à 8 semaines)." },
+    { title: "Achat du billet d'avion et préparation du départ." },
   ],
   importantInfo: [
-    "FutureAccess accompagne les étudiants dans leurs démarches d'admission auprès des universités en Malaisie.",
-    "Les programmes sont principalement dispensés en anglais.",
-    "Un test de niveau d'anglais peut être requis selon l'université. Une formation en anglais de 3 à 7 mois peut être demandée avant le début du programme.",
-    "Les frais de scolarité varient selon l'université et le programme choisis.",
-    "Les étudiants internationaux peuvent travailler à temps partiel, conformément à la réglementation malaisienne en vigueur.",
+    "FutureAccess accompagne les étudiants dans leur admission auprès des meilleures universités en Malaisie.",
+    "Les programmes sont principalement dispensés en anglais. Les étudiants passent un test de niveau d'anglais à leur arrivée, et une formation en anglais de quelques mois peut être demandée avant le début du programme.",
+    "Les étudiants doivent se concentrer uniquement sur leurs études.",
     "Les conditions d'admission, les documents requis et les possibilités de transfert de crédits dépendent de l'université et du programme choisis.",
     "FutureAccess accompagne également les étudiants dans les démarches administratives, la demande de visa et la préparation de leur départ.",
   ],
@@ -253,15 +246,34 @@ const malaisie: DestinationDetail = {
       level: "Licence (3 ans)",
       groups: [
         {
+          icon: "💻",
           title: "Informatique & Technologies",
           items: [
             "Technologies de l'information (IT)",
             "Informatique",
-            "Cybersécurité",
             "Génie logiciel",
             "Intelligence artificielle (IA)",
+            "Cybersécurité",
+          ],
+        },
+        {
+          icon: "🎨",
+          title: "Création & Médias",
+          items: [
             "Développement de jeux vidéo",
-            "Médias interactifs et technologies immersives",
+            "Effets visuels (VFX)",
+            "Médias et communication",
+          ],
+        },
+        {
+          icon: "💼",
+          title: "Commerce & Management",
+          items: [
+            "Gestion d'entreprise",
+            "Commerce international",
+            "Marketing",
+            "Marketing digital",
+            "Gestion des ressources humaines",
           ],
         },
         {
@@ -273,47 +285,30 @@ const malaisie: DestinationDetail = {
             "Technologie financière (FinTech)",
           ],
         },
+        { icon: "🏛️", title: "Architecture", items: ["Architecture"] },
         {
-          title: "Commerce & Management",
-          items: [
-            "Management",
-            "Commerce international",
-            "Gestion des ressources humaines",
-            "Marketing digital",
-          ],
+          title: "Sciences sociales",
+          items: ["Relations internationales", "Psychologie"],
         },
-        {
-          title: "Médias & Communication",
-          items: ["Médias et communication"],
-        },
-        { title: "Sciences sociales", items: ["Relations internationales", "Psychologie"] },
         {
           icon: "✈️",
           title: "Hôtellerie & Tourisme",
           items: ["Hôtellerie et tourisme"],
         },
-        {
-          title: "Ingénierie",
-          items: [
-            "Génie électrique et électronique",
-            "Génie mécatronique",
-            "Génie mécanique",
-          ],
-        },
-        { icon: "🏛️", title: "Architecture", items: ["Architecture"] },
       ],
     },
     {
       level: "Licence (4 ans)",
       groups: [
         {
+          icon: "🏗️",
           title: "Ingénierie",
           items: [
-            "Génie mécatronique",
-            "Génie mécanique",
-            "Génie pétrolier",
-            "Génie informatique",
             "Génie électrique et électronique",
+            "Génie mécanique",
+            "Génie mécatronique",
+            "Génie informatique",
+            "Génie pétrolier",
           ],
         },
       ],
@@ -322,37 +317,45 @@ const malaisie: DestinationDetail = {
       level: "Master (2 ans)",
       groups: [
         {
+          icon: "💻",
           title: "Informatique & Technologies",
           items: [
             "Génie logiciel",
             "Intelligence artificielle (IA)",
             "Cybersécurité",
-            "Science des données et analytique des affaires",
+            "Science des données et analyse commerciale",
             "Gestion des technologies de l'information",
-            "Management de la technologie",
             "Transformation numérique",
+            "Informatique",
           ],
         },
         {
+          icon: "💼",
           title: "Commerce & Management",
-          items: [
-            "Administration des affaires (MBA)",
-            "MBA en Leadership numérique",
-            "MBA en Analytique des affaires",
-            "MBA en Hôtellerie et tourisme",
-            "Gestion de projets",
-          ],
+          items: ["Master en administration des affaires (MBA)", "Gestion de projets"],
         },
         {
           icon: "💰",
           title: "Comptabilité & Finance",
-          items: ["Comptabilité", "Finance (FinTech)"],
+          items: ["Comptabilité", "Finance"],
         },
         {
+          icon: "📰",
           title: "Marketing & Communication",
-          items: ["Marketing numérique", "Communication numérique"],
+          items: ["Marketing digital", "Communication numérique"],
         },
-        { title: "Design", items: ["Management de l'innovation en design"] },
+        {
+          icon: "🎨",
+          title: "Design & Innovation",
+          items: ["Management de l'innovation en design"],
+        },
+        {
+          title: "Sciences humaines & Éducation",
+          items: [
+            "Conception pédagogique et technologies de l'apprentissage",
+            "Psychologie appliquée (Cyberpsychologie)",
+          ],
+        },
       ],
     },
   ],
@@ -365,10 +368,10 @@ const turquie: DestinationDetail = {
   accent: "gold",
   heroImage: "/images/destinations/turkey.jpg",
   intro:
-    "Au carrefour de l'Europe et de l'Asie, la Turquie offre une éducation de qualité à des prix accessibles.",
+    "La Turquie offre un enseignement de qualité, des universités reconnues, un coût de la vie abordable, des programmes dispensés en anglais et en turc, une position stratégique entre l'Europe et l'Asie, ainsi qu'un riche patrimoine culturel.",
   stats: [
     { icon: "🏛️", value: "15+", label: "Universités partenaires" },
-    { icon: "💰", value: "950€", label: "Frais de dossier" },
+    { icon: "💰", value: "500 000 FCFA", label: "Frais d'agence" },
     { icon: "✈️", value: "Vol direct", label: "Depuis Paris & Maghreb" },
     { icon: "🗣️", value: "Langues", label: "Turc & Anglais" },
   ],
@@ -425,11 +428,10 @@ const turquie: DestinationDetail = {
   ],
   
   forfait: {
-    label: "Forfait Turquie",
+    label: "Frais d'agence – Turquie",
     badge: "Populaire",
     badgePosition: "corner",
     price: "500 000 FCFA",
-    priceApprox: "(≈ 762.99 €) / dossier",
     features: [
       "Conseil stratégique",
       "Admission garantie 100%",
@@ -440,51 +442,56 @@ const turquie: DestinationDetail = {
   },
   studyCosts: {
     subtitle: "Estimation des dépenses mensuelles et annuelles pour étudier en Turquie.",
-    layout: "stack",
+    layout: "table",
+    columns: ["Frais", "USD", "FCFA"],
     rows: [
       {
         icon: "🎓",
-        label: "Frais de scolarité (par an)",
-        value: "2 000 000 à 2 500 000 FCFA (≈ 3 050 € – 3 810 €)",
+        label: "Frais de scolarité",
+        value: "3 400 à 4 500 USD/an",
+        value2: "2 000 000 à 2 500 000 FCFA/an",
       },
       {
         icon: "🏠",
         label: "Hébergement",
-        value: "100 000 à 200 000 FCFA / mois (≈ 152 € – 305 €)",
+        value: "200 à 300 USD/mois",
+        value2: "100 000 à 175 000 FCFA/mois",
       },
       {
         icon: "🛒",
-        label: "Frais de subsistance",
-        value: "150 000 à 200 000 FCFA / mois (≈ 229 € – 305 €)",
+        label: "Dépenses de subsistance",
+        value: "250 à 300 USD/mois",
+        value2: "150 000 à 175 000 FCFA/mois",
       },
       {
         icon: "💳",
         label: "Budget annuel estimé",
-        value: "5 000 000 à 7 500 000 FCFA (≈ 7 620 € – 11 430 €)",
+        value: "8 800 à 11 500 USD/an",
+        value2: "5 000 000 à 6 500 000 FCFA/an",
         highlight: true,
       },
     ],
   },
-    procedureCosts: {
+  procedureCosts: {
     subtitle: "Détail des frais liés à la candidature et au visa étudiant.",
     cards: [
       {
         icon: "📄",
-        title: "Frais d'agence",
-        amount: "500 000 FCFA (≈ 760 €)",
+        title: "Frais d'agence FutureAccess",
+        amount: "500 000 FCFA",
+        itemsLabel: "En deux versements",
         items: [
-          { text: "Premier versement : 300 000 FCFA (≈ 457 €)" },
-          { text: "Deuxième versement : 200 000 FCFA (≈ 304 €)" },
+          { icon: "→", text: "1er versement : 300 000 FCFA" },
+          { icon: "→", text: "2ᵉ versement : 200 000 FCFA" },
         ],
       },
       {
         icon: "🏛️",
-        title: "Frais de visa",
-        amount: "550 000 FCFA (≈ 838 €)",
+        title: "Autres frais",
         items: [
-          {
-            text: "Les frais de visa comprennent les frais de traitement de la demande de visa étudiant ainsi que les frais administratifs exigés par les autorités malaisiennes.",
-          },
+          { icon: "→", text: "Visa et assurance : 175 000 FCFA" },
+          { icon: "→", text: "Frais de réception : 90 000 FCFA" },
+          { icon: "→", text: "Assurance et permis de séjour : 350 USD" },
         ],
       },
     ],
@@ -494,38 +501,33 @@ const turquie: DestinationDetail = {
   applicationLayout: "grid",
   applicationSteps: [
     {
-      title: "Premier versement des frais d'agence (300 000 FCFA)",
-      text: "Initialisation du dossier.",
+      title:
+        "Dépôt du dossier de candidature, paiement du premier versement des frais d'agence (300 000 FCFA) et soumission du dossier à l'université.",
     },
     {
-      title: "Constitution et soumission du dossier de candidature.",
-      text: "Vérification des documents.",
+      title:
+        "Obtention de la lettre d'admission provisoire et paiement de l'acompte demandé par l'université (1 000 USD, si applicable).",
     },
     {
-      title: "Obtention de la lettre d'admission et paiement de l'acompte 1 000 $ si exigé.",
-      text: "Validation universitaire.",
+      title:
+        "Obtention de la lettre d'admission officielle ainsi que des documents nécessaires à la demande de visa étudiant.",
     },
     {
-      title: "Obtention de la lettre d'admission officielle et des documents nécessaires à la demande de visa.",
-      text: "Préparation du dossier administratif.",
-    },
-    { title: "Dépôt de la demande de visa étudiant.", text: "Soumission auprès des autorités." },
-    { title: "Attente de l'approbation du visa (2 à 4 semaines).", text: "Phase administrative." },
-    {
-      title: "Paiement du solde des frais d'agence (200 000 FCFA) et des frais de scolarité restants.",
-      text: "Finalisation financière.",
+      title:
+        "Dépôt de la demande de visa et attente de son approbation (environ 2 à 4 semaines).",
     },
     {
-      title: "Achat du billet d'avion et préparation du départ pour la Turquie.",
-      text: "Derniers préparatifs.",
+      title:
+        "Paiement du solde des frais d'agence (200 000 FCFA) ainsi que du reste des frais de scolarité.",
     },
+    { title: "Préparation du départ, achat du billet d'avion et départ pour la Turquie." },
   ],
   importantInfo: [
     "FutureAccess accompagne les étudiants dans leur admission au sein d'universités privées, principalement à Istanbul et Antalya.",
-    "Les programmes sont principalement dispensés en anglais. Test de niveau à l'arrivée, préparation linguistique possible.",
-    "Les possibilités de travail pendant les études sont soumises à la réglementation turque en vigueur.",
+    "Les programmes sont principalement dispensés en anglais. Les étudiants passent un test de niveau d'anglais à leur arrivée et peuvent suivre un ou plusieurs semestres de préparation linguistique si nécessaire.",
+    "Les étudiants sont encouragés à se consacrer pleinement à leurs études afin de favoriser leur réussite académique.",
     "Les possibilités de transfert de crédits dépendent de l'université et du programme choisi.",
-    "La Turquie offre un enseignement supérieur de qualité, un environnement multiculturel et un coût de la vie généralement plus abordable.",
+    "La Turquie offre un enseignement supérieur de qualité, un environnement multiculturel et un coût de la vie généralement plus abordable que dans de nombreux autres pays d'études.",
   ],
   importantIcon: "info",
   programs: [
@@ -648,7 +650,7 @@ const chine: DestinationDetail = {
   accent: "blue",
   heroImage: "/images/destinations/china.jpg",
   intro:
-    "Les universités chinoises figurent parmi les meilleures d'Asie et accueillent chaque année des milliers d'étudiants internationaux. Programmes en anglais ou en chinois, large choix de filières et coût de la vie accessible : la Chine est une destination de choix pour vos études.",
+    "La Chine : une destination académique d'avenir, avec une éducation abordable, des formations accessibles et des opportunités de bourses pour les étudiants internationaux.",
   stats: [
     { icon: "🗣️", value: "Anglais / Chinois", label: "Langues d'enseignement" },
     { icon: "💰", value: "700 000 FCFA", label: "Frais d'agence" },
@@ -673,12 +675,11 @@ const chine: DestinationDetail = {
     "Relevé bancaire du garant (si demandé)",
   ],
   forfait: {
-    label: "Forfait Chine",
+    label: "Frais d'agence – Chine",
     badge: "Tout inclus",
     badgePosition: "top",
     goldBorder: true,
     price: "700 000 FCFA",
-    priceApprox: "(≈ 1 067 €) / dossier",
     features: [
       "Vérification des documents",
       "Accompagnement dans le choix de l'université et du programme",
@@ -692,15 +693,31 @@ const chine: DestinationDetail = {
   studyCosts: {
     subtitle: "Estimation des frais annuels pour étudier en Chine (hors frais d'agence).",
     layout: "table",
-    columns: ["Frais", "Coût (RMB)", "Coût (FCFA)"],
+    columns: ["Frais", "Coût (FCFA)", "Coût (RMB)"],
     rows: [
-      { label: "Frais de scolarité", value: "6 000 à 10 000 RMB/an", value2: "500 000 à 850 000 FCFA" },
-      { label: "Hébergement", value: "4 000 à 8 000 RMB/an", value2: "340 000 à 680 000 FCFA" },
-      { label: "Dépenses de subsistance", value: "1 500 RMB/mois", value2: "≈ 150 000 FCFA/mois" },
       {
+        icon: "🎓",
+        label: "Frais de scolarité",
+        value: "600 000 à 900 000 FCFA/an",
+        value2: "7 000 à 10 000 RMB/an",
+      },
+      {
+        icon: "🏠",
+        label: "Hébergement",
+        value: "300 000 à 500 000 FCFA/an",
+        value2: "4 000 à 6 000 RMB/an",
+      },
+      {
+        icon: "🍽️",
+        label: "Dépenses de subsistance",
+        value: "≈ 150 000 FCFA/mois",
+        value2: "1 500 RMB/mois",
+      },
+      {
+        icon: "💳",
         label: "Budget annuel estimatif",
-        value: "≈ 31 200 à 38 800 RMB",
-        value2: "≈ 2 650 000 à 3 300 000 FCFA",
+        value: "≈ 2 750 000 à 3 200 000 FCFA/an",
+        value2: "29 000 à 34 000 RMB/an",
         highlight: true,
       },
     ],
@@ -712,7 +729,7 @@ const chine: DestinationDetail = {
         icon: "📄",
         title: "Frais d'agence FutureAccess",
         amount: "700 000 FCFA",
-        itemsLabel: "Versements",
+        itemsLabel: "En deux versements",
         items: [
           { icon: "→", text: "1er versement : 400 000 FCFA" },
           { icon: "→", text: "2ᵉ versement : 300 000 FCFA" },
@@ -734,29 +751,35 @@ const chine: DestinationDetail = {
       "Les frais de scolarité, d'hébergement, d'assurance, de billet d'avion et de subsistance ne sont pas inclus dans les frais d'agence.",
     ],
   },
-  applicationDuration: "8 à 12 semaines (admission et obtention du visa)",
+  applicationDuration: "8 à 12 semaines (de la candidature à l'obtention du visa)",
   applicationLayout: "grid",
   applicationSteps: [
     {
       title:
-        "Dépôt des documents et paiement du premier versement des frais d'agence (400 000 FCFA) ainsi que des frais d'admission.",
+        "Dépôt des documents requis et paiement du premier versement des frais d'agence (400 000 FCFA) ainsi que des frais d'admission, le cas échéant.",
     },
-    { title: "Soumission de la candidature auprès de l'université." },
-    { title: "Obtention de la lettre d'admission et des documents nécessaires à la demande de visa." },
-    { title: "Dépôt de la demande de visa auprès de l'ambassade et paiement des frais de visa." },
+    { title: "Soumission de votre dossier de candidature auprès de l'université choisie." },
     {
       title:
-        "Obtention du visa et paiement du second versement des frais d'agence (300 000 FCFA).",
+        "Réception de la lettre d'admission et des documents officiels nécessaires à la demande de visa étudiant.",
     },
-    { title: "Achat du billet d'avion et préparation du départ pour la Chine." },
+    {
+      title:
+        "Dépôt de la demande de visa auprès de l'ambassade de Chine et paiement des frais de visa.",
+    },
+    {
+      title:
+        "Obtention du visa étudiant et paiement du second versement des frais d'agence (300 000 FCFA).",
+    },
+    { title: "Préparation du voyage, achat du billet d'avion et départ pour la Chine." },
   ],
   importantInfo: [
-    "FutureAccess accompagne les étudiants dans leurs démarches d'admission auprès des meilleures universités chinoises.",
-    "Les programmes sont proposés en anglais ou en chinois. Une formation linguistique peut être exigée avant le début des études selon le programme choisi.",
-    "Les étudiants de première ou de deuxième année de licence ne peuvent généralement pas transférer leurs crédits.",
-    "Pour le programme de Génie pharmaceutique, une moyenne minimale de 12/20 au baccalauréat est requise.",
-    "Les étudiants doivent respecter le règlement de l'université et maintenir de bons résultats académiques.",
-    "Le garant financier peut être amené à présenter un relevé bancaire justifiant d'un solde minimum de 2 000 000 FCFA, selon les exigences de l'université ou des autorités consulaires.",
+    "FutureAccess vous accompagne tout au long du processus d'admission dans des universités reconnues en Chine.",
+    "Les formations sont dispensées en anglais ou en chinois, selon le programme choisi. Une formation linguistique peut être requise avant le début des études.",
+    "Les étudiants inscrits en première ou en deuxième année de licence ne sont généralement pas autorisés à transférer leurs crédits vers une université chinoise.",
+    "Pour le programme de Génie pharmaceutique, une moyenne minimale de 12/20 au baccalauréat est exigée.",
+    "Les étudiants sont tenus de respecter le règlement de leur université et de maintenir des résultats académiques satisfaisants tout au long de leurs études.",
+    "Selon les exigences de l'université ou des autorités consulaires, le garant financier peut être amené à fournir un relevé bancaire justifiant d'un solde minimum de 2 000 000 FCFA.",
   ],
   importantIcon: "check",
   programs: [
@@ -764,39 +787,71 @@ const chine: DestinationDetail = {
       level: "Licence (Bachelor)",
       groups: [
         {
-          icon: "🗣️",
-          title: "Enseignés en anglais",
-          items: ["Computer Science & Technology", "Civil Engineering"],
+          icon: "💻",
+          title: "Informatique & Technologies",
+          items: [
+            "Computer Science and Technology (en anglais)",
+            "Software Engineering (en anglais)",
+            "Artificial Intelligence (en anglais)",
+            "Data Science and Big Data Technology",
+            "Cyberspace",
+            "Intelligent Science and Technology",
+            "Digital Media Technology",
+          ],
         },
         {
-          icon: "🗣️",
-          title: "Enseignés en chinois",
+          icon: "💼",
+          title: "Commerce & Gestion",
           items: [
             "Business Administration",
-            "Finance",
             "Accounting",
+            "Finance",
+            "Financial Management",
             "Economics",
-            "International Economy & Trade",
-            "Marketing",
-            "Law",
-            "Information Engineering",
-            "Electronic Information Engineering",
-            "Internet of Things Engineering",
-            "Information and Computing Science",
-            "Applied Chemistry",
-            "Biological Technology",
-            "Environmental Engineering",
-            "Environmental Science",
-            "Agricultural Resources & Environment",
-            "Agronomy",
-            "Food Science & Engineering",
-            "Animal Science",
-            "Veterinary Medicine",
-            "Landscape Architecture",
-            "Machinery and Electronics Engineering",
-            "Administrative Management",
-            "Public Affairs Management",
+            "International Business",
+            "Human Resource Management",
+            "Logistics Management",
+            "Public Administration",
           ],
+        },
+        {
+          icon: "⚖️",
+          title: "Droit & Sciences humaines",
+          items: ["Law", "Philosophy"],
+        },
+        {
+          icon: "🏗️",
+          title: "Ingénierie",
+          items: [
+            "Civil Engineering",
+            "Chemical Engineering",
+            "Materials Science and Engineering",
+            "Communication Engineering",
+            "Electronic and Information Engineering",
+            "Environmental Science and Engineering",
+            "New Energy Science and Engineering",
+          ],
+        },
+        {
+          icon: "🔬",
+          title: "Sciences",
+          items: [
+            "Physics",
+            "Chemistry",
+            "Biological Science",
+            "Biotechnology",
+            "Ecology",
+          ],
+        },
+        {
+          icon: "🏛️",
+          title: "Architecture & Design",
+          items: ["Architecture", "Visual Communication Design"],
+        },
+        {
+          icon: "📰",
+          title: "Communication & Médias",
+          items: ["Journalism", "Radio and Television", "Communication"],
         },
       ],
     },
@@ -804,57 +859,47 @@ const chine: DestinationDetail = {
       level: "Master",
       groups: [
         {
-          icon: "💼",
-          title: "Commerce, Finance & Gestion",
+          icon: "💻",
+          title: "Informatique & IA",
           items: [
-            "Business Administration",
-            "Accounting",
-            "Enterprise Management",
-            "Technology Economy and Management",
-            "Finance",
+            "Artificial Intelligence",
+            "Computer Technology",
+            "Software Engineering",
+            "Cybersecurity",
+            "Data Science",
+            "AI and Machine Learning",
           ],
         },
         {
-          icon: "💻",
-          title: "Informatique",
-          items: ["Computer Science & Technology"],
+          icon: "💼",
+          title: "Commerce & Gestion",
+          items: [
+            "MBA",
+            "Accounting",
+            "Finance",
+            "International Business",
+            "Enterprise Management",
+          ],
+        },
+        {
+          icon: "⚖️",
+          title: "Droit",
+          items: ["International Law", "Civil Law", "Criminal Law"],
+        },
+        {
+          icon: "🏗️",
+          title: "Ingénierie",
+          items: [
+            "Civil Engineering",
+            "Biomedical Engineering",
+            "Chemical Engineering",
+            "Materials Engineering",
+          ],
         },
         {
           icon: "🔬",
-          title: "Sciences & Biologie",
-          items: [
-            "Applied Chemistry",
-            "Biochemistry and Molecular Biology",
-            "Biology",
-          ],
-        },
-        {
-          title: "Environnement & Écologie",
-          items: [
-            "Ecology",
-            "Environmental Science and Engineering",
-            "Environmental Engineering",
-          ],
-        },
-        {
-          icon: "🏛️",
-          title: "Gestion publique",
-          items: [
-            "Public Management",
-            "Administrative Management",
-            "Social Security",
-          ],
-        },
-        {
-          title: "Agriculture, Vétérinaire & Paysage",
-          items: [
-            "Food Science & Engineering",
-            "Agricultural Engineering",
-            "Veterinary Medicine",
-            "Rural Development",
-            "Agricultural Management",
-            "Landscape Architecture",
-          ],
+          title: "Sciences & Santé",
+          items: ["Biotechnology", "Pharmacy", "Biology"],
         },
       ],
     },

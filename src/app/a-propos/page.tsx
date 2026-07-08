@@ -39,6 +39,19 @@ const ICONS: Record<string, React.ReactNode> = {
   heart: (
     <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
   ),
+  target: (
+    <>
+      <circle cx="12" cy="12" r="10" />
+      <circle cx="12" cy="12" r="6" />
+      <circle cx="12" cy="12" r="2" />
+    </>
+  ),
+  eye: (
+    <>
+      <path d="M2.06 12.35a1 1 0 0 1 0-.7 10.75 10.75 0 0 1 19.88 0 1 1 0 0 1 0 .7 10.75 10.75 0 0 1-19.88 0" />
+      <circle cx="12" cy="12" r="3" />
+    </>
+  ),
 };
 
 // Engagements vérifiables — pas de chiffres de volume (l'agence démarre).
@@ -109,41 +122,48 @@ export default function AProposPage() {
         </div>
       </section>
 
-      {/* ===== MISSION ===== */}
+      {/* ===== MISSION & VISION ===== */}
       <section className="bg-paper py-14 lg:py-20">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
-          <div data-reveal>
+        <div className="mx-auto max-w-6xl px-6">
+          <div data-reveal className="mx-auto mb-12 max-w-2xl text-center">
             <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
-              Notre mission
+              Notre raison d&apos;être
             </span>
-            <h2 className="mb-5 text-3xl font-extrabold text-navy-800 lg:text-4xl">
-              Rendre les études à l&apos;étranger accessibles à tous
+            <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
+              Ce qui nous anime
             </h2>
-            <p className="mb-4 text-slate-600">
-              FutureAccess Mali met son expertise au service des étudiants qui souhaitent poursuivre leurs
-              études à l&apos;international. De l&apos;orientation au visa, jusqu&apos;à votre
-              installation, nous simplifions chaque étape de votre parcours.
-            </p>
-            <p className="mb-8 text-slate-600">
-              Basés à Bamako, nous développons un réseau d&apos;universités partenaires à travers le
-              monde afin d&apos;offrir à chaque étudiant des opportunités de qualité, adaptées à son
-              profil et à son budget.
-            </p>
-            <a
-              href="/services"
-              className="inline-flex items-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-7 py-4 font-head font-bold text-white  transition-transform hover:-translate-y-0.5"
-            >
-              Découvrir nos services
-            </a>
           </div>
 
-          <div data-reveal="1">
-            <Photo
-              src="/images/about-team.jpg"
-              alt="Étudiants diplômés célébrant leur réussite"
-              label="Photo — étudiants diplômés"
-              className="h-72 w-full rounded-[28px] shadow-[0_10px_30px_rgba(10,37,64,.14)] sm:h-96"
-            />
+          <div className="grid gap-6 md:grid-cols-2">
+            <div
+              data-reveal
+              className="rounded-3xl border border-slate-100 bg-white p-8 shadow-[0_2px_10px_rgba(10,37,64,.06)]"
+            >
+              <div className="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-navy-800 text-gold-400">
+                <Icon name="target" className="h-6 w-6" />
+              </div>
+              <h3 className="mb-3 font-head text-xl font-extrabold text-navy-800">Mission</h3>
+              <p className="leading-relaxed text-slate-600">
+                Offrir un accompagnement académique complet et personnalisé, afin d&apos;aider chaque
+                étudiant à construire son projet d&apos;études à l&apos;étranger avec sérénité et
+                confiance.
+              </p>
+            </div>
+
+            <div
+              data-reveal="1"
+              className="rounded-3xl border border-slate-100 bg-white p-8 shadow-[0_2px_10px_rgba(10,37,64,.06)]"
+            >
+              <div className="mb-5 grid h-12 w-12 place-items-center rounded-2xl bg-navy-800 text-gold-400">
+                <Icon name="eye" className="h-6 w-6" />
+              </div>
+              <h3 className="mb-3 font-head text-xl font-extrabold text-navy-800">Vision</h3>
+              <p className="leading-relaxed text-slate-600">
+                Permettre à chaque étudiant de réaliser pleinement son projet académique à
+                l&apos;étranger, grâce à un accompagnement fiable, transparent et orienté vers le
+                succès.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -161,6 +181,32 @@ export default function AProposPage() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* ===== NOTRE ÉQUIPE ===== */}
+      <section className="bg-white py-16 lg:py-20">
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
+          <div data-reveal="1" className="order-last lg:order-first">
+            <Photo
+              src="/images/about-team.jpg"
+              alt="L'équipe FutureAccess accompagnant les étudiants"
+              label="Photo — équipe FutureAccess"
+              className="h-72 w-full rounded-[28px] shadow-[0_10px_30px_rgba(10,37,64,.14)] sm:h-96"
+            />
+          </div>
+          <div data-reveal>
+            <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+              Notre équipe
+            </span>
+            <h2 className="mb-5 text-3xl font-extrabold text-navy-800 lg:text-4xl">
+              Une équipe engagée à vos côtés
+            </h2>
+            <p className="text-lg leading-relaxed text-slate-600">
+              Notre équipe s&apos;engage à accompagner chaque étudiant avec professionnalisme, écoute,
+              discipline, des conseils adaptés et un suivi personnalisé tout au long de son parcours.
+            </p>
+          </div>
         </div>
       </section>
 
