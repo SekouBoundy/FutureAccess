@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Icon, Flag, type FlagCode } from "@/components/icons";
+import ServicesGrid, { type ServicePhase } from "@/components/ServicesGrid";
 
 export const metadata: Metadata = {
   title: "Services — FutureAccess",
@@ -7,119 +8,147 @@ export const metadata: Metadata = {
     "Orientation académique, assistance visa, logement, préparation linguistique, intégration et suivi post-arrivée : découvrez l'accompagnement complet FutureAccess et nos forfaits.",
 };
 
-// Icônes SVG (style trait, jeu Lucide)
-const ICONS: Record<string, React.ReactNode> = {
-  landmark: (
-    <>
-      <line x1="3" x2="21" y1="22" y2="22" />
-      <line x1="6" x2="6" y1="18" y2="11" />
-      <line x1="10" x2="10" y1="18" y2="11" />
-      <line x1="14" x2="14" y1="18" y2="11" />
-      <line x1="18" x2="18" y1="18" y2="11" />
-      <polygon points="12 2 20 7 4 7" />
-    </>
-  ),
-  shield: (
-    <>
-      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
-      <path d="m9 12 2 2 4-4" />
-    </>
-  ),
-  home: (
-    <>
-      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-      <polyline points="9 22 9 12 15 12 15 22" />
-    </>
-  ),
-  chat: <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />,
-  globe: (
-    <>
-      <circle cx="12" cy="12" r="10" />
-      <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-      <path d="M2 12h20" />
-    </>
-  ),
-  heart: (
-    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-  ),
-  "graduation-cap": (
-    <>
-      <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
-      <path d="M22 10v6" />
-      <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
-    </>
-  ),
-  "file-text": (
-    <>
-      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
-      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
-      <path d="M16 13H8" />
-      <path d="M16 17H8" />
-      <path d="M10 9H8" />
-    </>
-  ),
-  plane: (
-    <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
-  ),
-  "map-pin": (
-    <>
-      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-      <circle cx="12" cy="10" r="3" />
-    </>
-  ),
-  arrow: (
-    <>
-      <path d="M5 12h14" />
-      <path d="m12 5 7 7-7 7" />
-    </>
-  ),
-};
-
-const SERVICES = [
+const PHASES: ServicePhase[] = [
   {
-    icon: "landmark",
-    title: "Orientation académique",
-    text: "Évaluation de votre profil et aide au choix des universités et formations adaptées.",
+    label: "Avant le départ",
+    services: [
+      {
+        slug: "orientation-academique",
+        icon: "landmark",
+        title: "Orientation académique",
+        text: "Évaluation de votre profil et aide au choix des universités et formations adaptées.",
+        detail:
+          "Nous analysons votre parcours scolaire, vos objectifs et votre budget pour identifier les formations et destinations qui vous correspondent réellement, avant de vous lancer dans les démarches.",
+        bullets: [
+          "Bilan de profil personnalisé",
+          "Sélection de formations et universités adaptées",
+          "Comparatif des destinations selon votre budget",
+          "Recommandations claires et sans jargon",
+        ],
+      },
+      {
+        slug: "conseil-personnalise",
+        icon: "chat",
+        title: "Conseil personnalisé",
+        text: "Des conseils adaptés à votre parcours, à votre niveau d'études et à votre budget.",
+        detail:
+          "Un conseiller dédié vous accompagne à chaque étape, répond à vos questions et ajuste ses recommandations en fonction de votre situation réelle, pas d'un parcours standard.",
+        bullets: [
+          "Conseiller dédié tout au long du processus",
+          "Échanges par téléphone, email ou WhatsApp",
+          "Réponses adaptées à votre budget et calendrier",
+          "Suivi continu jusqu'à votre départ",
+        ],
+      },
+      {
+        slug: "admission-universitaire",
+        icon: "graduation-cap",
+        title: "Admission universitaire",
+        text: "Accompagnement complet dans vos démarches de candidature auprès des universités.",
+        detail:
+          "Nous préparons et soumettons vos candidatures auprès des universités partenaires, suivons chaque dossier et vous tenons informé jusqu'à l'obtention de votre lettre d'admission.",
+        bullets: [
+          "Candidature dans plusieurs universités partenaires",
+          "Suivi de l'avancement de chaque dossier",
+          "Relance et échanges directs avec les établissements",
+          "Obtention de la lettre d'admission",
+        ],
+      },
+    ],
   },
   {
-    icon: "chat",
-    title: "Conseil personnalisé",
-    text: "Des conseils adaptés à votre parcours, à votre niveau d'études et à votre budget.",
+    label: "Pendant les démarches",
+    services: [
+      {
+        slug: "preparation-dossier",
+        icon: "file-text",
+        title: "Préparation du dossier",
+        text: "Vérification et organisation de tous les documents nécessaires à votre admission.",
+        detail:
+          "Nous vérifions la conformité de chaque document, gérons les traductions et légalisations nécessaires, et constituons un dossier complet et prêt à être soumis.",
+        bullets: [
+          "Liste complète des documents requis",
+          "Vérification de conformité",
+          "Aide à la traduction et à la légalisation",
+          "Dossier prêt à soumettre",
+        ],
+      },
+      {
+        slug: "demande-visa",
+        icon: "shield",
+        title: "Demande de visa",
+        text: "Assistance dans la préparation de votre dossier et des démarches de visa.",
+        detail:
+          "De la constitution du dossier consulaire à la préparation de l'entretien, nous vous accompagnons pour maximiser vos chances d'obtenir votre visa étudiant.",
+        bullets: [
+          "Constitution du dossier consulaire",
+          "Préparation à l'entretien de visa",
+          "Suivi des délais et des rendez-vous",
+          "Assistance en cas de demande complémentaire",
+        ],
+      },
+      {
+        slug: "recherche-logement",
+        icon: "home",
+        title: "Recherche de logement",
+        text: "Aide à trouver un hébergement adapté à vos besoins et à votre budget.",
+        detail:
+          "Nous vous mettons en relation avec des résidences étudiantes ou familles d'accueil vérifiées, adaptées à votre budget et à la proximité de votre établissement.",
+        bullets: [
+          "Sélection de logements vérifiés",
+          "Options adaptées à votre budget",
+          "Proximité avec votre université",
+          "Aide à la signature du contrat",
+        ],
+      },
+      {
+        slug: "assistance-voyage",
+        icon: "plane",
+        title: "Assistance voyage",
+        text: "Préparation et conseils pratiques pour votre départ à l'étranger.",
+        detail:
+          "Réservation de billets, conseils sur les bagages et documents à emporter, informations pratiques sur le pays d'accueil : nous préparons votre départ dans les moindres détails.",
+        bullets: [
+          "Conseils pour la réservation du billet",
+          "Checklist des documents et bagages",
+          "Informations pratiques sur le pays d'accueil",
+          "Point de contact avant le départ",
+        ],
+      },
+    ],
   },
   {
-    icon: "graduation-cap",
-    title: "Admission universitaire",
-    text: "Accompagnement complet dans vos démarches de candidature auprès des universités.",
-  },
-  {
-    icon: "file-text",
-    title: "Préparation du dossier",
-    text: "Vérification et organisation de tous les documents nécessaires à votre admission.",
-  },
-  {
-    icon: "shield",
-    title: "Demande de visa",
-    text: "Assistance dans la préparation de votre dossier et des démarches de visa.",
-  },
-  {
-    icon: "home",
-    title: "Recherche de logement",
-    text: "Aide à trouver un hébergement adapté à vos besoins et à votre budget.",
-  },
-  {
-    icon: "plane",
-    title: "Assistance voyage",
-    text: "Préparation et conseils pratiques pour votre départ à l'étranger.",
-  },
-  {
-    icon: "map-pin",
-    title: "Assistance à l'arrivée",
-    text: "Accompagnement pour faciliter votre installation dans votre pays d'études.",
-  },
-  {
-    icon: "heart",
-    title: "Suivi après installation",
-    text: "Un accompagnement continu pour répondre à vos questions après votre arrivée.",
+    label: "Après l'arrivée",
+    services: [
+      {
+        slug: "assistance-arrivee",
+        icon: "map-pin",
+        title: "Assistance à l'arrivée",
+        text: "Accompagnement pour faciliter votre installation dans votre pays d'études.",
+        detail:
+          "Un accueil à l'arrivée, de l'aide pour les premières démarches administratives et une orientation dans votre nouvelle ville pour bien démarrer.",
+        bullets: [
+          "Accueil à l'arrivée",
+          "Aide aux démarches administratives locales",
+          "Orientation dans votre nouvelle ville",
+          "Mise en relation avec la communauté étudiante",
+        ],
+      },
+      {
+        slug: "suivi-installation",
+        icon: "heart",
+        title: "Suivi après installation",
+        text: "Un accompagnement continu pour répondre à vos questions après votre arrivée.",
+        detail:
+          "Notre équipe reste disponible après votre installation pour répondre à vos questions, résoudre les imprévus et vous accompagner tout au long de votre première année.",
+        bullets: [
+          "Support continu à distance",
+          "Aide en cas d'imprévu",
+          "Suivi régulier pendant la première année",
+          "Réponses rapides par email ou WhatsApp",
+        ],
+      },
+    ],
   },
 ];
 
@@ -156,7 +185,7 @@ const PLANS: {
     popular: true,
     features: [
       "Tout le pack Malaisie",
-      "Inscription dans 5 universités",
+      "Installation à Kuala Lumpur",
       "Préparation entretien visa",
       "Aide au logement",
       "Suivi prioritaire",
@@ -171,7 +200,7 @@ const PLANS: {
     popular: false,
     features: [
       "Tout le pack Turquie",
-      "Admission garantie",
+      "Recherche logement Istanbul",
       "Accompagnement VIP 1:1",
       "Suivi post-arrivée 6 mois",
       "Dossier bourse d'études",
@@ -195,52 +224,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ===== GRILLE DE SERVICES ===== */}
-      <section className="py-14 lg:py-20">
-        <div className="mx-auto grid max-w-7xl gap-6 px-6 sm:grid-cols-2 lg:grid-cols-3">
-          {SERVICES.map((s, i) => (
-            <div
-              key={s.title}
-              data-reveal={i % 3}
-              className="group rounded-3xl bg-white p-7 shadow-[0_2px_10px_rgba(10,37,64,.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,37,64,.10)]"
-            >
-              <div className="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 text-white ">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-6 w-6"
-                  aria-hidden
-                >
-                  {ICONS[s.icon]}
-                </svg>
-              </div>
-              <h3 className="mb-2 font-head text-xl font-bold text-navy-800">{s.title}</h3>
-              <p className="mb-5 text-sm leading-relaxed text-slate-600">{s.text}</p>
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-1.5 font-head text-sm font-bold text-blue-600 transition-colors hover:text-blue-500"
-              >
-                Découvrir
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                  aria-hidden
-                >
-                  {ICONS.arrow}
-                </svg>
-              </a>
-            </div>
-          ))}
-        </div>
-      </section>
+      <ServicesGrid phases={PHASES} />
 
       {/* ===== TARIFS ===== */}
       <section className="bg-slate-50 py-14 lg:py-20">
@@ -303,35 +287,7 @@ export default function ServicesPage() {
                     }`}
                   >
                     Choisir ce plan
-                    {!plan.popular && (
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-4 w-4"
-                        aria-hidden
-                      >
-                        {ICONS.arrow}
-                      </svg>
-                    )}
-                     {plan.popular && (
-                      <svg
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth={2.5}
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="h-4 w-4"
-                        aria-hidden
-                      >
-                        {ICONS.arrow}
-                      </svg>
-                    )}
-                    
+                    <Icon name="arrow-right" className="h-4 w-4" strokeWidth={2.5} />
                   </a>
                 </div>
 

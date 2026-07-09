@@ -98,7 +98,7 @@ const malaisie: DestinationDetail = {
   opportunitiesImage: "/images/destinations/malaysia-campus.jpg",
   whyStudy: {
     title: "Pourquoi étudier en Malaisie ?",
-    text: "La Malaisie offre un enseignement de qualité, des universités reconnues à l'international, des programmes majoritairement dispensés en anglais et un coût de vie abordable. C'est une destination idéale pour obtenir un diplôme reconnu tout en évoluant dans un environnement multiculturel.",
+    text: "",
   },
   universities: [
     {
@@ -371,7 +371,7 @@ const turquie: DestinationDetail = {
   opportunitiesImage: "/images/destinations/turkey-campus.jpg",
   whyStudy: {
     title: "Pourquoi étudier en Turquie ?",
-    text: "La Turquie offre un enseignement de qualité, des frais abordables et des diplômes reconnus dans un environnement multiculturel.",
+    text: "",
   },
   universities: [
     {
