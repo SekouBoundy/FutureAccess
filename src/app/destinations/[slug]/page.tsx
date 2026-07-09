@@ -131,68 +131,101 @@ export default async function DestinationDetailPage({
   return (
     <main className="flex-1">
       {/* ===== HERO ===== */}
-      <section className="relative overflow-hidden bg-navy-900 pb-12 pt-28 text-white sm:pt-36 lg:pt-44">
+      <section className="relative overflow-hidden rounded-b-[34px] bg-navy-900 pb-14 pt-28 text-white sm:pt-36 lg:pb-20 lg:pt-44">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${d.heroImage})` }}
         />
+        {/* Voile : vertical en mobile (lisibilité portrait), horizontal dès sm */}
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-navy-900/97 via-navy-900/80 to-navy-900/30"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy-900/95 via-navy-900/80 to-navy-900/45 sm:bg-gradient-to-r sm:from-navy-900/97 sm:via-navy-900/80 sm:to-navy-900/30"
+        />
+        {/* Halos d'accent — signature, comme le héros d'accueil */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 [background:radial-gradient(120%_80%_at_85%_-10%,rgba(46,116,230,.28),transparent_55%),radial-gradient(90%_60%_at_0%_10%,rgba(201,162,39,.14),transparent_50%)]"
         />
 
-        <div data-reveal className="relative mx-auto max-w-7xl px-6">
-          <p className="mb-5 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-400">
-            <a href="/destinations" className="transition-colors hover:text-gold-300">
+        <div className="relative mx-auto max-w-7xl px-6">
+          <nav
+            aria-label="Fil d'Ariane"
+            data-reveal
+            className="mb-5 flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em]"
+          >
+            <a href="/destinations" className="text-white/60 transition-colors hover:text-white">
               Destinations
-            </a>{" "}
-            <span className="text-white/40">&gt;</span> {d.country}
-          </p>
+            </a>
+            <Icon name="chevron-down" className="h-3 w-3 -rotate-90 text-white/40" />
+            <span className="text-gold-400">{d.country}</span>
+          </nav>
 
           {(d.rating || d.badge) && (
-            <div className="mb-6 flex flex-wrap items-center gap-3">
-              {d.rating && (
-                <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-sm font-semibold backdrop-blur-sm">
-                  <Star className="h-4 w-4 text-gold-400" />
-                  {d.rating}
-                  {d.reviews && <span className="text-white/60">· {d.reviews}</span>}
-                </span>
-              )}
-              {d.badge && (
-                <span className="rounded-full bg-[#22c55e] px-3.5 py-1.5 font-head text-sm font-bold text-[#052e16]">
-                  {d.badge}
-                </span>
-              )}
-            </div>
+            null
+            // <div data-reveal="1" className="mb-6 flex flex-wrap items-center gap-3">
+            //   {d.rating && (
+            //     <span className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-3.5 py-1.5 text-sm font-semibold backdrop-blur-sm">
+            //       <Star className="h-4 w-4 text-gold-400" />
+            //       {d.rating}
+            //       {d.reviews && <span className="text-white/60">· {d.reviews}</span>}
+            //     </span>
+            //   )}
+            //   {d.badge && (
+            //     <span className="rounded-full bg-gold-500 px-3.5 py-1.5 font-head text-sm font-bold text-navy-900">
+            //       {d.badge}
+            //     </span>
+            //   )}
+            // </div>
           )}
 
-          <h1 className="mb-6 max-w-[16ch] text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.05]">
-            Étudier en <em className="font-display-italic font-normal">{d.country}</em>
+          <h1
+            data-reveal="1"
+            className="mb-6 max-w-[16ch] text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl md:text-6xl lg:text-7xl lg:leading-[1.05]"
+          >
+            Étudier en <em className="font-display-italic font-normal text-gold-400">{d.country}</em>
           </h1>
 
-          <p className="mb-8 max-w-[62ch] text-lg leading-relaxed text-white/85">{d.intro}</p>
+          <p
+            data-reveal="2"
+            className="mb-8 max-w-[54ch] text-base leading-relaxed text-white/85 sm:text-lg"
+          >
+            {d.intro}
+          </p>
 
-          <div className="flex flex-wrap items-center gap-3">
+          <div
+            data-reveal="3"
+            className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
+          >
             <a
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-blue-500 px-8 py-4 font-head text-base font-bold text-white shadow-[0_14px_34px_rgba(46,116,230,.4)] transition-transform hover:-translate-y-0.5"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-br from-gold-400 to-gold-600 px-8 py-4 font-head text-base font-bold text-white shadow-[0_14px_34px_rgba(201,162,39,.34)] transition-transform hover:-translate-y-0.5"
             >
               Commencer mon dossier
             </a>
-            {d.spotsLeft && (
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-4 font-head text-sm font-bold text-white/90">
+            {/* <a
+              href="/contact"
+              className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-4 font-head text-sm font-bold text-white transition-colors hover:bg-white/10"
+            >
+              Parler à un conseiller
+            </a> */}
+            {/* {d.spotsLeft && (
+              <span className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-5 py-3.5 font-head text-sm font-bold text-white/90">
                 <Clock className="h-4 w-4 text-gold-400" />
                 {d.spotsLeft}
               </span>
-            )}
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-4 font-head text-sm font-bold text-white transition-colors hover:bg-white/10"
-            >
-              Parler à un conseiller
-            </a>
+            )} */}
           </div>
+
+          <p
+            data-reveal="3"
+            className="mt-5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-sm text-white/60"
+          >
+            <ShieldCheck className="h-4 w-4 text-gold-400" />
+            Entretien gratuit
+            <span className="text-white/30">·</span>
+            Sans engagement
+          </p>
         </div>
       </section>
 
@@ -203,9 +236,14 @@ export default async function DestinationDetailPage({
             <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
               Opportunités
             </span>
-            <h2 className="mb-8 text-3xl font-extrabold text-navy-800 lg:text-4xl">
+            <h2 className="mb-5 text-3xl font-extrabold text-navy-800 lg:text-4xl">
               Pourquoi choisir {d.countryArticle}&nbsp;?
             </h2>
+            {d.whyStudy && (
+              <p className="mb-8 max-w-[52ch] leading-relaxed text-slate-600">
+                {d.whyStudy.text}
+              </p>
+            )}
             <ul className="space-y-4">
               {d.opportunities.map((o) => (
                 <li key={o} className="flex items-center gap-3 font-head font-bold text-navy-800">
@@ -417,21 +455,6 @@ export default async function DestinationDetailPage({
                 </li>
               ))}
             </ul>
-          </div>
-        </section>
-      )}
-
-      {/* ===== POURQUOI ÉTUDIER (optionnel) ===== */}
-      {d.whyStudy && (
-        <section className="bg-slate-50 py-16 lg:py-20">
-          <div className="mx-auto max-w-7xl px-6">
-            <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
-              {d.whyStudy.title}
-            </span>
-            <h2 className="mb-5 max-w-[20ch] text-3xl font-extrabold text-navy-800 lg:text-4xl">
-              {d.whyStudy.title}
-            </h2>
-            <p className="max-w-3xl text-lg text-slate-600">{d.whyStudy.text}</p>
           </div>
         </section>
       )}
