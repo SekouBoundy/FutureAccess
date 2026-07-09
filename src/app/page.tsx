@@ -166,7 +166,9 @@ export default function Home() {
               alt="Étudiante prête pour ses études à l'international"
               label="Photo héro — étudiante"
               fit="contain"
-              className="h-80 w-full sm:h-96 lg:h-[32rem]"
+              // className="h-80 w-full sm:h-96 lg:h-[32rem]"
+              className="w-full sm:h-96 lg:h-[32rem]"
+
             />
           </div>
         </div>

@@ -43,7 +43,6 @@ export type DestinationDetail = {
   spotsLeft?: string;
   heroImage: string;
   intro: string;
-  stats: { value: string; label: string; icon?: string }[];
   opportunities: string[];
   opportunitiesImage: string;
   /** Bloc d'intro optionnel « Pourquoi étudier en … ? » */
@@ -90,12 +89,6 @@ const malaisie: DestinationDetail = {
   heroImage: "/images/destinations/malaysia.jpg",
   intro:
     "La Malaisie est une destination de choix pour les étudiants internationaux grâce à la qualité de son enseignement, ses universités reconnues, ses programmes dispensés en anglais, son coût de la vie abordable, ses diplômes reconnus à l'international et son environnement multiculturel.",
-  stats: [
-    { icon: "🏛️", value: "20+", label: "Universités partenaires" },
-    { icon: "💰", value: "500 000 FCFA", label: "Frais d'agence" },
-    { icon: "🗓️", value: "6–8 sem.", label: "Délai de procédure" },
-    { icon: "🗣️", value: "Anglais", label: "Langue d'enseignement" },
-  ],
   opportunities: [
     "Coût de la vie très abordable",
     "Universités classées QS Top 300",
@@ -369,12 +362,6 @@ const turquie: DestinationDetail = {
   heroImage: "/images/destinations/turkey.jpg",
   intro:
     "La Turquie offre un enseignement de qualité, des universités reconnues, un coût de la vie abordable, des programmes dispensés en anglais et en turc, une position stratégique entre l'Europe et l'Asie, ainsi qu'un riche patrimoine culturel.",
-  stats: [
-    { icon: "🏛️", value: "15+", label: "Universités partenaires" },
-    { icon: "💰", value: "500 000 FCFA", label: "Frais d'agence" },
-    { icon: "✈️", value: "Vol direct", label: "Depuis Paris & Maghreb" },
-    { icon: "🗣️", value: "Langues", label: "Turc & Anglais" },
-  ],
   opportunities: [
     "Bourses gouvernementales disponibles",
     "Architecture et histoire exceptionnelles",
@@ -651,12 +638,6 @@ const chine: DestinationDetail = {
   heroImage: "/images/destinations/china.jpg",
   intro:
     "La Chine : une destination académique d'avenir, avec une éducation abordable, des formations accessibles et des opportunités de bourses pour les étudiants internationaux.",
-  stats: [
-    { icon: "🗣️", value: "Anglais / Chinois", label: "Langues d'enseignement" },
-    { icon: "💰", value: "700 000 FCFA", label: "Frais d'agence" },
-    { icon: "🗓️", value: "8–12 sem.", label: "Délai de procédure" },
-    { icon: "🎓", value: "Bachelor & Master", label: "Niveaux disponibles" },
-  ],
   opportunities: [
     "Meilleures universités chinoises",
     "Programmes en anglais ou en chinois",

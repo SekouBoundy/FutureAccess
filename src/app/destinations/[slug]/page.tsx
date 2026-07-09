@@ -196,27 +196,6 @@ export default async function DestinationDetailPage({
         </div>
       </section>
 
-      {/* ===== STATS ===== */}
-      <section className="border-b border-slate-100 bg-paper">
-        <div className="mx-auto grid max-w-7xl grid-cols-2 gap-8 px-6 py-8 lg:grid-cols-4 lg:divide-x lg:divide-slate-200">
-          {d.stats.map((s) => (
-            <div key={s.label} className="flex items-center gap-3 lg:px-8">
-              {s.icon && (
-                <span className="grid h-10 w-10 flex-none place-items-center rounded-xl bg-gold-100 text-gold-600 sm:h-11 sm:w-11">
-                  <EmojiIcon emoji={s.icon} className="h-5 w-5" />
-                </span>
-              )}
-              <div>
-                <div className="font-head text-xl font-extrabold text-navy-800 sm:text-2xl">
-                  {s.value}
-                </div>
-                <div className="mt-0.5 text-sm text-slate-500">{s.label}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ===== OPPORTUNITÉS ===== */}
       <section className="bg-cream py-16 lg:py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
