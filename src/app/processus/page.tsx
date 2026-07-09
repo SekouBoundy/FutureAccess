@@ -4,7 +4,7 @@ import CtaCard from "@/components/CtaCard";
 export const metadata: Metadata = {
   title: "Processus — FutureAccess",
   description:
-    "De l'évaluation de votre profil au suivi post-arrivée : découvrez les 6 étapes de l'accompagnement FutureAccess pour vos études à l'international.",
+    "De la consultation gratuite au départ et à l'installation : découvrez les 6 étapes de l'accompagnement FutureAccess pour vos études à l'international.",
 };
 
 // Icônes SVG (style trait, jeu Lucide)
@@ -62,38 +62,56 @@ const ICONS: Record<string, React.ReactNode> = {
       <circle cx="12" cy="8" r="6" />
     </>
   ),
+  file: (
+    <>
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+      <path d="M10 9H8" />
+      <path d="M16 13H8" />
+      <path d="M16 17H8" />
+    </>
+  ),
+  plane: (
+    <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-1 .1-1.3.5l-.4.5c-.4.5-.2 1.2.3 1.5L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.5 1 .7 1.5.3l.5-.4c.4-.3.6-.8.5-1.3Z" />
+  ),
+  "map-pin": (
+    <>
+      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+      <circle cx="12" cy="10" r="3" />
+    </>
+  ),
 };
 
 const STEPS = [
   {
     icon: "chat",
-    title: "Évaluation de votre profil",
-    text: "Audit de vos compétences, de votre parcours académique et de vos aspirations professionnelles pour définir la meilleure stratégie.",
+    title: "Consultation gratuite",
+    text: "Analyse de votre profil, de vos objectifs et de votre budget afin de définir le projet d’études le mieux adapté à vos besoins.",
   },
   {
     icon: "globe",
-    title: "Choix de la destination",
-    text: "Aide à la sélection du pays et des universités partenaires qui correspondent le mieux à vos critères et à votre budget.",
+    title: "Choix de la destination et de l’université",
+    text: "Sélection de la destination, de l’université et du programme les mieux adaptés à votre profil.",
+  },
+  {
+    icon: "file",
+    title: "Préparation du dossier",
+    text: "Constitution, vérification et soumission de votre dossier de candidature.",
   },
   {
     icon: "landmark",
-    title: "Dossier de candidature",
-    text: "Préparation minutieuse des documents, lettres de motivation et CV pour maximiser vos chances d'admission.",
+    title: "Obtention de l’admission",
+    text: "Suivi de votre candidature jusqu’à la décision finale de l’université.",
   },
   {
     icon: "shield",
-    title: "Assistance Visa",
-    text: "Accompagnement stratégique pour la constitution du dossier consulaire et simulation d'entretien avec nos experts.",
+    title: "Démarches administratives et visa",
+    text: "Accompagnement dans les démarches d’inscription, les paiements et la demande de visa.",
   },
   {
-    icon: "home",
-    title: "Arrivée et intégration",
-    text: "Logement, accueil à l'aéroport et formalités administratives locales pour un démarrage serein dans votre nouveau pays.",
-  },
-  {
-    icon: "heart",
-    title: "Suivi post-arrivée",
-    text: "Nous restons à vos côtés durant tout votre cursus pour toute question académique ou administrative sur place.",
+    icon: "plane",
+    title: "Départ et installation",
+    text: "Préparation de votre départ et accompagnement jusqu’à votre arrivée et votre installation dans le pays d’études.",
   },
 ];
 
@@ -138,15 +156,15 @@ export default function ProcessusPage() {
       {/* ===== EN-TÊTE ===== */}
       <section className="bg-paper pt-28 sm:pt-36 lg:pt-44">
         <div data-reveal className="mx-auto max-w-2xl px-6 text-center">
-          <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
-            Comment ça marche&nbsp;?
+          <span className="mb-3 inline-block font-head text-[18px] font-bold uppercase tracking-[0.16em] text-gold-600">
+            Processus
           </span>
           <h1 className="text-4xl font-extrabold tracking-tight text-navy-800 lg:text-5xl">
-            Un processus clair, étape par étape
+            Comment ça fonctionne&nbsp;?
           </h1>
           <p className="mt-5 text-lg text-slate-600">
-            Un accompagnement personnalisé de votre premier bilan jusqu&apos;à votre installation à
-            l&apos;étranger.
+            Un accompagnement simple, personnalisé et sécurisé à chaque étape de votre projet
+            d&apos;études à l&apos;étranger.
           </p>
         </div>
       </section>
@@ -194,7 +212,7 @@ export default function ProcessusPage() {
       <section className="bg-slate-50 py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div data-reveal className="mx-auto mb-12 max-w-2xl text-center">
-            <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+            <span className="mb-3 inline-block font-head text-[18px] font-bold uppercase tracking-[0.16em] text-gold-600">
               Nos engagements
             </span>
             <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">

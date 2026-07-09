@@ -25,7 +25,7 @@ export default function ContactForm() {
         </div>
         <h3 className="mb-2 font-head text-2xl font-bold text-navy-800">Message envoyé&nbsp;!</h3>
         <p className="mb-7 max-w-sm text-sm text-slate-600">
-          Merci de nous avoir contactés. Notre équipe vous répondra sous 24&nbsp;heures.
+          Merci de nous avoir contactés. Notre équipe vous répondra sous 12&nbsp;heures.
         </p>
         <button
           type="button"
@@ -151,12 +151,12 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        className="mt-6 w-full rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-3.5 font-head font-bold text-white  transition-transform hover:-translate-y-0.5"
+        className="mt-12 mb-2 w-full rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-3.5 font-head font-bold text-white  transition-transform hover:-translate-y-0.5"
       >
         Envoyer le message
       </button>
       <p className="mt-4 text-center text-xs text-slate-400">
-        Réponse garantie sous 24&nbsp;heures. Vos informations restent confidentielles.
+        {/* Réponse garantie sous 12&nbsp;heures. Vos informations restent confidentielles. */}
       </p>
     </form>
   );

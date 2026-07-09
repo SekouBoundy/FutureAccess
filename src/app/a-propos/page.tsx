@@ -109,7 +109,7 @@ export default function AProposPage() {
       {/* ===== EN-TÊTE ===== */}
       <section className="bg-paper pt-28 sm:pt-36 lg:pt-44">
         <div data-reveal className="mx-auto max-w-2xl px-6 text-center">
-          <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+          <span className="mb-3 inline-block font-head text-xl font-bold uppercase tracking-[0.16em] text-gold-600">
             À propos
           </span>
           <h1 className="text-4xl font-extrabold tracking-tight text-navy-800 lg:text-5xl">
@@ -126,7 +126,7 @@ export default function AProposPage() {
       <section className="bg-paper py-14 lg:py-20">
         <div className="mx-auto max-w-6xl px-6">
           <div data-reveal className="mx-auto mb-12 max-w-2xl text-center">
-            <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+            <span className="mb-3 inline-block font-head text-[18px] font-bold uppercase tracking-[0.16em] text-gold-600">
               Notre raison d&apos;être
             </span>
             <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
@@ -189,14 +189,14 @@ export default function AProposPage() {
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
           <div data-reveal="1" className="order-last lg:order-first">
             <Photo
-              src="/images/about-team.jpg"
+              src="/images/about-team.jpeg"
               alt="L'équipe FutureAccess accompagnant les étudiants"
               label="Photo — équipe FutureAccess"
               className="h-72 w-full rounded-[28px] shadow-[0_10px_30px_rgba(10,37,64,.14)] sm:h-96"
             />
           </div>
           <div data-reveal>
-            <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+            <span className="mb-3 inline-block font-head text-[18px] font-bold uppercase tracking-[0.16em] text-gold-600">
               Notre équipe
             </span>
             <h2 className="mb-5 text-3xl font-extrabold text-navy-800 lg:text-4xl">
@@ -214,7 +214,7 @@ export default function AProposPage() {
       <section className="bg-cream py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div data-reveal className="mx-auto mb-12 max-w-2xl text-center">
-            <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+            <span className="mb-3 inline-block font-head text-[18px] font-bold uppercase tracking-[0.16em] text-gold-600">
               Nos valeurs
             </span>
             <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">

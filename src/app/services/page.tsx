@@ -42,6 +42,31 @@ const ICONS: Record<string, React.ReactNode> = {
   heart: (
     <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
   ),
+  "graduation-cap": (
+    <>
+      <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+      <path d="M22 10v6" />
+      <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+    </>
+  ),
+  "file-text": (
+    <>
+      <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+      <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+      <path d="M16 13H8" />
+      <path d="M16 17H8" />
+      <path d="M10 9H8" />
+    </>
+  ),
+  plane: (
+    <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
+  ),
+  "map-pin": (
+    <>
+      <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+      <circle cx="12" cy="10" r="3" />
+    </>
+  ),
   arrow: (
     <>
       <path d="M5 12h14" />
@@ -57,29 +82,44 @@ const SERVICES = [
     text: "Évaluation de votre profil et aide au choix des universités et formations adaptées.",
   },
   {
+    icon: "chat",
+    title: "Conseil personnalisé",
+    text: "Des conseils adaptés à votre parcours, à votre niveau d'études et à votre budget.",
+  },
+  {
+    icon: "graduation-cap",
+    title: "Admission universitaire",
+    text: "Accompagnement complet dans vos démarches de candidature auprès des universités.",
+  },
+  {
+    icon: "file-text",
+    title: "Préparation du dossier",
+    text: "Vérification et organisation de tous les documents nécessaires à votre admission.",
+  },
+  {
     icon: "shield",
-    title: "Assistance visa",
-    text: "Conseils stratégiques pour la constitution du dossier consulaire et préparation à l'entretien.",
+    title: "Demande de visa",
+    text: "Assistance dans la préparation de votre dossier et des démarches de visa.",
   },
   {
     icon: "home",
-    title: "Logement à l'étranger",
-    text: "Accès à notre réseau de résidences partenaires pour trouver votre futur chez-vous.",
+    title: "Recherche de logement",
+    text: "Aide à trouver un hébergement adapté à vos besoins et à votre budget.",
   },
   {
-    icon: "chat",
-    title: "Préparation linguistique",
-    text: "Cours intensifs et passage de certifications (IELTS, TOEFL, TCF) pour valider vos prérequis.",
+    icon: "plane",
+    title: "Assistance voyage",
+    text: "Préparation et conseils pratiques pour votre départ à l'étranger.",
   },
   {
-    icon: "globe",
-    title: "Intégration culturelle",
-    text: "Ateliers de préparation au départ pour comprendre les codes de votre pays d'accueil.",
+    icon: "map-pin",
+    title: "Assistance à l'arrivée",
+    text: "Accompagnement pour faciliter votre installation dans votre pays d'études.",
   },
   {
     icon: "heart",
-    title: "Suivi post-arrivée",
-    text: "Assistance administrative sur place pour vos premières démarches d'installation.",
+    title: "Suivi après installation",
+    text: "Un accompagnement continu pour répondre à vos questions après votre arrivée.",
   },
 ];
 

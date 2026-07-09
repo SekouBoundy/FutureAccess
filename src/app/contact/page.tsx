@@ -5,7 +5,7 @@ import { Whatsapp } from "@/components/icons";
 export const metadata: Metadata = {
   title: "Contact — FutureAccess",
   description:
-    "Contactez FutureAccess pour votre projet d'études à l'international. Réponse garantie sous 24 heures — par email, téléphone ou WhatsApp.",
+    "Contactez FutureAcces Mali pour votre projet d'études à l'international. Réponse garantie sous 12 heures — par email, téléphone ou WhatsApp.",
 };
 
 const PHONE_DISPLAY = "+223 92 24 63 42";
@@ -42,7 +42,7 @@ const CONTACT_ITEMS = [
   { icon: "mail", label: "Email", value: EMAIL, href: `mailto:${EMAIL}` },
   { icon: "phone", label: "Téléphone", value: PHONE_DISPLAY, href: `tel:${PHONE_TEL}` },
   { icon: "pin", label: "Adresse", value: "Bamako, Mali", href: undefined },
-  { icon: "clock", label: "Horaires", value: "Lun – Ven : 9h – 18h", href: undefined },
+  { icon: "clock", label: "Horaires", value: "Lun - Mer – Sam : 9h – 16h", href: undefined },
 ];
 
 function Icon({ name, className }: { name: string; className: string }) {
@@ -68,14 +68,14 @@ export default function ContactPage() {
       {/* ===== EN-TÊTE ===== */}
       <section className="pt-28 sm:pt-36 lg:pt-44">
         <div data-reveal className="mx-auto max-w-2xl px-6 text-center">
-          <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+          <span className="mb-3 inline-block font-head text-[18px] font-bold uppercase tracking-[0.16em] text-gold-600">
             Nous contacter
           </span>
           <h1 className="text-4xl font-extrabold tracking-tight text-navy-800 lg:text-5xl">
             Contactez-nous
           </h1>
           <p className="mt-5 text-lg text-slate-600">
-            Une question, un projet d&apos;études&nbsp;? Notre équipe vous répond sous 24&nbsp;heures.
+            Une question, un projet d&apos;études&nbsp;? Notre équipe vous répond sous 12&nbsp;heures.
           </p>
         </div>
       </section>
@@ -86,7 +86,7 @@ export default function ContactPage() {
           {/* Colonne infos */}
           <div data-reveal>
             <h2 className="mb-2 font-head text-2xl font-bold text-navy-800">Coordonnées</h2>
-            <p className="mb-8 text-sm text-slate-600">
+            <p className="mb-4 text-sm text-slate-600">
               Contactez-nous directement ou remplissez le formulaire, nous revenons vers vous
               rapidement.
             </p>
