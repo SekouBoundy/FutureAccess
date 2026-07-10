@@ -136,7 +136,7 @@ const malaisie: DestinationDetail = {
       "Accompagnement complet vers l'admission",
       "Accompagnement Visa",
       "Installation à Kuala Lumpur",
-      "Suivi 6 mois",
+      "Suivi après l'installation",
     ],
   },
   studyCosts: {
@@ -330,13 +330,13 @@ const malaisie: DestinationDetail = {
         //   title: "Design & Innovation",
         //   items: ["Management de l'innovation en design"],
         // },
-        {
-          title: "Sciences humaines & Éducation",
-          items: [
-            "Conception pédagogique et technologies de l'apprentissage",
-            "Psychologie appliquée (Cyberpsychologie)",
-          ],
-        },
+        // {
+        //   title: "Sciences humaines & Éducation",
+        //   items: [
+        //     "Conception pédagogique et technologies de l'apprentissage",
+        //     "Psychologie appliquée (Cyberpsychologie)",
+        //   ],
+        // },
       ],
     },
   ],
@@ -459,7 +459,7 @@ const turquie: DestinationDetail = {
         title: "Autres frais",
         items: [
           { icon: "→", text: "Visa et assurance : 175 000 FCFA" },
-          { icon: "→", text: "Frais de réception : 90 000 FCFA" },
+          { icon: "→", text: "Frais de réception : 70 000 FCFA" },
           { icon: "→", text: "Assurance et permis de séjour : 350 USD" },
         ],
       },
