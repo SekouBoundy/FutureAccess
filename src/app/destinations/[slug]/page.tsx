@@ -230,7 +230,8 @@ export default async function DestinationDetailPage({
         </div>
       </section>
 
-      {/* ===== OPPORTUNITÉS ===== */}
+      {/* ===== OPPORTUNITÉS (masqué temporairement) ===== */}
+      {false && (
       <section className="bg-cream py-16 lg:py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-6 lg:grid-cols-2 lg:gap-16">
           <div data-reveal>
@@ -268,8 +269,9 @@ export default async function DestinationDetailPage({
           </div>
         </div>
       </section>
+      )}
 
-      {/* ===== TOP UNIVERSITÉS (optionnel) ===== */}
+      {/* ===== 🏛️ TOP UNIVERSITÉS (optionnel) ===== */}
       {d.universities && (
         <section className="bg-white py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">
@@ -349,7 +351,7 @@ export default async function DestinationDetailPage({
         <section className="bg-slate-50 py-16 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mx-auto mb-12 max-w-2xl text-center">
-            <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+            <span className="mb-3 inline-block font-head text-18px font-bold uppercase tracking-[0.16em] text-gold-600">
               Accompagnement
             </span>
             <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
@@ -378,102 +380,8 @@ export default async function DestinationDetailPage({
         </section>
       )}
 
-      {/* ===== FORFAIT ===== */}
-      <section className="bg-slate-50 py-16 lg:py-24">
-        <div className="mx-auto max-w-lg px-6">
-          {(() => {
-            const f = d.forfait;
-            return (
-              <div className="relative flex flex-col rounded-[32px] bg-slate-100 p-5 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(10,37,64,.16)] lg:p-6">
-                {/* En-tête : carte blanche flottant sur le panneau gris */}
-                <div className="rounded-[24px] bg-white p-6 shadow-[0_20px_45px_rgba(10,37,64,.14)] lg:p-7">
-                  {/* Forfait + badge */}
-                  <div className="flex items-center gap-2.5">
-                    <h3 className="font-head text-xl font-extrabold text-navy-800">{f.label}</h3>
-                    <span className="ml-auto inline-flex items-center gap-1.5 rounded-full bg-gold-500 px-2.5 py-0.5 font-head text-[10px] font-bold uppercase tracking-wide text-white">
-                      <Star className="h-2.5 w-2.5" />
-                      {f.badge}
-                    </span>
-                  </div>
-
-                  {/* Prix */}
-                  <div className="mt-5 flex items-end gap-1.5">
-                    <span className="font-head text-4xl font-extrabold tracking-tight text-navy-800 lg:text-5xl">
-                      {f.price}
-                    </span>
-                    {f.priceUnit && (
-                      <span className="mb-1.5 text-sm text-slate-500">{f.priceUnit}</span>
-                    )}
-                  </div>
-                  {f.priceApprox && (
-                    <p className="mt-1.5 text-sm text-slate-500">{f.priceApprox}</p>
-                  )}
-
-                  {/* Bouton */}
-                  <a
-                    href="/contact"
-                    className="group mt-6 flex items-center justify-center gap-2 rounded-full bg-navy-900 py-4 font-head font-bold text-white shadow-[0_16px_34px_rgba(6,20,39,.28)] transition-transform hover:-translate-y-0.5"
-                  >
-                    Commencer maintenant
-                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  </a>
-                  <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-slate-400">
-                    <ShieldCheck className="h-3.5 w-3.5 text-navy-800" />
-                    Sans engagement · Réponse sous 48&nbsp;h
-                  </p>
-                </div>
-
-                {/* Prestations — sous la carte, sur le panneau gris */}
-                <div className="px-6 pt-6 lg:px-7">
-                  <p className="mb-4 font-head text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
-                    Prestations incluses
-                  </p>
-                  <ul className="space-y-3.5">
-                    {f.features.map((feat) => (
-                      <li key={feat} className="flex items-start gap-3 text-sm text-navy-800/80">
-                        <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-navy-900 text-white">
-                          <Check className="h-3 w-3" />
-                        </span>
-                        {feat}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            );
-          })()}
-        </div>
-      </section>
-
-      {/* ===== DOCUMENTS À PRÉPARER (optionnel) ===== */}
-      {d.documents && (
-        <section className="bg-slate-50 py-16 lg:py-20">
-          <div className="mx-auto max-w-4xl px-6">
-            <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
-              Documents à préparer
-            </h2>
-            <p className="mt-2 text-slate-600">
-              Réunissez ces pièces pour constituer votre dossier de candidature.
-            </p>
-            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-              {d.documents.map((doc) => (
-                <li
-                  key={doc}
-                  className="flex items-start gap-3 rounded-2xl border border-slate-100 bg-white p-4 text-sm text-slate-700 shadow-[0_2px_10px_rgba(10,37,64,.05)]"
-                >
-                  <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center rounded-full bg-blue-500 text-white">
-                    <Check className="h-3.5 w-3.5" />
-                  </span>
-                  {doc}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
-      )}
-
-      {/* ===== COÛT DES ÉTUDES ===== */}
-      <section className="bg-white py-16 lg:py-20">
+      {/* ===== 💰 COÛT DES ÉTUDES ===== */}
+      <section className="bg-cream py-16 lg:py-20">
         <div className="mx-auto max-w-4xl px-6">
           <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">Coût des études</h2>
           <p className="mt-2 text-slate-600">{d.studyCosts.subtitle}</p>
@@ -574,8 +482,8 @@ export default async function DestinationDetailPage({
         </div>
       </section>
 
-      {/* ===== COÛT DE LA PROCÉDURE ===== */}
-      <section className="bg-cream py-16 lg:py-20">
+      {/* ===== 📄 COÛT DE LA PROCÉDURE ===== */}
+      <section className="bg-white py-16 lg:py-20">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">Coût de la procédure</h2>
           <p className="mt-2 text-slate-600">{d.procedureCosts.subtitle}</p>
@@ -637,33 +545,78 @@ export default async function DestinationDetailPage({
         </div>
       </section>
 
-      {/* ===== INFORMATIONS IMPORTANTES ===== */}
-      <section className="bg-slate-50 py-16 lg:py-20">
-        <div className="mx-auto max-w-4xl px-6">
-          <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
-            Informations importantes
-          </h2>
-          <p className="mt-2 text-slate-600">
-            Points clés à considérer avant de lancer votre candidature.
-          </p>
-          <ul className="mt-8 space-y-4">
-            {d.importantInfo.map((info) => (
-              <li key={info} className="flex items-start gap-3 text-sm text-slate-600">
-                <span className="mt-0.5 flex-none text-gold-500">
-                  {d.importantIcon === "info" ? <Info className="h-4 w-4" /> : <Check className="h-4 w-4" />}
-                </span>
-                {info}
-              </li>
-            ))}
-          </ul>
+      {/* ===== 🤝 FRAIS D'AGENCE ===== */}
+      <section className="bg-slate-50 py-16 lg:py-24">
+        <div className="mx-auto max-w-lg px-6">
+          {(() => {
+            const f = d.forfait;
+            return (
+              <div className="relative flex flex-col rounded-[32px] bg-slate-100 p-5 transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_30px_70px_rgba(10,37,64,.16)] lg:p-6">
+                {/* En-tête : carte blanche flottant sur le panneau gris */}
+                <div className="rounded-[24px] bg-white p-6 shadow-[0_20px_45px_rgba(10,37,64,.14)] lg:p-7">
+                  {/* Forfait + badge */}
+                  <div className="flex items-center gap-2.5">
+                    <h3 className="font-head text-xl font-extrabold text-navy-800">{f.label}</h3>
+                    <span className="ml-auto inline-flex items-center gap-1.5 rounded-full bg-gold-500 px-2.5 py-0.5 font-head text-[10px] font-bold uppercase tracking-wide text-white">
+                      <Star className="h-2.5 w-2.5" />
+                      {f.badge}
+                    </span>
+                  </div>
+
+                  {/* Prix */}
+                  <div className="mt-5 flex items-end gap-1.5">
+                    <span className="font-head text-4xl font-extrabold tracking-tight text-navy-800 lg:text-5xl">
+                      {f.price}
+                    </span>
+                    {f.priceUnit && (
+                      <span className="mb-1.5 text-sm text-slate-500">{f.priceUnit}</span>
+                    )}
+                  </div>
+                  {f.priceApprox && (
+                    <p className="mt-1.5 text-sm text-slate-500">{f.priceApprox}</p>
+                  )}
+
+                  {/* Bouton */}
+                  <a
+                    href="/contact"
+                    className="group mt-6 flex items-center justify-center gap-2 rounded-full bg-navy-900 py-4 font-head font-bold text-white shadow-[0_16px_34px_rgba(6,20,39,.28)] transition-transform hover:-translate-y-0.5"
+                  >
+                    Commencer maintenant
+                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </a>
+                  <p className="mt-4 flex items-center justify-center gap-1.5 text-xs text-slate-400">
+                    <ShieldCheck className="h-3.5 w-3.5 text-navy-800" />
+                    Sans engagement · Réponse sous 48&nbsp;h
+                  </p>
+                </div>
+
+                {/* Prestations — sous la carte, sur le panneau gris */}
+                <div className="px-6 pt-6 lg:px-7">
+                  <p className="mb-4 font-head text-[11px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                    Prestations incluses
+                  </p>
+                  <ul className="space-y-3.5">
+                    {f.features.map((feat) => (
+                      <li key={feat} className="flex items-start gap-3 text-sm text-navy-800/80">
+                        <span className="mt-0.5 grid h-5 w-5 flex-none place-items-center rounded-full bg-navy-900 text-white">
+                          <Check className="h-3 w-3" />
+                        </span>
+                        {feat}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            );
+          })()}
         </div>
       </section>
 
-      {/* ===== PROCESSUS DE CANDIDATURE ===== */}
+      {/* ===== 📝 PROCESSUS DE CANDIDATURE ===== */}
       {d.applicationLayout === "grid" ? (
         <section className="bg-white py-16 lg:py-20">
           <div className="mx-auto max-w-7xl px-6">
-            <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+            <span className="mb-3 inline-block font-head text-18px font-bold uppercase tracking-[0.16em] text-gold-600">
               Processus de candidature
             </span>
             <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
@@ -743,7 +696,58 @@ export default async function DestinationDetailPage({
         </section>
       )}
 
-      {/* ===== PROGRAMMES (optionnel) ===== */}
+      {/* ===== DOCUMENTS À PRÉPARER (optionnel) ===== */}
+      {d.documents && (
+        <section className="bg-cream py-16 lg:py-20">
+          <div className="mx-auto max-w-4xl px-6">
+            <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
+              Documents à préparer
+            </h2>
+            <p className="mt-2 text-slate-600">
+              Réunissez ces pièces pour constituer votre dossier de candidature.
+            </p>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              {d.documents.map((doc) => (
+                <li
+                  key={doc}
+                  className="flex items-start gap-3 rounded-2xl border border-slate-100 bg-white p-4 text-sm text-slate-700 shadow-[0_2px_10px_rgba(10,37,64,.05)]"
+                >
+                  <span className="mt-0.5 grid h-6 w-6 flex-none place-items-center rounded-full bg-blue-500 text-white">
+                    <Check className="h-3.5 w-3.5" />
+                  </span>
+                  {doc}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* ===== ℹ️ INFORMATIONS IMPORTANTES ===== */}
+      <section className="bg-slate-50 py-16 lg:py-20">
+        <div className="mx-auto max-w-4xl px-6">
+          <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
+            Informations importantes
+          </h2>
+          <p className="mt-2 text-slate-600">
+            Points clés à considérer avant de lancer votre candidature.
+          </p>
+          <ul className="mt-8 space-y-4">
+            {d.importantInfo.map((info) => (
+              <li key={info} className="flex items-start gap-3 text-sm text-slate-600">
+                <span className="mt-0.5 flex-none text-gold-500">
+                  {d.importantIcon === "info" ? <Info className="h-4 w-4" /> : <Check className="h-4 w-4" />}
+                </span>
+                {info}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      
+
+      {/* ===== 🎓 PROGRAMMES DISPONIBLES (optionnel) ===== */}
       {d.programs && (
         <section className="bg-cream py-16 lg:py-24">
           <div className="mx-auto max-w-7xl px-6">
@@ -789,8 +793,7 @@ export default async function DestinationDetailPage({
           </div>
         </section>
       )}
-
-      {/* ===== CTA ===== */}
+      {/* ===== ✅ COMMENCER MON DOSSIER (CTA) ===== */}
       <CtaCard
         title={<>Prêt à étudier en {d.country}&nbsp;?</>}
         subtitle="Lancez votre dossier dès aujourd'hui ou échangez avec un conseiller lors d'un premier entretien gratuit."

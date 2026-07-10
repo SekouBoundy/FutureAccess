@@ -325,11 +325,11 @@ const malaisie: DestinationDetail = {
           title: "Marketing & Communication",
           items: ["Marketing digital", "Communication numérique"],
         },
-        {
-          icon: "🎨",
-          title: "Design & Innovation",
-          items: ["Management de l'innovation en design"],
-        },
+        // {
+        //   icon: "🎨",
+        //   title: "Design & Innovation",
+        //   items: ["Management de l'innovation en design"],
+        // },
         {
           title: "Sciences humaines & Éducation",
           items: [
@@ -363,26 +363,20 @@ const turquie: DestinationDetail = {
   },
   universities: [
     {
-      abbr: "IU",
-      name: "Istanbul University",
+      abbr: "IGU",
+      logo: "https://cdn.gelisim.edu.tr/logo/gelisim-logo-blue-tr.svg",
+      name: "İstanbul Gelişim Üniversitesi",
       location: "Istanbul",
       rank: "Classic",
       rankTone: "slate",
       abbrTone: "blue",
     },
     {
-      abbr: "AU",
-      name: "Ankara University",
-      location: "Ankara",
+      abbr: "ABU",
+      logo: "https://antalya.edu.tr/assets/site/antalya_bilim_universitesi_2024/img/brand/abu_logo_en.png",
+      name: "Antalya Bilim University",
+      location: "Antalya",
       rank: "Prestige",
-      rankTone: "slate",
-      abbrTone: "blue",
-    },
-    {
-      abbr: "METU",
-      name: "Middle East Technical (METU)",
-      location: "Ankara",
-      rank: "Top Tech",
       rankTone: "slate",
       abbrTone: "blue",
     },
@@ -643,6 +637,26 @@ const chine: DestinationDetail = {
     "Casier judiciaire (moins de 6 mois)",
     "Relevé bancaire du garant (si demandé)",
   ],
+  universities: [
+    {
+      abbr: "HUNAU",
+      logo: "https://keystoneacademic-res.cloudinary.com/image/upload/element/16/165074_Hunan.png",
+      name: "Hunan Agricultural University",
+      location: "Changsha",
+      rank: "Classic",
+      rankTone: "slate",
+      abbrTone: "blue",
+    },
+    {
+      abbr: "KUST",
+      logo: "https://english.kmust.edu.cn/images/logo10.svg",
+      name: "Kunming University of Science and Technology (昆明理工大学)",
+      location: "Kunming",
+      rank: "Classic",
+      rankTone: "slate",
+      abbrTone: "blue",
+    },
+  ],
   forfait: {
     label: "Frais d'agence – Chine",
     badge: "Tout inclus",
@@ -785,8 +799,8 @@ const chine: DestinationDetail = {
         },
         {
           icon: "⚖️",
-          title: "Droit & Sciences humaines",
-          items: ["Law", "Philosophy"],
+          title: "Droit",
+          items: ["Law"],
         },
         {
           icon: "🏗️",
@@ -794,33 +808,25 @@ const chine: DestinationDetail = {
           items: [
             "Civil Engineering",
             "Chemical Engineering",
-            "Materials Science and Engineering",
             "Communication Engineering",
             "Electronic and Information Engineering",
             "Environmental Science and Engineering",
-            "New Energy Science and Engineering",
           ],
         },
         {
           icon: "🔬",
           title: "Sciences",
-          items: [
-            "Physics",
-            "Chemistry",
-            "Biological Science",
-            "Biotechnology",
-            "Ecology",
-          ],
+          items: ["Biological Science"],
         },
         {
           icon: "🏛️",
-          title: "Architecture & Design",
-          items: ["Architecture", "Visual Communication Design"],
+          title: "Architecture",
+          items: ["Architecture"],
         },
         {
           icon: "📰",
           title: "Communication & Médias",
-          items: ["Journalism", "Radio and Television", "Communication"],
+          items: ["Journalism", "Communication"],
         },
       ],
     },
@@ -836,7 +842,6 @@ const chine: DestinationDetail = {
             "Software Engineering",
             "Cybersecurity",
             "Data Science",
-            "AI and Machine Learning",
           ],
         },
         {
@@ -853,7 +858,7 @@ const chine: DestinationDetail = {
         {
           icon: "⚖️",
           title: "Droit",
-          items: ["International Law", "Civil Law", "Criminal Law"],
+          items: ["International Law", "Civil Law"],
         },
         {
           icon: "🏗️",
@@ -868,7 +873,7 @@ const chine: DestinationDetail = {
         {
           icon: "🔬",
           title: "Sciences & Santé",
-          items: ["Biotechnology", "Pharmacy", "Biology"],
+          items: ["Pharmacy", "Biology"],
         },
       ],
     },

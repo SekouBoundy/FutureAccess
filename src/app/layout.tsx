@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Fraunces, Plus_Jakarta_Sans, Inter } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -45,7 +46,9 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col overflow-x-clip">
         {/* Active les révélations au scroll avant le premier paint (pas de flash,
             et sans JS le contenu reste visible) */}
-        <script
+        <Script
+          id="add-js-class"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add("js")` }}
         />
         <Header />

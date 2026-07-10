@@ -232,6 +232,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== À PROPOS (intro) ===== */}
+      <section className="bg-white py-16 lg:py-24">
+        <div data-reveal className="mx-auto max-w-2xl px-6 text-center">
+          {/* <span className="mb-3 inline-flex items-center gap-2 font-head text-18px font-bold uppercase tracking-[0.16em] text-gold-600">
+            <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
+            À propos
+            <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-300 to-gold-500" />
+          </span> */}
+          <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
+            Qui sommes-nous&nbsp;?
+          </h2>
+          <p className="mt-5 text-lg text-slate-600">
+            Votre partenaire de confiance pour transformer vos ambitions académiques en réussite à
+            l&apos;international.
+          </p>
+        </div>
+      </section>
+
       {/* ===== DESTINATIONS ===== */}
       <section id="destinations" className="bg-cream py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6">
