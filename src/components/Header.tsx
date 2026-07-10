@@ -21,13 +21,16 @@ const WHATSAPP = "https://wa.me/22392246342";
 
 function Brand({ className = "" }: { className?: string }) {
   return (
-    <span className={`inline-flex flex-col leading-none ${className}`}>
-      <span className="font-head text-xl font-extrabold tracking-tight">
-        <span className="text-blue-500">Future</span>
-        <span className="text-gold-400">Access</span>
-      </span>
-      <span className="mt-1 self-end font-head text-[10px] font-bold uppercase tracking-[0.3em] text-gold-300/80">
-        Mali
+    <span className={`inline-flex items-center gap-2.5 ${className}`}>
+      <img src="/favicon.ico" alt="" aria-hidden="true" className="h-9 w-9 flex-none object-contain" />
+      <span className="inline-flex flex-col leading-none">
+        <span className="font-head text-xl font-extrabold tracking-tight">
+          <span className="text-blue-500">Future</span>
+          <span className="text-gold-400">Access</span>
+        </span>
+        <span className="mt-1 self-end font-head text-[10px] font-bold uppercase tracking-[0.3em] text-gold-300/80">
+          Mali
+        </span>
       </span>
     </span>
   );

@@ -36,9 +36,15 @@ export default function Footer() {
       <div className="mx-auto grid max-w-7xl grid-cols-[auto_1fr] gap-x-6 gap-y-10 px-6 md:grid-cols-[1.5fr_1fr_1.2fr] md:gap-x-10">
         {/* Marque + WhatsApp — pleine largeur sur mobile */}
         <div className="col-span-2 md:col-span-1">
-          <Link href="/#accueil" className="font-head text-lg font-extrabold tracking-tight">
-            <span className="text-blue-500">Future</span>
-            <span className="text-gold-400">Access</span>
+          <Link
+            href="/#accueil"
+            className="inline-flex items-center gap-2.5 font-head text-lg font-extrabold tracking-tight"
+          >
+            <img src="/favicon.ico" alt="" aria-hidden="true" className="h-8 w-8 flex-none object-contain" />
+            <span>
+              <span className="text-blue-500">Future</span>
+              <span className="text-gold-400">Access</span>
+            </span>
           </Link>
           <p className="mt-4 max-w-[34ch] text-sm leading-relaxed text-[#cdd8e6]/80">
             Votre partenaire de confiance pour vos études à l&apos;international. Nous vous
