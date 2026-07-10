@@ -243,7 +243,7 @@ export default async function DestinationDetailPage({
             </h2>
             {d.whyStudy && (
               <p className="mb-8 max-w-[52ch] leading-relaxed text-slate-600">
-                {d.whyStudy.text}
+                {d.whyStudy?.text}
               </p>
             )}
             <ul className="space-y-4">
