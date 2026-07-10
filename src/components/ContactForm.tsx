@@ -11,6 +11,8 @@ const labelClass = "mb-1.5 block font-head text-sm font-semibold text-navy-800";
 
 export default function ContactForm() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
   const [destination, setDestination] = useState("");
   const [program, setProgram] = useState("");
 
@@ -44,9 +46,43 @@ export default function ContactForm() {
 
   return (
     <form
-      onSubmit={(e) => {
+      onSubmit={async (e) => {
         e.preventDefault();
-        setSent(true);
+        setError("");
+        setSending(true);
+
+        const form = e.currentTarget;
+        const data = new FormData(form);
+
+        try {
+          const res = await fetch("/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: data.get("name"),
+              email: data.get("email"),
+              phone: data.get("phone"),
+              destination: data.get("destination"),
+              program: data.get("program"),
+              message: data.get("message"),
+            }),
+          });
+
+          if (!res.ok) {
+            const { error: message } = await res.json().catch(() => ({}));
+            throw new Error(message || "L'envoi a échoué.");
+          }
+
+          setSent(true);
+        } catch (err) {
+          setError(
+            err instanceof Error
+              ? err.message
+              : "Une erreur est survenue. Veuillez réessayer."
+          );
+        } finally {
+          setSending(false);
+        }
       }}
       className="rounded-3xl border border-slate-100 bg-white p-7 shadow-[0_2px_10px_rgba(10,37,64,.06)] lg:p-8"
     >
@@ -149,11 +185,18 @@ export default function ContactForm() {
         />
       </div>
 
+      {error && (
+        <p className="mt-4 rounded-xl bg-red-50 px-4 py-2.5 text-sm font-medium text-red-600">
+          {error}
+        </p>
+      )}
+
       <button
         type="submit"
-        className="mt-12 mb-2 w-full rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-3.5 font-head font-bold text-white  transition-transform hover:-translate-y-0.5"
+        disabled={sending}
+        className="mt-12 mb-2 w-full rounded-full bg-gradient-to-br from-gold-400 to-gold-600 py-3.5 font-head font-bold text-white transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0"
       >
-        Envoyer le message
+        {sending ? "Envoi en cours…" : "Envoyer le message"}
       </button>
       <p className="mt-4 text-center text-xs text-slate-400">
         {/* Réponse garantie sous 12&nbsp;heures. Vos informations restent confidentielles. */}

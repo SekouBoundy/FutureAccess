@@ -89,21 +89,21 @@ const PROCESS_STEPS = [
 // la clarté et la transparence — crédibles pour une agence qui démarre.
 const TESTIMONIALS: Testimonial[] = [
   {
-    name: "Amira B.",
+    name: "Abba D.",
     country: "Dossier Malaisie",
-    avatar: "/images/testimonials/amira.jpg",
+    avatar: "/images/testimonials/Abba.jpg",
     text: "Dès le premier rendez-vous, tout était clair. On m'a expliqué chaque étape sans jargon et répondu à mes questions le jour même.",
   },
   {
-    name: "Omar K.",
+    name: "Mohamed S.",
     country: "Dossier Turquie",
-    avatar: "/images/testimonials/omar.jpg",
+    avatar: "/images/testimonials/Mohamed.jpg",
     text: "Ce qui m'a rassuré, c'est la transparence sur les coûts. Un devis détaillé dès le départ, aucune mauvaise surprise.",
   },
   {
-    name: "Sofia M.",
+    name: "Aminata C.",
     country: "Dossier Chine",
-    avatar: "/images/testimonials/sofia.jpg",
+    avatar: "/images/testimonials/Aminata.jpg",
     text: "J'étais perdue face aux démarches de visa. Mon conseiller a tout structuré avec moi, étape par étape.",
   },
 ];
@@ -364,7 +364,7 @@ export default function Home() {
                 <em className="font-display-italic font-normal">aventure</em>&nbsp;?
               </h2>
               <p className="mb-8 text-white/75">
-                Rejoignez plus de 500 étudiants qui ont réalisé leur rêve avec FutureAccess.
+                Rejoignez les étudiants qui font confiance à  FutureAccess pour leurs études et à l'international.
               </p>
               <NewsletterForm />
             </div>
