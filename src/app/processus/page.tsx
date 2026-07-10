@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import CtaCard from "@/components/CtaCard";
 
+// Route masquée temporairement — décommenter le retour ci-dessous pour la réactiver.
 export const metadata: Metadata = {
   title: "Processus — FutureAccess",
   description:
@@ -151,6 +153,8 @@ function Icon({ name, className }: { name: string; className: string }) {
 }
 
 export default function ProcessusPage() {
+  notFound();
+
   return (
     <main className="flex-1">
       {/* ===== EN-TÊTE ===== */}
