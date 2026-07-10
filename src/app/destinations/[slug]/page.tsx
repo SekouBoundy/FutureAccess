@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Photo from "@/components/Photo";
 import CtaCard from "@/components/CtaCard";
@@ -282,17 +283,29 @@ export default async function DestinationDetailPage({
                 className="overflow-hidden rounded-3xl border border-slate-100 bg-white shadow-[0_2px_10px_rgba(10,37,64,.06)] transition-transform hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(10,37,64,.10)]"
               >
                 {(u.rankTone ?? "gold") === "gold" && (
-                  <div className="h-1 bg-gradient-to-r from-gold-500 to-gold-300" />
+                  <div className=" bg-gradient-to-r from-gold-500 to-gold-300" />
                 )}
                 <div className="p-6">
                   <div className="mb-4 flex items-start justify-between gap-3">
-                    <span
-                      className={`inline-flex h-12 min-w-12 items-center justify-center rounded-2xl px-3 font-head text-sm font-extrabold ${
-                        u.abbrTone === "blue" ? "bg-blue-500 text-white" : "bg-slate-50 text-navy-800"
-                      }`}
-                    >
-                      {u.abbr}
-                    </span>
+                    {u.logo ? (
+                      <span className="inline-flex h-12 min-w-12 items-center justify-center rounded-2xl bg-slate-50 p-2">
+                        <Image
+                          src={u.logo}
+                          alt={`Logo ${u.name}`}
+                          width={40}
+                          height={40}
+                          className="h-full w-auto object-contain"
+                        />
+                      </span>
+                    ) : (
+                      <span
+                        className={`inline-flex h-12 min-w-12 items-center justify-center rounded-2xl px-3 font-head text-sm font-extrabold ${
+                          u.abbrTone === "blue" ? "bg-blue-500 text-white" : "bg-slate-50 text-navy-800"
+                        }`}
+                      >
+                        {u.abbr}
+                      </span>
+                    )}
                     <span
                       className={`rounded-full px-2.5 py-1 font-head text-[10px] font-bold uppercase tracking-wide ${
                         (u.rankTone ?? "gold") === "slate"

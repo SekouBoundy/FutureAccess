@@ -192,7 +192,7 @@ export default function Home() {
       <section className="bg-paper py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div data-reveal className="mx-auto mb-12 max-w-2xl text-center">
-            <span className="mb-3 inline-flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+            <span className="mb-3 inline-flex items-center gap-2 font-head text-18px font-bold uppercase tracking-[0.16em] text-gold-600">
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
               Nos avantages
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-300 to-gold-500" />
@@ -237,7 +237,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6">
           <div data-reveal className="mb-10 flex flex-wrap items-end justify-between gap-4">
             <div>
-              <span className="mb-3 inline-flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+              <span className="mb-3 inline-flex items-center gap-2 font-head text-18px font-bold uppercase tracking-[0.16em] text-gold-600">
                 <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
                 Destinations populaires
               </span>
@@ -294,7 +294,7 @@ export default function Home() {
       <section id="processus" className="bg-paper py-16 lg:py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div data-reveal className="mx-auto mb-12 max-w-2xl text-center">
-            <span className="mb-3 inline-flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+            <span className="mb-3 inline-flex items-center gap-2 font-head text-18px font-bold uppercase tracking-[0.16em] text-gold-600">
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
               Comment ça marche&nbsp;?
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-300 to-gold-500" />
@@ -332,7 +332,7 @@ export default function Home() {
         />
         <div className="relative">
           <div data-reveal className="mx-auto mb-12 max-w-2xl px-6 text-center">
-            <span className="mb-3 inline-flex items-center gap-2 font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-400">
+            <span className="mb-3 inline-flex items-center gap-2 font-head text-18px font-bold uppercase tracking-[0.16em] text-gold-400">
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-500 to-gold-300" />
               Premiers retours
               <span className="h-0.5 w-6 rounded bg-gradient-to-r from-gold-300 to-gold-500" />

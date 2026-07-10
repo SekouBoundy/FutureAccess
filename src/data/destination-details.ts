@@ -2,6 +2,7 @@ export type ProcessStep = { title: string; text?: string };
 
 export type University = {
   abbr: string;
+  logo?: string; // chemin vers le logo de l'université (remplace le badge abbr si fourni)
   name: string;
   location: string;
   programs?: string;
@@ -102,25 +103,12 @@ const malaisie: DestinationDetail = {
   },
   universities: [
     {
-      abbr: "UM",
-      name: "Universiti Malaya (UM)",
+      abbr: "APU",
+      logo: "https://www.apu.edu.my/themes/custom/apu/images/navbar/navbar-logo--dark@2x.png",
+      name: "Asia Pacific University (APU)",
       location: "Kuala Lumpur",
-      programs: "250+ programmes",
-      rank: "QS TOP 100",
-    },
-    {
-      abbr: "UTM",
-      name: "Universiti Teknologi Malaysia (UTM)",
-      location: "Johor Bahru",
-      programs: "180+ programmes",
-      rank: "QS #188",
-    },
-    {
-      abbr: "UPM",
-      name: "Universiti Putra Malaysia (UPM)",
-      location: "Serdang",
-      programs: "220+ programmes",
-      rank: "QS #123",
+      programs: "100+ programmes",
+      rank: "QS TOP 100 (Jeunes universités)",
     },
   ],
   summarySteps: [
@@ -146,7 +134,7 @@ const malaisie: DestinationDetail = {
     features: [
       "Orientation personnalisée",
       "Accompagnement complet vers l'admission",
-      "Aide au visa (VDR)",
+      "Accompagnement Visa",
       "Installation à Kuala Lumpur",
       "Suivi 6 mois",
     ],

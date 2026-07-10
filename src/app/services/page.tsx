@@ -170,8 +170,8 @@ const PLANS: {
     popular: false,
     features: [
       "Bilan d'orientation",
-      "Inscription dans 3 universités",
-      "Assistance visa",
+      "Inscription à l'université",
+      "Accompagnement Visa",
       "Logement étudiant",
       "Support email",
     ],
@@ -186,7 +186,7 @@ const PLANS: {
     features: [
       "Tout le pack Malaisie",
       "Installation à Kuala Lumpur",
-      "Préparation entretien visa",
+      "Accompagnement Visa",
       "Aide au logement",
       "Suivi prioritaire",
     ],
@@ -200,8 +200,8 @@ const PLANS: {
     popular: false,
     features: [
       "Tout le pack Turquie",
-      "Recherche logement Istanbul",
-      "Accompagnement VIP 1:1",
+      "Recherche de logement",
+      "Accompagnement Visa",
       "Suivi post-arrivée 6 mois",
       "Dossier bourse d'études",
     ],
@@ -230,7 +230,7 @@ export default function ServicesPage() {
       <section className="bg-slate-50 py-14 lg:py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div data-reveal className="mx-auto mb-14 max-w-2xl text-center">
-            <span className="mb-3 inline-block font-head text-xs font-bold uppercase tracking-[0.16em] text-gold-600">
+            <span className="mb-3 inline-block font-head text-18px font-bold uppercase tracking-[0.16em] text-gold-600">
               Tarifs &amp; Forfaits
             </span>
             <h2 className="text-3xl font-extrabold text-navy-800 lg:text-4xl">
