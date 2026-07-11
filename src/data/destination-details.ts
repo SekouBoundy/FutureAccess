@@ -118,11 +118,11 @@ const malaisie: DestinationDetail = {
     },
     {
       title: "Obtenez votre admission",
-      text: "Nous négocions votre place parmi nos 20+ universités partenaires en Malaisie.",
+      text: "Nous négocions votre place parmi les meilleures universités de Malaisie.",
     },
     {
       title: "Préparez votre départ",
-      text: "Assistance visa, recherche de logement à KL et accueil à l'aéroport inclus.",
+      text: "Assistance visa, recherche de logement à Kuala Lumpur et accueil à l'aéroport inclus.",
     },
   ],
   forfait: {
